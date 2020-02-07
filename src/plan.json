@@ -1,0 +1,14 @@
+[
+    {
+        "name": "First Floor",
+        "src": "/floors/floor1.svg"
+    },
+    {
+        "name": "Second Floor",
+        "src": "/floors/floor2.svg"
+    },
+    {
+        "name": "Lower Level",
+        "src": "/floors/floor3.svg"
+    }
+]
