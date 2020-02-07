@@ -1,0 +1,24 @@
+{
+  "name": "floors",
+  "version": "1.0.0",
+  "description": "Floor viewer",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dondido/floors.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dondido/floors/issues"
+  },
+  "homepage": "https://github.com/dondido/floors#readme",
+  "devDependencies": {
+    "clean-css": "^4.2.3",
+    "read-modify-write": "^1.0.4",
+    "terser": "^4.6.3"
+  }
+}

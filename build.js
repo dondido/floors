@@ -1,0 +1,11 @@
+const rmw = require('read-modify-write');
+const terser = require('terser');
+const cleanCss = require('clean-css');
+const uglify = c => terser.minify(c).code;
+const clean = c => new cleanCss().minify(c).styles;
+const move = filePath => filePath.replace('src', 'docs');
+const filterJs = c => c.endsWith('.js');
+const filterCss = c => c.endsWith('.css');
+rmw('src', move);
+rmw('docs', move, filterJs, uglify);
+rmw('docs', move, filterCss, clean);
