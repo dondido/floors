@@ -63,33 +63,55 @@ const setFloor = (floor) => {
         .then(appendSvg);
 };
 const dragNode = (node) => {
-    let x2 = 0, y2 = 0, x1 = 0, y1 = 0;
-    const end = () => {
-        /* stop moving when mouse button is released:*/
-        document.onmouseup = null;
-        document.onmousemove = null;
+    let x2 = 0, y2 = 0, x1 = 0, y1 = 0, hypo = 0, initialZoom = 0;
+    let pointers = [];
+    const pointerup = () => {
+        pointers = [];
+        hypo = 0;
+        document.body.onpointermove = null;
     };
-    const drag = (e) => {
-        e.preventDefault();
-        // calculate the new cursor position:
+    const pointerdown = e => {
+        if(pointers.length === 0) {
+            x1 = e.clientX - parseInt(getComputedStyle(node).getPropertyValue('--x'));
+            y1 = e.clientY - parseInt(getComputedStyle(node).getPropertyValue('--y'));
+            initialZoom = + $zoomSlider.value;
+            document.body.onpointermove = pointermove;
+        }
+        pointers.push(e);
+    };
+    const pointermove = (e) => {
+        const [ e1, e2, e3 ] = pointers;
+        if(e3) {
+            return;
+        }
+        if(e2) {
+            let e4;
+            if (e.pointerId === e1.pointerId) {
+                e4 = e2;
+                pointers[0] = e;
+            }
+            else {
+                e4 = e1;
+                pointers[1] = e;
+            }
+            const hypo1 = Math.hypot(e4.clientX - e.clientX, e4.clientY - e.clientY);
+            if (hypo === 0) {
+                hypo = hypo1;
+            }
+            $zoomSlider.value = initialZoom + Math.min(1, hypo1/hypo - 1) * 100;
+            return zoom();
+        }
         x2 = x1 - e.clientX;
         y2 = y1 - e.clientY;
-        // set the element's new position:
         node.style.setProperty('--x', `${node.offsetLeft - x2}px`);
         node.style.setProperty('--y', `${node.offsetTop - y2}px`);
     };
-    const start = (e) => {
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        x1 = e.clientX - parseInt(getComputedStyle(node).getPropertyValue('--x'));
-        y1 = e.clientY - parseInt(getComputedStyle(node).getPropertyValue('--y'));
-        document.onmouseup = end;
-        // call a function whenever the cursor moves:
-        document.onmousemove = drag;
-    };
     node.style.setProperty('--x', 0);
     node.style.setProperty('--y', 0);
-    $views.onmousedown = start;
+    document.body.onpointerdown = pointerdown;
+    document.body.onpointerup = pointerup;
+    document.body.onpointercancel = pointerup;
+    document.body.onpointerout = pointerup;
 };
 const loadPlan = async (raw) => {
     plan = { ...raw };

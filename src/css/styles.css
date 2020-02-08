@@ -27,6 +27,7 @@ button {
     top: 50px;
     cursor: pointer;
     width: 120px;
+    border: 1px solid red;
 }
 .floor-option:not([hidden]) {
     position: absolute;
@@ -75,12 +76,12 @@ button {
 }
 .views {
     overflow: hidden;
+    touch-action: none;
 }
 .view {
     --x: 0;
     --y: 0;
     transform: translate(var(--x), var(--y));
-    touch-action: manipulation;
 }
 .view svg {
     --default-scale: 1;
