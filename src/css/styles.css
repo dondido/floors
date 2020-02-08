@@ -27,7 +27,6 @@ button {
     top: 50px;
     cursor: pointer;
     width: 120px;
-    border: 1px solid red;
 }
 .floor-option:not([hidden]) {
     position: absolute;
