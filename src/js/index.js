@@ -54,6 +54,6 @@ const loadPlan = (raw) => {
     $zoomSlider.addEventListener('input', zoom);
 };
 
-fetch('/plan.json')
+fetch('plan.json')
   .then(handleJson)
   .then(loadPlan);
