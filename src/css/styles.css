@@ -80,6 +80,7 @@ button {
     --x: 0;
     --y: 0;
     transform: translate(var(--x), var(--y));
+    touch-action: manipulation;
 }
 .view svg {
     --default-scale: 1;
