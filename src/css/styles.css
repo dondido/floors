@@ -72,7 +72,14 @@ button {
     justify-content: center;
     height: 100vh;
     width: 100vw;
+}
+.views {
     overflow: hidden;
+}
+.view {
+    --x: 0;
+    --y: 0;
+    transform: translate(var(--x), var(--y));
 }
 .view svg {
     --default-scale: 1;
@@ -154,8 +161,8 @@ button {
     margin-top: 0;
 }
 .zoom-slider::-ms-fill-lower {
-    background: #a9a9a9;
+    background: #29abe2;
 }
 .zoom-slider::-ms-fill-upper {
-    background: #29abe2;
+    background: #a9a9a9;
 }
