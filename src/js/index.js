@@ -71,7 +71,7 @@ const dragNode = (node) => {
         document.body.onpointermove = null;
     };
     const pointerdown = e => {
-        if(pointers.length === 0) {
+        if(pointers.length === 0 && e.target.closest('.views')) {
             x1 = e.clientX - parseInt(getComputedStyle(node).getPropertyValue('--x'));
             y1 = e.clientY - parseInt(getComputedStyle(node).getPropertyValue('--y'));
             initialZoom = + $zoomSlider.value;
@@ -95,9 +95,7 @@ const dragNode = (node) => {
                 pointers[1] = e;
             }
             const hypo1 = Math.hypot(e4.clientX - e.clientX, e4.clientY - e.clientY);
-            if (hypo === 0) {
-                hypo = hypo1;
-            }
+            hypo = hypo || hypo1;
             $zoomSlider.value = initialZoom + Math.min(1, hypo1/hypo - 1) * 100;
             return zoom();
         }
@@ -124,6 +122,7 @@ const loadPlan = async (raw) => {
     $views.onwheel = wheel;
     raw.forEach(setFloor);
 };
+document.querySelector('.reset-button').onclick = reset;
 
 fetch('plan.json')
     .then(handleJson)

@@ -4,28 +4,79 @@ body {
     font-family: Roboto, sans-serif;
     --custom-scale: 0;
 }
-button {
-    font-family: Roboto, sans-serif;
-    cursor: pointer;
-    background-color: transparent;
-    font-size: 16px;
-    color: #555;
-    border: 0;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: -2px -4px 8px white, 2px  6px 6px rgba(0, 0, 0, 0.15);
+#interface {
+    display: none;
 }
-.floor-selector {
+#interface:checked ~ * {
+    display: none;
+}
+#interface:checked ~ .toolbar {
+    display: block;
+    height: 48px;
+}
+.hide-interface-button,
+.mirror-button,
+.ruler-button,
+.reset-button {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #bec4cc;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hide-interface-button:hover,
+.mirror-button:hover,
+.ruler-button:hover,
+.reset-button:hover {
+    background-color: #d8dadd;
+}
+.hide-interface-button:before {
+    content: url('../images/interface-off.svg');
+}
+#interface:checked ~ .toolbar .hide-interface-button:before {
+    content: url('../images/interface-on.svg');
+    filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
+}
+.reset-button:before {
+    content: url('../images/reset.svg');
+}
+.hide-interface-button:active:before,
+.reset-button:active:before {
+    filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
+}
+.reset-button:focus {
+    outline: none;
+}
+.floor-selector,
+.toolbar {
     list-style: none;
     margin: 0;
     padding: 0;
+    position: fixed;
+    cursor: pointer;
+}
+.toolbar {
     background-color: #f2f2f2;
     border-radius: 4px;
-    position: absolute;
+    border: .5px solid #bec4cc;
+    box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
+    opacity: .9;
+    top: 0;
+    bottom: 0;
+    height: 192px;
+    right: 20px;
+    margin: auto;
+    overflow: hidden;
+}
+.floor-selector {
+    background-color: #f2f2f2;
+    border-radius: 4px;
     left: 25px;
     top: 50px;
-    cursor: pointer;
     width: 120px;
 }
 .floor-option:not([hidden]) {
@@ -81,11 +132,13 @@ button {
     --x: 0;
     --y: 0;
     transform: translate(var(--x), var(--y));
+    pointer-events: none;
 }
 .view svg {
     --default-scale: 1;
     transform: scale(calc(var(--default-scale) * (1 + var(--custom-scale) / 38)));
 }
+
 
 
 .zoom-control {
