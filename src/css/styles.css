@@ -83,7 +83,7 @@ button {
 }
 .view svg {
     --default-scale: 1;
-    transform: scale(calc(var(--default-scale) * (1 + var(--custom-scale) / 33)));
+    transform: scale(calc(var(--default-scale) * (1 + var(--custom-scale) / 38)));
 }
 
 
