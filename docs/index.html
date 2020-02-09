@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Floor plans</title>
+    <title>Floorplan</title>
     <meta id="metaViewport" name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no, maximum-scale=1.0, minimum-scale=1.0">
-    <meta name="description" content="Circular Progress Bar Demo">
+    <meta name="description" content="Floorplan Demo">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <input id="reverse" type="checkbox"/>
     <div class="views"></div>
     <input id="interface" type="checkbox"/>
     <ul class="toolbar" role="toolbar" aria-label="Toolbar">
-        <li><label class="hide-interface-button" for="interface" aria-label="Toggle Interface"></label></li>
-        <li><button class="mirror-button" aria-label="Mirror View">Button 2</button></li>
-        <li><button class="ruler-button" aria-label="Ruler">Button 3</button></li>
-        <li><button class="reset-button" aria-label="Reset"></button></li>
+        <li><label class="hide-interface-button" for="interface" title="Toggle Interface"></label></li>
+        <li><label class="mirror-button" for="reverse" title="Flip Floorplan"></label></li>
+        <li><button class="ruler-button" title="Measure Tool">Button 3</button></li>
+        <li><button class="reset-button" title="Reset All Changes"></button></li>
     </ul>
     <ul class="floor-selector"></ul>
     <div class="zoom-control">
@@ -23,6 +24,7 @@
             <input type="range" min="0" max="100" value="0" class="zoom-slider">
         </div>
     </div>
+    <div class="mirror"></div>
     <script src="js/index.js"></script>
 </body>
 </html>

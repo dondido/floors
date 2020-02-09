@@ -5,6 +5,8 @@ const fetchAsync = async (url) => await (await fetch(url)).json();
 const $views = document.querySelector('.views');
 const $floorSelector = document.querySelector('.floor-selector');
 const $zoomSlider = document.querySelector('.zoom-slider');
+const $mirror = document.querySelector('.mirror');
+const $reverse = document.getElementById('reverse');
 const views = [];
 const floorOptions = [];
 const hideNode = node => node.hidden = true;
@@ -15,32 +17,56 @@ const selectFloor = (e) => {
         floorOptions.forEach(hideNode);
         views.forEach(hideNode);
         target.hidden = false;
-        $pane = document.getElementById(target.dataset.ref);
-        reset();
+        $reverse.checked = false;
+        mirror();
+        $pane = $views.querySelector(target.dataset.ref);
+        restore();
     }
 };
-const zoom = () => document.body.style.setProperty('--custom-scale', $zoomSlider.value);
+const zoom = () => document.body.style.setProperty('--zoom', $zoomSlider.value);
 const wheel = ({deltaY}) => {
     $zoomSlider.value = + $zoomSlider.value + (deltaY > 0 ? -4: 4);
     zoom();
+};
+const mirror = () => {
+    if ($reverse.checked) {
+        const $clone = $pane.cloneNode(true);
+        const $texts = $clone.querySelectorAll('[id^=te]');
+        const interpolate = ($text, idx) => {
+            const { left, right } = $texts[idx].getBoundingClientRect();
+            $text.dataset.class = $text.getAttribute('class') || '';
+            $text.style.setProperty('--translate-x', `${left + right}px`);
+            $text.setAttribute('class', `${$text.dataset.class} text-flip`);
+        };
+        $clone.classList.remove('view');
+        $mirror.appendChild($clone);
+        $pane.querySelectorAll('[id^=te]').forEach(interpolate);
+        return $clone.remove();
+    }
+    const interpolate = $text => $text.setAttribute('class', $text.dataset.class);
+    $pane.querySelectorAll('[id^=te]').forEach(interpolate);
 };
 const init = () => {
     $pane.hidden = false;
     setScale($pane);
     dragNode($pane);
 };
-const reset = () => {
+const restore = () => {
     $zoomSlider.value = 0;
     zoom();
     init();
 };
-
+const reset = () => {
+    $reverse.checked = false;
+    mirror();
+    restore();
+};
 const setScale = ($view) => {
     if($view.dataset.scaled === undefined) {
-        const $svg = $view.querySelector('svg');
-        const { width, height } = $svg.getBoundingClientRect();
+        const { width, height } = $view.querySelector('svg').getBoundingClientRect();
         const scale = Math.min(window.innerWidth / width, window.innerHeight / height);
-        $svg.style.setProperty('--default-scale', scale);
+        $view.style.setProperty('--scale-x', scale);
+        $view.style.setProperty('--scale-y', scale);
         $view.dataset.scaled = true;
     }
 };
@@ -52,12 +78,12 @@ const setFloor = (floor) => {
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
     $view.hidden = $floorOption.hidden = true;
-    $floorOption.dataset.ref = $view.id = `view${views.length}`;
+    $floorOption.dataset.ref = `.view${views.length}`;
+    $view.className = `view view${views.length}`;
     $floorSelector.appendChild($floorOption);
-    $view.className = 'view';
     views.push($view);
     $views.appendChild($view);
-
+    
     return fetch(floor.src)
         .then(handleText)
         .then(appendSvg);
@@ -114,7 +140,7 @@ const dragNode = (node) => {
 const loadPlan = async (raw) => {
     plan = { ...raw };
     await setFloor(raw.shift());
-    $pane = document.querySelector('.view');
+    $pane = $views.firstElementChild;
     document.querySelector('.floor-option').hidden = false;
     init();
     $floorSelector.onclick = selectFloor;
@@ -123,6 +149,7 @@ const loadPlan = async (raw) => {
     raw.forEach(setFloor);
 };
 document.querySelector('.reset-button').onclick = reset;
+$reverse.onchange = mirror;
 
 fetch('plan.json')
     .then(handleJson)
