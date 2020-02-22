@@ -8,6 +8,7 @@ const $floorSelector = document.querySelector('.floor-selector');
 const $zoomSlider = document.querySelector('.zoom-slider');
 const $mirror = document.querySelector('.mirror');
 const $reverse = document.getElementById('reverse');
+const $measure = document.getElementById('measure');
 const floorOptions = [];
 const hideNode = node => node.classList.add('excluded');
 const selectFloor = (e) => {
@@ -56,7 +57,7 @@ const mirror = () => {
 };
 const init = () => {
     setScale();
-    dragNode();
+    gesture();
 };
 const restore = () => {
     $zoomSlider.value = 0;
@@ -95,7 +96,7 @@ const setFloor = ({name, id, options}, idx) => {
     $floorSelector.appendChild($floorOption);
     options && options.forEach(hideViewOptions);
 };
-const dragNode = () => {
+const gesture = () => {
     let x2 = 0, y2 = 0, x1 = 0, y1 = 0, hypo = 0, initialZoom = 0;
     let pointers = [];
     const pointerup = () => {
@@ -162,6 +163,7 @@ const handlePlan = (raw) => {
 };
 document.querySelector('.reset-button').onclick = reset;
 $reverse.onchange = mirror;
+$measure.onchange = () => {};
 
 fetch('plan.json')
     .then(handleJson)

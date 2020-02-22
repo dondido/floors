@@ -1,6 +1,7 @@
 {
     "name": "Cameron",
     "src": "floors/llstd.svg",
+    "footRatio": "9",
     "floors": [
         {
             "name": "Lower level",
