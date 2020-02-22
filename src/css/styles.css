@@ -1,13 +1,11 @@
-
 body {
     margin: 0;
     font-family: Roboto, sans-serif;
     --zoom: 0;
 }
+.excluded,
 #reverse,
-#interface {
-    display: none;
-}
+#interface,
 #interface:checked ~ * {
     display: none;
 }
@@ -85,7 +83,7 @@ body {
     top: 50px;
     width: 120px;
 }
-.floor-option:not([hidden]) {
+.floor-option:not(.excluded) {
     position: absolute;
     font-weight: 500;
     display: flex;
@@ -97,20 +95,20 @@ body {
     border-radius: 4px;
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }
-.floor-option:not([hidden]):after {
+.floor-option:not(.excluded):after {
     content: url('../images/chevron.svg');
     filter: invert(56%) sepia(13%) saturate(221%) hue-rotate(180deg) brightness(90%) contrast(92%);
 }
-.floor-option:not([hidden]):hover:after {
+.floor-option:not(.excluded):hover:after {
     filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
-.expand .floor-option:not([hidden]):after {
+.expand .floor-option:not(.excluded):after {
     transform: rotate(90deg);
 }
 .floor-option:hover {
     color: #29abe2;
 }
-.floor-option[hidden]:hover {
+.floor-option.excluded:hover {
     background-color: #29abe2;
     color: white;
 }
@@ -123,14 +121,7 @@ body {
 .expand .floor-option {
     display: flex;
 }
-.view:not([hidden]) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-}
-.views {
+.port {
     overflow: hidden;
     touch-action: none;
 }
@@ -139,22 +130,22 @@ body {
     --y: 0;
     --scale-x: 1;
     --scale-y: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
     transform: translate(var(--x), var(--y)) scale(calc(var(--scale-x) * (1 + var(--zoom) / 38)), calc(var(--scale-y) * (1 + var(--zoom) / 38)));
     pointer-events: none;
+    user-select: none;
 }
-#reverse:checked ~ .views .view:not([hidden]) {
+#reverse:checked ~ .port .view {
     transform: translate(var(--x), var(--y)) scale(calc(var(--scale-x) * (1 + var(--zoom) / 38) * -1), calc(var(--scale-y) * (1 + var(--zoom) / 38)));
 }
-.text-flip {
-    transform: translateX(var(--translate-x)) scale(-1, 1);
-}
-
 .mirror {
     position: fixed;
     top: 0;
 }
-
-
 .zoom-control {
     position: fixed;
     right: -60px;

@@ -1,25 +1,25 @@
-let plan, $pane;
+let plan, $pristine, $scene, $floor;
 const handleJson = response => response.json();
 const handleText = response => response.text();
-const fetchAsync = async (url) => await (await fetch(url)).json();
-const $views = document.querySelector('.views');
+const $dirty = document.createDocumentFragment();
+const $port = document.querySelector('.port');
+const $view = document.querySelector('.view');
 const $floorSelector = document.querySelector('.floor-selector');
 const $zoomSlider = document.querySelector('.zoom-slider');
 const $mirror = document.querySelector('.mirror');
 const $reverse = document.getElementById('reverse');
-const views = [];
 const floorOptions = [];
-const hideNode = node => node.hidden = true;
+const hideNode = node => node.classList.add('excluded');
 const selectFloor = (e) => {
     const { target } = e;
     $floorSelector.classList.toggle('expand');
-    if (target.hidden) {
+    if (target.classList.contains('excluded')) {
+        const { id } = target.dataset;
         floorOptions.forEach(hideNode);
-        views.forEach(hideNode);
-        target.hidden = false;
-        $reverse.checked = false;
-        mirror();
-        $pane = $views.querySelector(target.dataset.ref);
+        target.classList.remove('excluded');
+        $dirty.appendChild($floor);
+        $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
+        $scene.appendChild($floor);
         restore();
     }
 };
@@ -29,66 +29,73 @@ const wheel = ({deltaY}) => {
     zoom();
 };
 const mirror = () => {
-    if ($reverse.checked) {
-        const $clone = $pane.cloneNode(true);
-        const $texts = $clone.querySelectorAll('[id^=te]');
+    if ($reverse.checked && $floor.dataset.reversed !== 'true') {
+        const $texts = $floor.querySelectorAll('text');
         const interpolate = ($text, idx) => {
-            const { left, right } = $texts[idx].getBoundingClientRect();
-            $text.dataset.class = $text.getAttribute('class') || '';
-            $text.style.setProperty('--translate-x', `${left + right}px`);
-            $text.setAttribute('class', `${$text.dataset.class} text-flip`);
+            const $target = $texts[idx];
+            if($text.dataset.flip === undefined) {
+                const transform = $text.getAttribute('transform');
+                const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
+                $target.dataset.transform = transform;
+                matrix[0] = -1;
+                matrix[4] = $text.getBoundingClientRect().right;
+                $target.dataset.flip = `matrix(${matrix.join()})`;  
+            }
+            $target.setAttribute('transform', $target.dataset.flip);
         };
-        $clone.classList.remove('view');
-        $mirror.appendChild($clone);
-        $pane.querySelectorAll('[id^=te]').forEach(interpolate);
-        return $clone.remove();
+        $floor.dataset.reversed = true;
+        $mirror.appendChild($pristine);
+        $pristine.querySelectorAll(`#${$floor.id} text`).forEach(interpolate);
+        $pristine.remove();
     }
-    const interpolate = $text => $text.setAttribute('class', $text.dataset.class);
-    $pane.querySelectorAll('[id^=te]').forEach(interpolate);
+    else if($reverse.checked === false && $floor.dataset.reversed === 'true') {
+        const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
+        $floor.dataset.reversed = false;
+        $floor.querySelectorAll('text').forEach(interpolate);
+    }
 };
 const init = () => {
-    $pane.hidden = false;
-    setScale($pane);
-    dragNode($pane);
+    setScale();
+    dragNode();
 };
 const restore = () => {
     $zoomSlider.value = 0;
+    mirror();
     zoom();
     init();
 };
 const reset = () => {
     $reverse.checked = false;
-    mirror();
     restore();
 };
-const setScale = ($view) => {
+const setScale = () => {
     if($view.dataset.scaled === undefined) {
-        const { width, height } = $view.querySelector('svg').getBoundingClientRect();
+        const { width, height } = $scene.getBoundingClientRect();
         const scale = Math.min(window.innerWidth / width, window.innerHeight / height);
         $view.style.setProperty('--scale-x', scale);
         $view.style.setProperty('--scale-y', scale);
         $view.dataset.scaled = true;
     }
 };
-const setFloor = (floor) => {
-    const $view = document.createElement('div');
+const hideViewOptions = ({ id }) => document.getElementById(id).remove();
+const setFloor = ({name, id, options}, idx) => {
     const $floorOption = document.createElement('li');
-    const appendSvg = text => $view.innerHTML = text;
-    $floorOption.textContent = floor.name;
+    const $target = document.getElementById(id);
+    $floorOption.textContent = name;
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
-    $view.hidden = $floorOption.hidden = true;
-    $floorOption.dataset.ref = `.view${views.length}`;
-    $view.className = `view view${views.length}`;
+    if(idx){
+        $floorOption.classList.add('excluded');
+        $target.remove()
+    }
+    else {
+        $floor = $target;
+    }
+    $floorOption.dataset.id = `#${id}`;
     $floorSelector.appendChild($floorOption);
-    views.push($view);
-    $views.appendChild($view);
-    
-    return fetch(floor.src)
-        .then(handleText)
-        .then(appendSvg);
+    options && options.forEach(hideViewOptions);
 };
-const dragNode = (node) => {
+const dragNode = () => {
     let x2 = 0, y2 = 0, x1 = 0, y1 = 0, hypo = 0, initialZoom = 0;
     let pointers = [];
     const pointerup = () => {
@@ -97,9 +104,9 @@ const dragNode = (node) => {
         document.body.onpointermove = null;
     };
     const pointerdown = e => {
-        if(pointers.length === 0 && e.target.closest('.views')) {
-            x1 = e.clientX - parseInt(getComputedStyle(node).getPropertyValue('--x'));
-            y1 = e.clientY - parseInt(getComputedStyle(node).getPropertyValue('--y'));
+        if(pointers.length === 0 && e.target.closest('.port')) {
+            x1 = e.clientX - parseInt(getComputedStyle($view).getPropertyValue('--x'));
+            y1 = e.clientY - parseInt(getComputedStyle($view).getPropertyValue('--y'));
             initialZoom = + $zoomSlider.value;
             document.body.onpointermove = pointermove;
         }
@@ -127,30 +134,35 @@ const dragNode = (node) => {
         }
         x2 = x1 - e.clientX;
         y2 = y1 - e.clientY;
-        node.style.setProperty('--x', `${node.offsetLeft - x2}px`);
-        node.style.setProperty('--y', `${node.offsetTop - y2}px`);
+        $view.style.setProperty('--x', `${$view.offsetLeft - x2}px`);
+        $view.style.setProperty('--y', `${$view.offsetTop - y2}px`);
     };
-    node.style.setProperty('--x', 0);
-    node.style.setProperty('--y', 0);
+    $view.style.setProperty('--x', 0);
+    $view.style.setProperty('--y', 0);
     document.body.onpointerdown = pointerdown;
     document.body.onpointerup = pointerup;
     document.body.onpointercancel = pointerup;
     document.body.onpointerout = pointerup;
 };
-const loadPlan = async (raw) => {
-    plan = { ...raw };
-    await setFloor(raw.shift());
-    $pane = $views.firstElementChild;
-    document.querySelector('.floor-option').hidden = false;
+const insertView = (text) => {
+    $view.innerHTML = text;
+    $scene = $view.firstElementChild;
+    $pristine = $scene.cloneNode(true);
+    plan.floors.forEach(setFloor);
     init();
     $floorSelector.onclick = selectFloor;
     $zoomSlider.oninput = zoom;
-    $views.onwheel = wheel;
-    raw.forEach(setFloor);
+    $port.onwheel = wheel;
+};
+const handlePlan = (raw) => {
+    plan = raw;
+    return fetch(plan.src)
+        .then(handleText)
+        .then(insertView);
 };
 document.querySelector('.reset-button').onclick = reset;
 $reverse.onchange = mirror;
 
 fetch('plan.json')
     .then(handleJson)
-    .then(loadPlan);
+    .then(handlePlan);
