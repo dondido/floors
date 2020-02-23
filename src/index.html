@@ -7,8 +7,14 @@
     <meta name="description" content="Floorplan Demo">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" media="screen and (max-width: 1024px)" href="css/tablet.css">
+    <link rel="stylesheet" href="css/print.css" media="print" />
 </head>
 <body>
+    <header class="header">
+        <h1 class="plan-name"></h1>
+        <button type="button" class="print-button">Print</button>
+    </header>
     <input id="reverse" type="checkbox"/>
     <input id="measure" type="checkbox"/>
     <div class="port">
@@ -29,9 +35,9 @@
     </div>
     <div class="ruler">
         <div class="gauge"></div>
-        <div class="foots">11'4''</div>
+        <div class="foots"></div>
     </div>
     <div class="mirror"></div>
-    <script src="js/index.js"></script>
+    <script src="js/index.js" type="module"></script>
 </body>
 </html>

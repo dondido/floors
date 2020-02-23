@@ -93,7 +93,7 @@ body {
     background-color: #f2f2f2;
     border-radius: 4px;
     left: 25px;
-    top: 50px;
+    top: 100px;
     width: 120px;
 }
 .floor-option:not(.excluded) {
@@ -286,4 +286,45 @@ body {
 .height .gauge:before {
     height: 100%;
     width: 3px;
+}
+.header {
+    position: fixed;
+    z-index: 1;
+    padding: 0 25px;
+    height: 48px;
+    border-bottom: 1px #808080 solid;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+.plan-name {
+    font-weight: 500;
+    font-size: 20px;
+    margin-right: auto;
+}
+.plan-name:before {
+    content: url('../images/plan-logo.svg');
+}
+.print-button:before,
+.plan-name:before {
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.print-button {
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.print-button:focus {
+    outline: none;
+}
+.print-button:hover {
+    opacity: .5;
+}
+.print-button:before {
+    content: url('../images/print.svg');
 }

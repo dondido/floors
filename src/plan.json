@@ -4,7 +4,7 @@
     "footRatio": "9",
     "floors": [
         {
-            "name": "Lower level",
+            "name": "Lower Level",
             "id": "LLSFP",
             "options": [
                 {
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "name": "Main level",
+            "name": "Main Level",
             "id": "ML",
             "options": [
                 {
@@ -40,7 +40,7 @@
             ]
         },
         {
-            "name": "Upper level",
+            "name": "Upper Level",
             "id": "UL",
             "options": [
                 {
@@ -54,7 +54,7 @@
             ]
         },
         {
-            "name": "Optional attic",
+            "name": "Optional Attic",
             "id": "OA"
         }
     ]
