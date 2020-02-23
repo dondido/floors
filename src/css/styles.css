@@ -4,11 +4,15 @@ body {
     --zoom: 0;
 }
 .excluded,
+.ruler,
 #reverse,
 #measure,
 #interface,
 #interface:checked ~ * {
     display: none;
+}
+.apply {
+    display: flex;
 }
 #interface:checked ~ .toolbar {
     display: block;
@@ -51,14 +55,18 @@ body {
     content: url('../images/mirror.svg');
 }
 .mirror-button:active:before,
-#ruler:checked ~ .toolbar .ruler-button:before,
+#measure:checked ~ .toolbar .ruler-button:before,
 #reverse:checked ~ .toolbar .mirror-button:before,
 .hide-interface-button:active:before,
 .reset-button:active:before {
     filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
+.zoom-slider:focus,
 .reset-button:focus {
     outline: none;
+}
+#measure:checked ~ .port {
+    cursor: crosshair;
 }
 .floor-selector,
 .toolbar {
@@ -191,9 +199,6 @@ body {
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
     margin-top: -9px;
 }
-.zoom-slider:focus {
-    outline: none;
-}
 .zoom-slider:focus::-webkit-slider-runnable-track {
     background: #a9a9a9;
 }
@@ -213,7 +218,6 @@ body {
     transform: rotate(90deg);
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }
-
 .zoom-slider::-ms-track {
     height: 5px;
     /*leave room for the larger thumb to overflow with a transparent border */
@@ -230,4 +234,56 @@ body {
 }
 .zoom-slider::-ms-fill-upper {
     background: #a9a9a9;
+}
+.ruler {
+    position: fixed;
+    pointer-events: none;
+    align-items: center;
+}
+.foots {
+    font-size: 24px;
+    margin: 4px;
+    white-space: nowrap;
+}
+.height {
+    max-width: 0;
+}
+.width {
+    max-height: 0;
+    flex-direction: column;
+}
+.gauge {
+    display: flex;
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px solid #ff2f2f;
+}
+.gauge:before {
+    content: '';
+    display: block;
+    background-color: #ff2f2f;
+}
+.height .gauge {
+    height: 100%;
+    left: -5px;
+    min-width: 10px;
+    border-left: 0;
+    border-right: 0;
+    justify-content: center;
+}
+.width .gauge {
+    width: 100%;
+    top: -5px;
+    min-height: 10px;
+    border-top: 0;
+    border-bottom: 0;
+    align-items: center;
+}
+.width .gauge:before {
+    width: 100%;
+    height: 3px;
+}
+.height .gauge:before {
+    height: 100%;
+    width: 3px;
 }
