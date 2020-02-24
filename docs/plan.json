@@ -1,14 +1,62 @@
-[
-    {
-        "name": "First Floor",
-        "src": "floors/floor1.svg"
-    },
-    {
-        "name": "Second Floor",
-        "src": "floors/floor2.svg"
-    },
-    {
-        "name": "Lower Level",
-        "src": "floors/floor3.svg"
-    }
-]
+{
+    "name": "Cameron",
+    "src": "floors/llstd.svg",
+    "footRatio": "9",
+    "floors": [
+        {
+            "name": "Lower Level",
+            "id": "LLSFP",
+            "options": [
+                {
+                    "name": "Finished spaces",
+                    "id": "LL_OPT_1"
+                },
+                {
+                    "name": "Finished basement and areaway",
+                    "id": "LL_OPT_2"
+                },
+                {
+                    "name": "Finished basement and areaway",
+                    "id": "LL_OPT_3"
+                }
+            ]
+        },
+        {
+            "name": "Main Level",
+            "id": "ML",
+            "options": [
+                {
+                    "name": "Sunroom, fireplace and nook",
+                    "id": "ML_OPT1"
+                },
+                {
+                    "name": "Morning room, side load garage, 2-sided fireplace and gourmet kitchen",
+                    "id": "ML_OPT2"
+                },
+                {
+                    "name": "Family room, nook, study and 3-car garage",
+                    "id": "ML_OPT3"
+                }
+            ]
+        },
+        {
+            "name": "Upper Level",
+            "id": "UL",
+            "options": [
+                {
+                    "name": "Master bath",
+                    "id": "UL_OPT1"
+                },
+                {
+                    "name": "Elevation A&E",
+                    "id": "UL_OPT2"
+                }
+            ]
+        },
+        {
+            "name": "Optional Attic",
+            "id": "OA"
+        }
+    ]
+}
+
