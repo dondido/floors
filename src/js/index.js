@@ -21,11 +21,13 @@ const selectFloor = (e) => {
     const { target } = e;
     $floorSelector.classList.toggle('expand');
     if (target.classList.contains('excluded')) {
-        const { id } = target.dataset;
+        const id = `#${target.dataset.ref}`;
         floorOptions.forEach(hideNode);
         target.classList.remove('excluded');
+        $dirty.appendChild($view.querySelector('.custom'));
         $dirty.appendChild($floor);
         $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
+        $view.appendChild($dirty.querySelector(`.${target.dataset.ref}`));
         $scene.appendChild($floor);
         restore();
     }
@@ -104,18 +106,22 @@ const setScale = () => {
 const hideViewOptions = ({ id }) => document.getElementById(id).remove();
 const setFloor = ({name, id, options}, idx) => {
     const $floorOption = document.createElement('li');
+    const $custom = document.createElement('div');
     const $target = document.getElementById(id);
+    $custom.classList.add(id, 'custom');
     $floorOption.textContent = name;
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
     if(idx){
         $floorOption.classList.add('excluded');
-        $target.remove()
+        $target.remove();
+        $dirty.appendChild($custom);
     }
     else {
         $floor = $target;
+        $view.appendChild($custom);
     }
-    $floorOption.dataset.id = `#${id}`;
+    $floorOption.dataset.ref = id;
     $floorSelector.appendChild($floorOption);
     options && options.forEach(hideViewOptions);
 };
@@ -141,8 +147,26 @@ const handlePlan = (raw) => {
         ])
         .then(insertView);
 };
+const addText = () => {
+    //$floor
+    /* var svgNS = "http://www.w3.org/2000/svg";
+    var newText = document.createElementNS(svgNS, "text");
+    newText.setAttributeNS(null,"x",100);     
+    newText.setAttributeNS(null,"y",100); 
+    newText.setAttributeNS(null,"font-size","100");
+
+    var textNode = document.createTextNode('Add Text');
+    newText.appendChild(textNode);
+    $floor.appendChild(newText); */
+    document.querySelector('.custom').insertAdjacentHTML("beforeend", `<div>AA 
+    AAA
+    AAA
+    </div>`);
+
+}
 document.querySelector('.print-button').onclick = () => window.print();
 document.querySelector('.reset-button').onclick = reset;
+document.querySelector('.text-button').onclick = addText;
 $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
