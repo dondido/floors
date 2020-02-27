@@ -1,6 +1,7 @@
-let plan, $pristine, $scene, $floor, drag, measure;
+let plan, $scene, $floor, drag, measure;
 const handleJson = response => response.json();
 const handleText = response => response.text();
+const $pristine = document.createElement('div');;
 const $dirty = document.createDocumentFragment();
 const $port = document.querySelector('.port');
 const $view = document.querySelector('.view');
@@ -9,6 +10,7 @@ const $zoomSlider = document.querySelector('.zoom-slider');
 const $mirror = document.querySelector('.mirror');
 const $ruler = document.querySelector('.ruler');
 const $foots = document.querySelector('.foots');
+const $zoomControl = document.querySelector('.zoom-control');
 const $reverse = document.getElementById('reverse');
 const $measure = document.getElementById('measure');
 
@@ -24,10 +26,8 @@ const selectFloor = (e) => {
         const id = `#${target.dataset.ref}`;
         floorOptions.forEach(hideNode);
         target.classList.remove('excluded');
-        $dirty.appendChild($view.querySelector('.custom'));
         $dirty.appendChild($floor);
         $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
-        $view.appendChild($dirty.querySelector(`.${target.dataset.ref}`));
         $scene.appendChild($floor);
         restore();
     }
@@ -46,7 +46,9 @@ const toggleMeasure = () => {
     }
 };
 const zoom = () => {
-    document.body.style.setProperty('--zoom', $zoomSlider.value);
+    $view.dataset.z = 1 + $zoomSlider.value / plan.zoomRatio;
+    $zoomControl.dataset.z = $zoomSlider.value + 100;
+    setTransform($view);
     $measure.checked && setDragGesture();
 };
 const wheel = ({deltaY}) => {
@@ -71,6 +73,7 @@ const mirror = () => {
         $floor.dataset.reversed = true;
         $mirror.appendChild($pristine);
         $pristine.querySelectorAll(`#${$floor.id} text`).forEach(interpolate);
+        console.log(112, $mirror.innerHTML, $pristine.parentElement)
         $pristine.remove();
     }
     else if($reverse.checked === false && $floor.dataset.reversed === 'true') {
@@ -94,32 +97,34 @@ const reset = () => {
     $reverse.checked = false;
     restore();
 };
+const setTransform = ($target) => {
+    const { sx = 1, sy = 1, x = 0, y = 0, z = 1, r = 0 } = $target.dataset;
+    $target.style.transform = `scale(${sx * z}, ${sy * z}) translate(${x}px, ${y}px) rotate(${r}deg)`;
+};
 const setScale = () => {
-    if($view.dataset.scaled === undefined) {
+    if($view.dataset.sx === undefined) {
         const { width, height } = $scene.getBoundingClientRect();
-        const scale = Math.min(window.innerWidth / width, window.innerHeight / height);
-        $view.style.setProperty('--scale-x', scale);
-        $view.style.setProperty('--scale-y', scale);
-        $view.dataset.scale = scale;
+        const s = Math.min(window.innerWidth / width, window.innerHeight / height);
+        $view.dataset.sy = s;
+        $view.dataset.sx = s;
+        setTransform($view);
     }
 };
 const hideViewOptions = ({ id }) => document.getElementById(id).remove();
 const setFloor = ({name, id, options}, idx) => {
     const $floorOption = document.createElement('li');
-    const $custom = document.createElement('div');
     const $target = document.getElementById(id);
-    $custom.classList.add(id, 'custom');
+    $target.insertAdjacentHTML('beforeend', '<foreignObject></foreignObject>');
     $floorOption.textContent = name;
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
     if(idx){
         $floorOption.classList.add('excluded');
-        $target.remove();
-        $dirty.appendChild($custom);
+        $pristine.appendChild($target);
     }
     else {
         $floor = $target;
-        $view.appendChild($custom);
+        $pristine.appendChild($target.cloneNode(true));
     }
     $floorOption.dataset.ref = id;
     $floorSelector.appendChild($floorOption);
@@ -128,9 +133,8 @@ const setFloor = ({name, id, options}, idx) => {
 const insertView = ([text, { Drag, Measure }]) => {
     $view.innerHTML = text;
     $scene = $view.firstElementChild;
-    $pristine = $scene.cloneNode(true);
     plan.floors.forEach(setFloor);
-    drag = new Drag({ $view, $zoomSlider, zoom });
+    drag = new Drag({ $zoomSlider, zoom, setTransform });
     measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
     init();
     $floorSelector.onclick = selectFloor;
@@ -148,21 +152,13 @@ const handlePlan = (raw) => {
         .then(insertView);
 };
 const addText = () => {
-    //$floor
-    /* var svgNS = "http://www.w3.org/2000/svg";
-    var newText = document.createElementNS(svgNS, "text");
-    newText.setAttributeNS(null,"x",100);     
-    newText.setAttributeNS(null,"y",100); 
-    newText.setAttributeNS(null,"font-size","100");
-
-    var textNode = document.createTextNode('Add Text');
-    newText.appendChild(textNode);
-    $floor.appendChild(newText); */
-    document.querySelector('.custom').insertAdjacentHTML("beforeend", `<div>AA 
-    AAA
-    AAA
-    </div>`);
-
+    const $text = document.createElement('pre');
+    $text.textContent = 'Add Text';
+    $text.className = 'draggable';
+    $text.dataset.x = $scene.width.baseVal.value / 2;
+    $text.dataset.y = $scene.height.baseVal.value / 2;
+    $floor.querySelector('foreignObject').appendChild($text);
+    setTransform($text);
 }
 document.querySelector('.print-button').onclick = () => window.print();
 document.querySelector('.reset-button').onclick = reset;
@@ -170,6 +166,7 @@ document.querySelector('.text-button').onclick = addText;
 $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
+$pristine.className = 'mirror';
 
 fetch('plan.json')
     .then(handleJson)

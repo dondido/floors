@@ -6,7 +6,7 @@ class Gesture {
         document.body.onpointerdown = this.pointerdown;
         document.body.onpointerup = this.pointerup;
         document.body.onpointercancel =this.pointerup;
-        document.body.onpointerout = this.pointerup;
+        /* document.body.onpointerout = this.pointerup; */
     }
 }
 export class Measure extends Gesture {
@@ -27,10 +27,11 @@ export class Measure extends Gesture {
         }
     }
     toFt(value) {
-        const { $scene, $view, $zoomSlider, plan } = this;
+        const { $scene, $view, plan } = this;
+        const { sy, z } = $view.dataset;
         const widthRatio = $scene.clientWidth / $scene.width.baseVal.value;
         const ratio = widthRatio === 1 ? $scene.clientHeight / $scene.height.baseVal.value : widthRatio;
-        const [feet, inches = '0'] = String(value / (ratio * plan.footRatio * $view.dataset.scale * (1 + $zoomSlider.value / 50))).split('.');
+        const [feet, inches = '0'] = String(value / (ratio * plan.footRatio * sy * z)).split('.');
         return `${feet}' ${Math.round(inches[0] * 1.2)}''`;
     }
     pointermove = ({ clientX, clientY }) => {
@@ -62,8 +63,6 @@ export class Measure extends Gesture {
 export class Drag extends Gesture {
     constructor(props) {
         super(props);
-        this.$view.style.setProperty('--x', 0);
-        this.$view.style.setProperty('--y', 0);
     }
     pointers = []
     initialZoom = 0
@@ -73,9 +72,12 @@ export class Drag extends Gesture {
         document.body.onpointermove = null;
     }
     pointerdown = (e) => {
-        if(this.pointers.length === 0 && e.target.closest('.port')) {
-            this.x1 = e.clientX - parseInt(getComputedStyle(this.$view).getPropertyValue('--x'));
-            this.y1 = e.clientY - parseInt(getComputedStyle(this.$view).getPropertyValue('--y'));
+        const $target = e.target.closest('.draggable');
+        if(this.pointers.length === 0 && $target) {
+            const { x = 0, y = 0 } = $target.dataset;
+            this.$target = $target;
+            this.x1 = e.clientX - x;
+            this.y1 = e.clientY - y;
             this.initialZoom = + this.$zoomSlider.value;
             document.body.onpointermove = this.pointermove;
         }
@@ -83,10 +85,11 @@ export class Drag extends Gesture {
     }
     pointermove = (e) => {
         const [ e1, e2, e3 ] = this.pointers;
+        const { $target } = this;
         if(e3) {
             return;
         }
-        if(e2) {
+        if(e2 && $target.classList.contains('pinchable')) {
             let e4;
             if (e.pointerId === e1.pointerId) {
                 e4 = e2;
@@ -103,7 +106,8 @@ export class Drag extends Gesture {
         }
         this.x2 = this.x1 - e.clientX;
         this.y2 = this.y1 - e.clientY;
-        this.$view.style.setProperty('--x', `${this.$view.offsetLeft - this.x2}px`);
-        this.$view.style.setProperty('--y', `${this.$view.offsetTop - this.y2}px`);
+        $target.dataset.x = $target.offsetLeft - this.x2;
+        $target.dataset.y = $target.offsetTop - this.y2;
+        this.setTransform($target);
     }
 }

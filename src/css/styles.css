@@ -1,7 +1,6 @@
 body {
     margin: 0;
     font-family: Roboto, sans-serif;
-    --zoom: 0;
 }
 .excluded,
 .ruler,
@@ -143,25 +142,34 @@ body {
 .port {
     overflow: hidden;
     touch-action: none;
+    user-select: none;
 }
 .view {
-    --x: 0;
-    --y: 0;
-    --scale-x: 1;
-    --scale-y: 1;
-    --ratio: calc(1 + var(--zoom) / 50);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    transform: translate(var(--x), var(--y)) scale(calc(var(--scale-x) * var(--ratio)), calc(var(--scale-y) * var(--ratio)));
-    pointer-events: none;
-    user-select: none;
+    overflow: visible;
 }
-#reverse:checked ~ .port .view {
-    transform: translate(var(--x), var(--y)) scale(calc(var(--scale-x) * var(--ratio) * -1), calc(var(--scale-y) * var(--ratio)));
+.view svg {
+    overflow: visible;
+}
+.view foreignObject {
+    overflow: visible;
+    width: 100%;
+    height: 100%;
+}
+.view pre {
+    position: absolute;
+    display: inline-block;
+    border: 2px solid #46bfda;
+    padding: 17px 10px;
+    margin: 0;
+}
+#reverse:checked ~ .port {
+    transform: scaleX(1);
 }
 .mirror {
     position: fixed;
@@ -173,7 +181,6 @@ body {
     position: relative;
 }
 .zoom-control:after {
-    counter-reset: variable calc(var(--zoom) + 100);
     content: counter(variable) '%';
     position: absolute;
     top: 225px;
