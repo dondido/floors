@@ -1,13 +1,13 @@
-let plan, $scene, $floor, drag, measure;
+let plan, $scene, $floor, $pristine, drag, measure;
 const handleJson = response => response.json();
 const handleText = response => response.text();
-const $pristine = document.createElement('div');;
+const $mirror = document.querySelector('.mirror');
+//const $pristine = document.createElement('svg');;
 const $dirty = document.createDocumentFragment();
 const $port = document.querySelector('.port');
 const $view = document.querySelector('.view');
 const $floorSelector = document.querySelector('.floor-selector');
 const $zoomSlider = document.querySelector('.zoom-slider');
-const $mirror = document.querySelector('.mirror');
 const $ruler = document.querySelector('.ruler');
 const $foots = document.querySelector('.foots');
 const $zoomControl = document.querySelector('.zoom-control');
@@ -52,8 +52,12 @@ const zoom = () => {
     $measure.checked && setDragGesture();
 };
 const wheel = ({deltaY}) => {
-    $zoomSlider.value = + $zoomSlider.value + (deltaY > 0 ? -4: 4);
+    $zoomSlider.value = + $zoomSlider.value + (deltaY > 0 ? -4 : 4);
     zoom();
+};
+const revertView = () => {
+    $view.dataset.sx *= -1;
+    setTransform($view);
 };
 const mirror = () => {
     if ($reverse.checked && $floor.dataset.reversed !== 'true') {
@@ -73,13 +77,14 @@ const mirror = () => {
         $floor.dataset.reversed = true;
         $mirror.appendChild($pristine);
         $pristine.querySelectorAll(`#${$floor.id} text`).forEach(interpolate);
-        console.log(112, $mirror.innerHTML, $pristine.parentElement)
         $pristine.remove();
+        revertView();
     }
     else if($reverse.checked === false && $floor.dataset.reversed === 'true') {
         const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
         $floor.dataset.reversed = false;
         $floor.querySelectorAll('text').forEach(interpolate);
+        revertView();
     }
 };
 const init = () => {
@@ -99,7 +104,7 @@ const reset = () => {
 };
 const setTransform = ($target) => {
     const { sx = 1, sy = 1, x = 0, y = 0, z = 1, r = 0 } = $target.dataset;
-    $target.style.transform = `scale(${sx * z}, ${sy * z}) translate(${x}px, ${y}px) rotate(${r}deg)`;
+    $target.style.transform = `translate(${x}px, ${y}px) scale(${sx * z}, ${sy * z}) rotate(${r}deg)`;
 };
 const setScale = () => {
     if($view.dataset.sx === undefined) {
@@ -133,6 +138,7 @@ const setFloor = ({name, id, options}, idx) => {
 const insertView = ([text, { Drag, Measure }]) => {
     $view.innerHTML = text;
     $scene = $view.firstElementChild;
+    $pristine = $scene.cloneNode();
     plan.floors.forEach(setFloor);
     drag = new Drag({ $zoomSlider, zoom, setTransform });
     measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
@@ -166,7 +172,6 @@ document.querySelector('.text-button').onclick = addText;
 $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
-$pristine.className = 'mirror';
 
 fetch('plan.json')
     .then(handleJson)
