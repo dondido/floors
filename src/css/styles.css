@@ -7,13 +7,12 @@ body {
 #reverse,
 #measure,
 #interface,
+#text-control-highlight-toggle,
 #interface:checked ~ *,
 #interface:checked ~ .right-menu .zoom-control {
     display: none;
 }
-.apply {
-    display: flex;
-}
+.apply,
 #interface:checked ~ .right-menu {
     display: flex;
 }
@@ -56,6 +55,7 @@ body {
 }
 .reset-button:before {
     content: url('../images/reset.svg');
+    width: 20px;
 }
 .mirror-button:before {
     content: url('../images/mirror.svg');
@@ -167,6 +167,7 @@ body {
     border: 2px solid #46bfda;
     padding: 17px 10px;
     margin: 0;
+    text-align: center;
 }
 #reverse:checked ~ .port {
     transform: scaleX(1);
@@ -192,6 +193,7 @@ body {
     transform-origin: left center;
     transform: rotate(-90deg) translate(-204px, 20px);
 }
+.font-slider,
 .zoom-slider {
     cursor: pointer;
     /*removes default webkit styles*/
@@ -329,6 +331,8 @@ body {
     display: inline-block;
     vertical-align: middle;
 }
+.text-control-x-button,
+.text-control-bin-button,
 .print-button {
     font-size: 16px;
     background: none;
@@ -343,6 +347,25 @@ body {
 }
 .print-button:before {
     content: url('../images/print.svg');
+}
+.text-control-x-button:before,
+.text-control-bin-button:before {
+    content: url('../images/bin.svg');
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(170deg) brightness(110%) contrast(101%);
+    width: 23px;
+    height: 23px;
+    display: block;
+}
+.text-control-x-button:before {
+    content: url('../images/x.svg');
+    width: 15px;
+    height: 15px;
+}
+.text-control-lock-button:hover:before,
+.text-control-reset-button:hover:before,
+.text-control-x-button:hover:before,
+.text-control-bin-button:hover:before {
+    filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
 }
 .right-menu {
     position: fixed;
@@ -363,4 +386,194 @@ body {
     max-height: 612px;
     width: 100%;
     height: 100%;
+}
+.text-control {
+    position: absolute;
+    width: 290px;
+    height: 360px;
+    right: 60px;
+}
+.text-control-header {
+    padding: 15px 10px;
+    background-color: #80858e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+.text-control-body {
+    background-color: #f0f8ff;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid;
+    font-size: 12px;
+}
+.text-control-textarea {
+    max-width: 254px;
+    max-height: 200px;
+    min-width: 254px;
+    min-height: 54px;
+    margin-bottom: 10px;
+}
+.text-control-header-title {
+    flex-grow: 1;
+}
+.font-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 15px 0 30px;
+    padding: 6px 0;
+    background: transparent;
+}
+  .font-slider:focus {
+    outline: none;
+  }
+  .font-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    background: #000000;
+  }
+  .font-slider::-webkit-slider-thumb {
+    background: #000000;
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+  .font-slider:focus::-webkit-slider-runnable-track {
+    background: #030303;
+  }
+  .font-slider::-moz-range-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    background: #000000;
+  }
+  .font-slider::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    background: #000000;
+    cursor: pointer;
+    margin-top: -7px;
+  }
+  .font-slider::-ms-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  .font-slider::-ms-fill-lower {
+    background: #000000;
+    border: 1px solid #010101;
+  }
+  .font-slider::-ms-fill-upper {
+    background: #000000;
+    border: 1px solid #010101;
+  }
+  .font-slider::-ms-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    background: #000000;
+    cursor: pointer;
+    height: 1px;
+    margin-top: -7px;
+  }
+  .font-slider:focus::-ms-fill-lower {
+    background: #000000;
+  }
+  .font-slider:focus::-ms-fill-upper {
+    background: #030303;
+  }
+.text-control-input {
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+    width: 49%;
+}
+.text-control-toggle {
+    display: block;
+    width: 50px;
+    height: 20px;
+    border-radius: 15px;
+    border: 1px solid #000;
+    margin: 5px 0;
+    cursor: pointer;
+}
+.text-control-toggle:before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #000;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transform: translate3d(20%,15%,0);
+}
+#text-control-highlight-toggle:checked ~ .text-control-toggle {
+    background-color: #29abe2;
+    border-color: #46bfda;
+}
+#text-control-highlight-toggle:checked ~ .text-control-toggle:before {
+    background-color: #fff;
+    transform: translate3d(220%, 15%, 0);
+    transition: transform 200ms linear;
+}
+.text-control-rotate-input-container {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px;
+}
+.text-control-rotate-input {
+    width: 45px;
+    border: none;
+}
+.text-control-lock-button,
+.text-control-reset-button {
+    position: relative;
+    background-color: #f2f2f2;
+    box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
+    padding: 10px 5px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.text-control-rotate-title {
+    display: flex;
+    margin-bottom: 4px;
+}
+.text-control-rotate-title:before {
+    content: url('../images/rotate.svg');
+    margin-right: 4px;
+}
+.text-control-lock-button:before {
+    content: url('../images/lock.svg');
+}
+.text-control-reset-button:before {
+    content: url('../images/reset.svg');
+    width: 15px;
+    display: inline-block;
+}
+.text-control-reset-button:after {
+    content: 'Reset';
+    display: block;
+}
+.text-control-lock-button:after {
+    content: 'Lock';
+    display: block;
+}
+.text-control-reset-button:hover,
+.text-control-lock-button:hover {
+    color: #46bfda;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, .3);
 }

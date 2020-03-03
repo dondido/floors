@@ -71,21 +71,42 @@ export class Drag extends Gesture {
         this.hypo = 0;
         document.body.onpointermove = null;
     }
+    getPointerXY({ clientX, clientY }) {
+        const { sy = 1, z = 1 } = this.$area.dataset;
+        const ratio = sy * z; 
+        return [ clientX / ratio, clientY / ratio ];
+    }
     pointerdown = (e) => {
-        const $target = e.target.closest('.draggable');
-        if(this.pointers.length === 0 && $target) {
+        if (e.target.closest('.disabled')) {
+            return;
+        }
+        const $area = e.target.closest('[data-drag-area]');
+        if(this.pointers.length === 0 && $area) {
+            this.$area = $area.dataset.dragArea
+                ? e.target.closest($area.dataset.dragArea)
+                : { dataset: {} };
+            const { $scene } = this;
+            const $target = e.target.closest('.draggable');
             const { x = 0, y = 0 } = $target.dataset;
+            const [ cx, cy ] = this.getPointerXY(e);
             this.$target = $target;
-            this.x1 = e.clientX - x;
-            this.y1 = e.clientY - y;
+            console.log(112, cx, x)
+            if ($target.classList.contains('text-field')) {
+                this.setActiveText($target);
+            }
+            this.x1 = $target.classList.contains('text-field') && $target.dataset.sx < 0 
+                ? - ($scene.width.baseVal.value - cx - x)
+                : cx - x;
+            this.y1 = cy - y;
             this.initialZoom = + this.$zoomSlider.value;
             document.body.onpointermove = this.pointermove;
+            
         }
         this.pointers.push(e);
     }
     pointermove = (e) => {
         const [ e1, e2, e3 ] = this.pointers;
-        const { $target } = this;
+        const { $target, $scene } = this;
         if(e3) {
             return;
         }
@@ -101,13 +122,16 @@ export class Drag extends Gesture {
             }
             const hypo1 = Math.hypot(e4.clientX - e.clientX, e4.clientY - e.clientY);
             this.hypo = this.hypo || hypo1;
-            this.$zoomSlider.value = this.initialZoom + Math.min(1, hypo1/this.hypo - 1) * 100;
+            this.$zoomSlider.value = this.initialZoom + Math.min(1, hypo1 / this.hypo - 1) * 100;
             return this.zoom();
         }
-        this.x2 = this.x1 - e.clientX;
-        this.y2 = this.y1 - e.clientY;
-        $target.dataset.x = $target.offsetLeft - this.x2;
-        $target.dataset.y = $target.offsetTop - this.y2;
+        const [ cx, cy ] = this.getPointerXY(e);
+        this.x2 = this.x1 - cx;
+        this.y2 = this.y1 - cy;
+        $target.dataset.x = $target.classList.contains('text-field') && $target.dataset.sx < 0
+            ? $scene.width.baseVal.value + this.x2
+            : - this.x2;
+        $target.dataset.y = -this.y2;
         this.setTransform($target);
     }
 }

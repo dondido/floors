@@ -1,4 +1,4 @@
-let plan, $scene, $floor, $pristine, drag, measure;
+let plan, $scene, $floor, $pristine, drag, measure, $activeText;
 const handleJson = response => response.json();
 const handleText = response => response.text();
 const $mirror = document.querySelector('.mirror');
@@ -6,6 +6,7 @@ const $mirror = document.querySelector('.mirror');
 const $dirty = document.createDocumentFragment();
 const $port = document.querySelector('.port');
 const $view = document.querySelector('.view');
+const $textControl = document.querySelector('.text-control');
 const $floorSelector = document.querySelector('.floor-selector');
 const $zoomSlider = document.querySelector('.zoom-slider');
 const $ruler = document.querySelector('.ruler');
@@ -15,6 +16,10 @@ const $reverse = document.getElementById('reverse');
 const $measure = document.getElementById('measure');
 
 const floorOptions = [];
+const setActiveText = ($element) => {
+    $activeText = $element;
+    $textControl.hidden = false;
+};
 const resize = () => {
     setDragGesture();
 };
@@ -59,6 +64,12 @@ const revertView = () => {
     $view.dataset.sx *= -1;
     setTransform($view);
 };
+const interpolateForeign = ($text) => {
+    const { sx = 1, r = 0 } = $text.dataset;
+    $text.dataset.sx = sx * -1;
+    $text.dataset.r = r * -1;
+    setTransform($text);
+};
 const mirror = () => {
     if ($reverse.checked && $floor.dataset.reversed !== 'true') {
         const $texts = $floor.querySelectorAll('text');
@@ -74,9 +85,11 @@ const mirror = () => {
             }
             $target.setAttribute('transform', $target.dataset.flip);
         };
+        
         $floor.dataset.reversed = true;
         $mirror.appendChild($pristine);
         $pristine.querySelectorAll(`#${$floor.id} text`).forEach(interpolate);
+        $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
         $pristine.remove();
         revertView();
     }
@@ -84,6 +97,7 @@ const mirror = () => {
         const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
         $floor.dataset.reversed = false;
         $floor.querySelectorAll('text').forEach(interpolate);
+        $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
         revertView();
     }
 };
@@ -119,7 +133,7 @@ const hideViewOptions = ({ id }) => document.getElementById(id).remove();
 const setFloor = ({name, id, options}, idx) => {
     const $floorOption = document.createElement('li');
     const $target = document.getElementById(id);
-    $target.insertAdjacentHTML('beforeend', '<foreignObject></foreignObject>');
+    $target.insertAdjacentHTML('beforeend', '<foreignObject data-drag-area=".view"></foreignObject>');
     $floorOption.textContent = name;
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
@@ -140,7 +154,7 @@ const insertView = ([text, { Drag, Measure }]) => {
     $scene = $view.firstElementChild;
     $pristine = $scene.cloneNode();
     plan.floors.forEach(setFloor);
-    drag = new Drag({ $zoomSlider, zoom, setTransform });
+    drag = new Drag({ $scene, $view, $zoomSlider, zoom, setTransform, setActiveText });
     measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
     init();
     $floorSelector.onclick = selectFloor;
@@ -160,15 +174,39 @@ const handlePlan = (raw) => {
 const addText = () => {
     const $text = document.createElement('pre');
     $text.textContent = 'Add Text';
-    $text.className = 'draggable';
+    $text.className = 'draggable text-field';
     $text.dataset.x = $scene.width.baseVal.value / 2;
     $text.dataset.y = $scene.height.baseVal.value / 2;
     $floor.querySelector('foreignObject').appendChild($text);
+    setActiveText($text);
     setTransform($text);
 }
 document.querySelector('.print-button').onclick = () => window.print();
 document.querySelector('.reset-button').onclick = reset;
 document.querySelector('.text-button').onclick = addText;
+document.querySelector('.text-control-lock-button').onclick = () => {
+    const disabled = !document.querySelector('.text-control-textarea').disabled;
+    document.querySelector('.text-control-textarea').disabled = disabled;
+    document.querySelector('.text-control-rotate-input').disabled = disabled;
+    document.querySelector('.font-slider').disabled = disabled;
+    $activeText.classList.toggle('disabled')
+};
+document.querySelector('.text-control-textarea').oninput = ({ target }) => {
+    $activeText.textContent = target.value;
+};
+document.querySelector('.text-control-rotate-input').oninput = ({ target }) => {
+    if (target.value === '-1') {
+        target.value = 359;
+    }
+    else if (target.value === '360') {
+        target.value = 0;
+    }
+    $activeText.dataset.r = target.value;
+    setTransform($activeText);
+};
+document.querySelector('.font-slider').oninput = ({ target }) => {
+    $activeText.style.fontSize = `${target.value}px`;
+};
 $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
