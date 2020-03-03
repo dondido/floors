@@ -2,11 +2,11 @@ let plan, $scene, $floor, $pristine, drag, measure, $activeText;
 const handleJson = response => response.json();
 const handleText = response => response.text();
 const $mirror = document.querySelector('.mirror');
-const $textControlBody = document.querySelector('.text-control-body');
 const $dirty = document.createDocumentFragment();
 const $port = document.querySelector('.port');
 const $view = document.querySelector('.view');
 const $textControl = document.querySelector('.text-control');
+const $textControlBody = $textControl.querySelector('.text-control-body');
 const $floorSelector = document.querySelector('.floor-selector');
 const $zoomSlider = document.querySelector('.zoom-slider');
 const $ruler = document.querySelector('.ruler');
@@ -16,10 +16,6 @@ const $reverse = document.getElementById('reverse');
 const $measure = document.getElementById('measure');
 
 const floorOptions = [];
-const setActiveText = ($element) => {
-    $activeText = $element;
-    $textControl.hidden = false;
-};
 const resize = () => {
     setDragGesture();
 };
@@ -155,7 +151,7 @@ const insertView = ([text, { Drag, Measure }]) => {
     $scene = $view.firstElementChild;
     $pristine = $scene.cloneNode();
     plan.floors.forEach(setFloor);
-    drag = new Drag({ $scene, $view, $zoomSlider, zoom, setTransform, setActiveText });
+    drag = new Drag({ $scene, $view, $zoomSlider, zoom, setTransform, linkActiveText });
     measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
     init();
     $floorSelector.onclick = selectFloor;
@@ -183,12 +179,23 @@ const addText = () => {
     $text.textContent = 'Add Text';
     setTextDefaults($text);
     $floor.querySelector('foreignObject').appendChild($text);
-    setActiveText($text);
+    linkActiveText($text);
     setTransform($text);
 };
 document.querySelector('.print-button').onclick = () => window.print();
 document.querySelector('.reset-button').onclick = reset;
 document.querySelector('.text-button').onclick = addText;
+const linkActiveText = ($text) => {
+    if($text.isSameNode($activeText)) {
+        return;
+    }
+    $activeText = $text;
+    $textControl.hidden = false;
+    $textControlBody.disabled = $activeText.classList.contains('disabled');
+    document.querySelector('.text-control-textarea').value = $activeText.textContent;
+    document.querySelector('.font-slider').value = parseInt($activeText.style.fontSize) || 13;
+    document.querySelector('.text-control-rotate-input').value = $activeText.dataset.r;
+};
 document.querySelector('.text-control-lock-button').onclick = () => {
     $textControlBody.disabled = !$textControlBody.disabled;
     $activeText.classList.toggle('disabled');
@@ -211,6 +218,13 @@ document.querySelector('.text-control-rotate-input').oninput = ({ target }) => {
     }
     $activeText.dataset.r = target.value;
     setTransform($activeText);
+};
+document.querySelector('.text-control-bin-button').onclick = () => {
+    $activeText.remove();
+    $textControl.hidden = true;
+};
+document.querySelector('.text-control-x-button').onclick = () => {
+    $textControl.hidden = true;
 };
 document.querySelector('.font-slider').oninput = ({ target }) => {
     $activeText.style.fontSize = `${target.value}px`;

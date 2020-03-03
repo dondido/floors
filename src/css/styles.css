@@ -69,6 +69,10 @@ body {
 .reset-button:active:before {
     filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
+.text-control-x-button:focus,
+.text-control-bin-button:focus,
+.print-button:focus,
+.font-slider:focus,
 .zoom-slider:focus,
 .reset-button:focus {
     outline: none;
@@ -333,15 +337,16 @@ body {
     vertical-align: middle;
 }
 .text-control-x-button,
+.text-control-bin-button {
+    padding: 4px;
+}
+.text-control-x-button,
 .text-control-bin-button,
 .print-button {
     font-size: 16px;
     background: none;
     border: none;
     cursor: pointer;
-}
-.print-button:focus {
-    outline: none;
 }
 .print-button:hover {
     opacity: .5;
@@ -387,7 +392,7 @@ body {
     right: 60px;
 }
 .text-control-header {
-    padding: 15px 10px;
+    padding: 10px;
     background-color: #80858e;
     color: #fff;
     display: flex;
@@ -421,9 +426,6 @@ body {
     padding: 6px 0;
     background: transparent;
 }
-  .font-slider:focus {
-    outline: none;
-  }
   .font-slider::-webkit-slider-runnable-track {
     width: 100%;
     height: 1px;
