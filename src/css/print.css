@@ -1,10 +1,14 @@
 .print-button,
 .toolbar,
+.text-control,
 .zoom-control {
     display: none;
 }
 .header {
     border-bottom: none;
+}
+.text-field {
+    border: none;
 }
 .floor-option:not(.excluded) {
     background: none;
