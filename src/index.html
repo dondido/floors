@@ -29,7 +29,8 @@
                 <button class="text-control-bin-button"></button>
                 <button class="text-control-x-button"></button>
             </div>
-            <div class="text-control-body">
+            <input id="lock-text" type="checkbox"/>
+            <fieldset class="text-control-body">
                 Text
                 <textarea class="text-control-textarea">Add Text</textarea>
                 Font Size
@@ -40,7 +41,7 @@
                     <label class="text-control-toggle" for="text-control-highlight-toggle"></label>
                 </div>
                 <div class="text-control-input">
-                    <button class="text-control-lock-button"></button>
+                    <label for="lock-text" class="text-control-lock-button"></label>
                 </div>
                 <div class="text-control-input">
                     <div class="text-control-rotate-title">Rotate (deg)</div>
@@ -52,7 +53,7 @@
                     <button class="text-control-reset-button"></button>
                 </div>
             </div>
-        </div>
+        </fieldset>
         <ul class="toolbar" role="toolbar" aria-label="Toolbar">
             <li><label class="hide-interface-button" for="interface" title="Toggle Interface"></label></li>
             <li><label class="mirror-button" for="reverse" title="Flip Floorplan"></label></li>
@@ -60,7 +61,7 @@
             <li><button class="text-button" title="Text Tool"></button></li>
             <li><button class="reset-button" title="Reset All Changes"></button></li>
         </ul>
-        <div class="zoom-control">
+        <div class="zoom-control" data-z="100">
             <div class="zoom-range">
                 <input type="range" min="0" max="100" value="0" class="zoom-slider">
             </div>

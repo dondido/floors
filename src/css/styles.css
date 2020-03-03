@@ -4,6 +4,7 @@ body {
 }
 .excluded,
 .ruler,
+#lock-text,
 #reverse,
 #measure,
 #interface,
@@ -182,7 +183,7 @@ body {
     position: relative;
 }
 .zoom-control:after {
-    content: counter(variable) '%';
+    content: attr(data-z) '%';
     position: absolute;
     top: 225px;
     left: 10px;
@@ -361,6 +362,7 @@ body {
     width: 15px;
     height: 15px;
 }
+.text-control-body:disabled .text-control-input .text-control-lock-button:before,
 .text-control-lock-button:hover:before,
 .text-control-reset-button:hover:before,
 .text-control-x-button:hover:before,
@@ -401,6 +403,9 @@ body {
     align-items: center;
 }
 .text-control-body {
+    margin: 0;
+    display: inline-block;
+    width: 290px;
     background-color: #f0f8ff;
     padding: 15px;
     box-sizing: border-box;
@@ -408,9 +413,10 @@ body {
     font-size: 12px;
 }
 .text-control-textarea {
+    box-sizing: border-box;
     max-width: 254px;
     max-height: 200px;
-    min-width: 254px;
+    min-width: 100%;
     min-height: 54px;
     margin-bottom: 10px;
 }
@@ -536,6 +542,8 @@ body {
 }
 .text-control-lock-button,
 .text-control-reset-button {
+    display: block;
+    border: none;
     position: relative;
     background-color: #f2f2f2;
     box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
@@ -572,8 +580,12 @@ body {
     content: 'Lock';
     display: block;
 }
+.text-control-body:disabled .text-control-input .text-control-lock-button,
 .text-control-reset-button:hover,
 .text-control-lock-button:hover {
     color: #46bfda;
     box-shadow: 0 0 3px 2px rgba(0, 0, 0, .3);
+}
+.text-field {
+    cursor: pointer;
 }

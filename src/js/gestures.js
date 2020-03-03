@@ -76,6 +76,9 @@ export class Drag extends Gesture {
         const ratio = sy * z; 
         return [ clientX / ratio, clientY / ratio ];
     }
+    interpolate() {
+        return this.$target.classList.contains('text-field') && this.$target.dataset.sx < 0;
+    }
     pointerdown = (e) => {
         if (e.target.closest('.disabled')) {
             return;
@@ -94,9 +97,7 @@ export class Drag extends Gesture {
             if ($target.classList.contains('text-field')) {
                 this.setActiveText($target);
             }
-            this.x1 = $target.classList.contains('text-field') && $target.dataset.sx < 0 
-                ? - ($scene.width.baseVal.value - cx - x)
-                : cx - x;
+            this.x1 = this.interpolate() ? - ($scene.width.baseVal.value - cx - x) : cx - x;
             this.y1 = cy - y;
             this.initialZoom = + this.$zoomSlider.value;
             document.body.onpointermove = this.pointermove;
@@ -128,9 +129,7 @@ export class Drag extends Gesture {
         const [ cx, cy ] = this.getPointerXY(e);
         this.x2 = this.x1 - cx;
         this.y2 = this.y1 - cy;
-        $target.dataset.x = $target.classList.contains('text-field') && $target.dataset.sx < 0
-            ? $scene.width.baseVal.value + this.x2
-            : - this.x2;
+        $target.dataset.x = this.interpolate() ? $scene.width.baseVal.value + this.x2 : - this.x2;
         $target.dataset.y = -this.y2;
         this.setTransform($target);
     }

@@ -2,7 +2,7 @@ let plan, $scene, $floor, $pristine, drag, measure, $activeText;
 const handleJson = response => response.json();
 const handleText = response => response.text();
 const $mirror = document.querySelector('.mirror');
-//const $pristine = document.createElement('svg');;
+const $textControlBody = document.querySelector('.text-control-body');
 const $dirty = document.createDocumentFragment();
 const $port = document.querySelector('.port');
 const $view = document.querySelector('.view');
@@ -52,7 +52,7 @@ const toggleMeasure = () => {
 };
 const zoom = () => {
     $view.dataset.z = 1 + $zoomSlider.value / plan.zoomRatio;
-    $zoomControl.dataset.z = $zoomSlider.value + 100;
+    $zoomControl.dataset.z = + $zoomSlider.value + 100;
     setTransform($view);
     $measure.checked && setDragGesture();
 };
@@ -114,6 +114,7 @@ const restore = () => {
 };
 const reset = () => {
     $reverse.checked = false;
+    $floor.querySelector('foreignObject').innerHTML = '';
     restore();
 };
 const setTransform = ($target) => {
@@ -171,25 +172,41 @@ const handlePlan = (raw) => {
         ])
         .then(insertView);
 };
-const addText = () => {
-    const $text = document.createElement('pre');
-    $text.textContent = 'Add Text';
+const insertText = ($text) => {
     $text.className = 'draggable text-field';
     $text.dataset.x = $scene.width.baseVal.value / 2;
     $text.dataset.y = $scene.height.baseVal.value / 2;
+    $text.dataset.sx = Math.sign($view.dataset.sx);
     $floor.querySelector('foreignObject').appendChild($text);
     setActiveText($text);
     setTransform($text);
-}
+};
+const setTextDefaults = ($text) => {
+    $text.className = 'draggable text-field';
+    $text.dataset.x = $scene.width.baseVal.value / 2;
+    $text.dataset.y = $scene.height.baseVal.value / 2;
+    $text.dataset.sx = Math.sign($view.dataset.sx);
+};
+const addText = () => {
+    const $text = document.createElement('pre');
+    $text.textContent = 'Add Text';
+    setTextDefaults($text);
+    $floor.querySelector('foreignObject').appendChild($text);
+    setActiveText($text);
+    setTransform($text);
+};
 document.querySelector('.print-button').onclick = () => window.print();
 document.querySelector('.reset-button').onclick = reset;
 document.querySelector('.text-button').onclick = addText;
 document.querySelector('.text-control-lock-button').onclick = () => {
-    const disabled = !document.querySelector('.text-control-textarea').disabled;
-    document.querySelector('.text-control-textarea').disabled = disabled;
-    document.querySelector('.text-control-rotate-input').disabled = disabled;
-    document.querySelector('.font-slider').disabled = disabled;
-    $activeText.classList.toggle('disabled')
+    $textControlBody.disabled = !$textControlBody.disabled;
+    $activeText.classList.toggle('disabled');
+};
+document.querySelector('.text-control-reset-button').onclick = () => {
+    $activeText.dataset.r = 0;
+    $activeText.style.fontSize = '13px';
+    setTextDefaults($activeText);
+    setTransform($activeText);
 };
 document.querySelector('.text-control-textarea').oninput = ({ target }) => {
     $activeText.textContent = target.value;
