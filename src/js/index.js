@@ -172,15 +172,6 @@ const handlePlan = (raw) => {
         ])
         .then(insertView);
 };
-const insertText = ($text) => {
-    $text.className = 'draggable text-field';
-    $text.dataset.x = $scene.width.baseVal.value / 2;
-    $text.dataset.y = $scene.height.baseVal.value / 2;
-    $text.dataset.sx = Math.sign($view.dataset.sx);
-    $floor.querySelector('foreignObject').appendChild($text);
-    setActiveText($text);
-    setTransform($text);
-};
 const setTextDefaults = ($text) => {
     $text.className = 'draggable text-field';
     $text.dataset.x = $scene.width.baseVal.value / 2;
