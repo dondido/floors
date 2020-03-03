@@ -1,12 +1,14 @@
-let plan, $scene, $floor, $pristine, drag, measure, $activeText;
+import { Drag, Measure } from './gestures.js';
+import linkActiveText from './text-panel.js';
+import { setTransform } from './utils.js';
+
+let plan, $scene, $floor, $pristine, drag, measure;
 const handleJson = response => response.json();
 const handleText = response => response.text();
 const $mirror = document.querySelector('.mirror');
 const $dirty = document.createDocumentFragment();
 const $port = document.querySelector('.port');
 const $view = document.querySelector('.view');
-const $textControl = document.querySelector('.text-control');
-const $textControlBody = $textControl.querySelector('.text-control-body');
 const $floorSelector = document.querySelector('.floor-selector');
 const $zoomSlider = document.querySelector('.zoom-slider');
 const $ruler = document.querySelector('.ruler');
@@ -113,10 +115,6 @@ const reset = () => {
     $floor.querySelector('foreignObject').innerHTML = '';
     restore();
 };
-const setTransform = ($target) => {
-    const { sx = 1, sy = 1, x = 0, y = 0, z = 1, r = 0 } = $target.dataset;
-    $target.style.transform = `translate(${x}px, ${y}px) scale(${sx * z}, ${sy * z}) rotate(${r}deg)`;
-};
 const setScale = () => {
     if($view.dataset.sx === undefined) {
         const { width, height } = $scene.getBoundingClientRect();
@@ -146,12 +144,12 @@ const setFloor = ({name, id, options}, idx) => {
     $floorSelector.appendChild($floorOption);
     options && options.forEach(hideViewOptions);
 };
-const insertView = ([text, { Drag, Measure }]) => {
+const insertView = (text) => {
     $view.innerHTML = text;
     $scene = $view.firstElementChild;
     $pristine = $scene.cloneNode();
     plan.floors.forEach(setFloor);
-    drag = new Drag({ $scene, $view, $zoomSlider, zoom, setTransform, linkActiveText });
+    drag = new Drag({ $scene, $view, $zoomSlider, zoom });
     measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
     init();
     $floorSelector.onclick = selectFloor;
@@ -161,11 +159,8 @@ const insertView = ([text, { Drag, Measure }]) => {
 const handlePlan = (raw) => {
     plan = raw;
     document.querySelector('.plan-name').textContent = plan.name;
-    return Promise
-        .all([
-            fetch(plan.src).then(handleText),
-            import('./gestures.js')
-        ])
+    return fetch(plan.src)
+        .then(handleText)
         .then(insertView);
 };
 const setTextDefaults = ($text) => {
@@ -185,50 +180,7 @@ const addText = () => {
 document.querySelector('.print-button').onclick = () => window.print();
 document.querySelector('.reset-button').onclick = reset;
 document.querySelector('.text-button').onclick = addText;
-const linkActiveText = ($text) => {
-    if($text.isSameNode($activeText)) {
-        return;
-    }
-    $activeText = $text;
-    $textControl.hidden = false;
-    $textControlBody.disabled = $activeText.classList.contains('disabled');
-    document.querySelector('.text-control-textarea').value = $activeText.textContent;
-    document.querySelector('.font-slider').value = parseInt($activeText.style.fontSize) || 13;
-    document.querySelector('.text-control-rotate-input').value = $activeText.dataset.r;
-};
-document.querySelector('.text-control-lock-button').onclick = () => {
-    $textControlBody.disabled = !$textControlBody.disabled;
-    $activeText.classList.toggle('disabled');
-};
-document.querySelector('.text-control-reset-button').onclick = () => {
-    $activeText.dataset.r = 0;
-    $activeText.style.fontSize = '13px';
-    setTextDefaults($activeText);
-    setTransform($activeText);
-};
-document.querySelector('.text-control-textarea').oninput = ({ target }) => {
-    $activeText.textContent = target.value;
-};
-document.querySelector('.text-control-rotate-input').oninput = ({ target }) => {
-    if (target.value === '-1') {
-        target.value = 359;
-    }
-    else if (target.value === '360') {
-        target.value = 0;
-    }
-    $activeText.dataset.r = target.value;
-    setTransform($activeText);
-};
-document.querySelector('.text-control-bin-button').onclick = () => {
-    $activeText.remove();
-    $textControl.hidden = true;
-};
-document.querySelector('.text-control-x-button').onclick = () => {
-    $textControl.hidden = true;
-};
-document.querySelector('.font-slider').oninput = ({ target }) => {
-    $activeText.style.fontSize = `${target.value}px`;
-};
+
 $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;

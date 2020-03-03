@@ -1,3 +1,6 @@
+import linkActiveText from './text-panel.js';
+import { setTransform } from './utils.js';
+
 class Gesture {
     constructor(props) {
         Object.assign(this, props);
@@ -28,7 +31,7 @@ export class Measure extends Gesture {
     }
     toFt(value) {
         const { $scene, $view, plan } = this;
-        const { sy, z } = $view.dataset;
+        const { sy, z = 1 } = $view.dataset;
         const widthRatio = $scene.clientWidth / $scene.width.baseVal.value;
         const ratio = widthRatio === 1 ? $scene.clientHeight / $scene.height.baseVal.value : widthRatio;
         const [feet, inches = '0'] = String(value / (ratio * plan.footRatio * sy * z)).split('.');
@@ -81,7 +84,7 @@ export class Drag extends Gesture {
     }
     setActiveText($target) {
         if ($target.classList.contains('text-field')) {
-            this.linkActiveText($target);
+            linkActiveText($target);
         }
     }
     pointerdown = (e) => {
@@ -134,6 +137,6 @@ export class Drag extends Gesture {
         this.y2 = this.y1 - cy;
         $target.dataset.x = this.interpolate() ? $scene.width.baseVal.value + this.x2 : - this.x2;
         $target.dataset.y = -this.y2;
-        this.setTransform($target);
+        setTransform($target);
     }
 }

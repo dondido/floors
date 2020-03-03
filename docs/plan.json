@@ -2,6 +2,7 @@
     "name": "Cameron",
     "src": "floors/llstd.svg",
     "footRatio": "9",
+    "zoomRatio": "100",
     "floors": [
         {
             "name": "Lower Level",

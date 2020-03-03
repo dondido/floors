@@ -47,13 +47,15 @@
                     <div class="text-control-rotate-title">Rotate (deg)</div>
                     <div class="text-control-rotate-input-container">
                         <input type="number" class="text-control-rotate-input" value="0"/>
+                        <button class="text-control-rotate-button">+</button>
+                        <button class="text-control-rotate-button">-</button>
                     </div>
                 </div>
                 <div class="text-control-input">
                     <button class="text-control-reset-button"></button>
                 </div>
-            </div>
-        </fieldset>
+            </fieldset>
+        </div>
         <ul class="toolbar" role="toolbar" aria-label="Toolbar">
             <li><label class="hide-interface-button" for="interface" title="Toggle Interface"></label></li>
             <li><label class="mirror-button" for="reverse" title="Flip Floorplan"></label></li>
@@ -72,6 +74,9 @@
         <div class="foots"></div>
     </div>
     <div class="mirror"></div>
-    <script src="js/index.js" type="module"></script>
+    <script src="js/utils.js" defer type="module"></script>
+    <script src="js/text-panel.js" defer type="module"></script>
+    <script src="js/gestures.js" defer type="module"></script>
+    <script src="js/index.js" defer type="module"></script>
 </body>
 </html>
