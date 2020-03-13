@@ -11,72 +11,100 @@
     <link rel="stylesheet" href="css/print.css" media="print" />
 </head>
 <body>
-    <header class="header">
-        <h1 class="plan-name"></h1>
-        <button type="button" class="print-button">Print</button>
-    </header>
-    <input id="reverse" type="checkbox"/>
-    <input id="measure" type="checkbox"/>
-    <div class="port" data-drag-area>
-        <div class="view draggable pinchable"></div>
-    </div>
-    <input id="interface" type="checkbox"/>
-    <ul class="floor-selector"></ul>
-    <div class="right-menu">
-        <div class="text-control" hidden>
-            <div class="text-control-header">
-                <div class="text-control-header-title">Text Editor</div>
-                <button class="text-control-bin-button"></button>
-                <button class="text-control-x-button"></button>
+    <input id="left-menu-toggle" type="checkbox"/>
+    <section class="left-menu">
+        <label class="left-menu-toggle" for="left-menu-toggle"></label>
+        <div class="left-menu-content">
+            <button class="left-menu-accordion" aria-expanded="true">Floorplan Options</button>
+            <div class="left-menu-panel"></div>
+            <button class="left-menu-accordion" aria-expanded="false">Furniture Planner</button>
+            <div class="left-menu-panel">
+                <div class="furniture-controls">
+                    <ul class="furniture-selector">
+                        <li class="furniture-option" data-ref="LLSFP">Beds</li>
+                        <li class="furniture-option excluded" data-ref="ML">Seating</li>
+                        <li class="furniture-option excluded" data-ref="UL">Tables</li>
+                        <li class="furniture-option excluded" data-ref="OA">Desks & Storage</li>
+                        <li class="furniture-option excluded" data-ref="OA">Miscellaneous</li>
+                        <li class="furniture-option excluded" data-ref="OA">Patio</li>
+                        <li class="furniture-option excluded" data-ref="OA">Outlets</li>
+                    </ul>
+                </div>
             </div>
-            <input id="lock-text" type="checkbox"/>
-            <fieldset class="text-control-body">
-                Text
-                <textarea class="text-control-textarea">Add Text</textarea>
-                Font Size
-                <input type="range" min="8" max="24" value="13" class="font-slider">
-                <div class="text-control-input">
-                    <div>Highlight Text</div>
-                    <input type="checkbox" id="text-control-highlight-toggle"/>
-                    <label class="text-control-toggle" for="text-control-highlight-toggle"></label>
+            <button class="left-menu-accordion" aria-expanded="false">Compare</button>
+            <div class="left-menu-panel"></div>
+        </div>
+    </section>
+    <main class="main">
+        <header class="header">
+            <h1 class="plan-name"></h1>
+            <button type="button" class="print-button">Print</button>
+        </header>
+        <input id="reverse" type="checkbox"/>
+        <input id="measure" type="checkbox"/>
+        <div class="port" data-drag-area>
+            <div class="view draggable pinchable"></div>
+        </div>
+        <input id="interface" type="checkbox"/>
+        <ul class="floor-selector"></ul>
+        <div class="right-menu">
+            <div class="text-control" hidden>
+                <div class="text-control-header">
+                    <div class="text-control-header-title">Text Editor</div>
+                    <button class="text-control-bin-button"></button>
+                    <button class="text-control-x-button"></button>
                 </div>
-                <div class="text-control-input">
-                    <label for="lock-text" class="text-control-lock-button"></label>
-                </div>
-                <div class="text-control-input">
-                    <div class="text-control-rotate-title">Rotate (deg)</div>
-                    <div class="text-control-rotate-input-container">
-                        <input type="number" class="text-control-rotate-input" value="0"/>
-                        <button class="text-control-rotate-button">+</button>
-                        <button class="text-control-rotate-button">-</button>
+                <input id="lock-text" type="checkbox"/>
+                <fieldset class="text-control-body">
+                    Text
+                    <textarea class="text-control-textarea">Add Text</textarea>
+                    Font Size
+                    <input type="range" min="8" max="24" value="13" class="font-slider">
+                    <div class="text-control-input">
+                        <div>Highlight Text</div>
+                        <input type="checkbox" id="text-control-highlight-toggle"/>
+                        <label class="text-control-toggle" for="text-control-highlight-toggle"></label>
                     </div>
+                    <div class="text-control-input">
+                        <label for="lock-text" class="text-control-lock-button"></label>
+                    </div>
+                    <div class="text-control-input">
+                        <div class="text-control-rotate-title">Rotate (deg)</div>
+                        <div class="text-control-rotate-input-container">
+                            <input type="number" class="text-control-rotate-input" value="0"/>
+                            <button class="text-control-rotate-button">+</button>
+                            <button class="text-control-rotate-button">-</button>
+                        </div>
+                    </div>
+                    <div class="text-control-input">
+                        <button class="text-control-reset-button"></button>
+                    </div>
+                </fieldset>
+            </div>
+            <ul class="toolbar" role="toolbar" aria-label="Toolbar">
+                <li><label class="hide-interface-button" for="interface" title="Toggle Interface"></label></li>
+                <li><label class="mirror-button" for="reverse" title="Flip Floorplan"></label></li>
+                <li><label class="ruler-button" for="measure" title="Measure Tool"></label></li>
+                <li><button class="text-button" title="Text Tool"></button></li>
+                <li><button class="reset-button" title="Reset All Changes"></button></li>
+            </ul>
+            <div class="zoom-control" data-z="100">
+                <div class="zoom-range">
+                    <input type="range" min="0" max="100" value="0" class="zoom-slider">
                 </div>
-                <div class="text-control-input">
-                    <button class="text-control-reset-button"></button>
-                </div>
-            </fieldset>
-        </div>
-        <ul class="toolbar" role="toolbar" aria-label="Toolbar">
-            <li><label class="hide-interface-button" for="interface" title="Toggle Interface"></label></li>
-            <li><label class="mirror-button" for="reverse" title="Flip Floorplan"></label></li>
-            <li><label class="ruler-button" for="measure" title="Measure Tool"></label></li>
-            <li><button class="text-button" title="Text Tool"></button></li>
-            <li><button class="reset-button" title="Reset All Changes"></button></li>
-        </ul>
-        <div class="zoom-control" data-z="100">
-            <div class="zoom-range">
-                <input type="range" min="0" max="100" value="0" class="zoom-slider">
             </div>
         </div>
-    </div>
-    <div class="ruler">
-        <div class="gauge"></div>
-        <div class="foots"></div>
-    </div>
+        <div class="ruler">
+            <div class="gauge"></div>
+            <div class="foots"></div>
+        </div>
+    </main>
     <div class="mirror"></div>
     <script src="js/utils.js" defer type="module"></script>
     <script src="js/text-panel.js" defer type="module"></script>
     <script src="js/gestures.js" defer type="module"></script>
     <script src="js/index.js" defer type="module"></script>
+    <script src="js/accordion.js" defer></script>
+    <script src="js/furniture-planner.js" defer></script>
 </body>
 </html>

@@ -1,10 +1,12 @@
 body {
+    display: flex;
     margin: 0;
     font-family: Roboto, sans-serif;
 }
 .excluded,
 .ruler,
 #lock-text,
+#left-menu-toggle,
 #reverse,
 #measure,
 #interface,
@@ -80,6 +82,7 @@ body {
 #measure:checked ~ .port {
     cursor: crosshair;
 }
+.furniture-selector,
 .floor-selector,
 .toolbar {
     list-style: none;
@@ -100,6 +103,7 @@ body {
     overflow: hidden;
 }
 .floor-selector {
+    position: absolute;
     background-color: #f2f2f2;
     border-radius: 4px;
     left: 25px;
@@ -145,7 +149,6 @@ body {
     display: flex;
 }
 .port {
-    overflow: hidden;
     touch-action: none;
     user-select: none;
 }
@@ -154,8 +157,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow: visible;
 }
 .view svg {
@@ -311,7 +314,7 @@ body {
     width: 3px;
 }
 .header {
-    position: fixed;
+    position: absolute;
     z-index: 1;
     padding: 0 25px;
     height: 48px;
@@ -368,6 +371,7 @@ body {
     height: 15px;
 }
 .text-control-body:disabled .text-control-input .text-control-lock-button:before,
+.left-menu-toggle:hover:before,
 .text-control-lock-button:hover:before,
 .text-control-reset-button:hover:before,
 .text-control-x-button:hover:before,
@@ -605,4 +609,86 @@ body {
         padding: 0 0 2px;
         box-sizing: border-box;
     }
+}
+.main {
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+}
+.left-menu {
+    position: relative;
+    flex-shrink: 0;
+    background-color: #80858e;
+    width: 290px;
+    height: 100vh;
+    transition: margin-left .3s;
+}
+#left-menu-toggle:checked ~ .left-menu {
+    margin-left: -290px;
+}
+#left-menu-toggle:checked ~ .left-menu .left-menu-toggle:before {
+    transform: scalex(-1);
+    background-color: rebeccapurple;
+}
+.left-menu-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.left-menu-toggle:before {
+    content: url('../images/left-menu-button.svg');
+    display: block;
+}
+.left-menu-toggle {
+    z-index: 1;
+    width: 25px;
+    height: 16px;
+    padding: 6px 0 6px 10px;
+    border: .5px solid #bec4cc;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    margin: auto;
+}
+.left-menu-accordion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 30px;
+    width: 100%;
+    background-color: rgb(211, 211, 211);
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    padding: 10px 10px 10px 15px;
+    border: 0;
+    border-bottom: 1px solid black;
+}
+.left-menu-panel {
+    overflow: hidden;
+    background-color: white;
+    border-right: 1px solid black;
+    flex-grow: 0;
+    height: 0;
+}
+[aria-expanded="true"] {
+    background-color: #80858e;
+    color: #f2f2f2;
+}
+[aria-expanded="true"] + .left-menu-panel {
+    flex-grow: 1;
+    height: auto;
+}
+.left-menu-accordion:after {
+    content: url(../images/accordion-chevron.svg);
+    height: 20px;
+}
+.furniture-controls {
+    padding: 15px;
+    box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }

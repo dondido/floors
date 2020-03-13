@@ -23,8 +23,8 @@ const resize = () => {
 };
 const hideNode = node => node.classList.add('excluded');
 const selectFloor = (e) => {
-    const { target } = e;
-    $floorSelector.classList.toggle('expand');
+    const { target, currentTarget } = e;
+    currentTarget.classList.toggle('expand');
     if (target.classList.contains('excluded')) {
         const id = `#${target.dataset.ref}`;
         floorOptions.forEach(hideNode);
