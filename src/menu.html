@@ -1,0 +1,48 @@
+<input id="left-menu-toggle" type="checkbox"/>
+<section class="left-menu">
+    <label class="left-menu-toggle" for="left-menu-toggle"></label>
+    <div class="left-menu-content">
+        <button class="left-menu-accordion" aria-expanded="true">Floorplan Options</button>
+        <div class="left-menu-panel"></div>
+        <button class="left-menu-accordion" aria-expanded="false">Furniture Planner</button>
+        <div class="left-menu-panel">
+            <div class="furniture-controls">
+                <button class="furniture-reset-button">Reset</button>
+                <ul class="furniture-selector">
+                    <li class="furniture-option selected">Beds</li>
+                    <li class="furniture-option">Seating</li>
+                    <li class="furniture-option">Tables</li>
+                    <li class="furniture-option">Desks & Storage</li>
+                    <li class="furniture-option">Miscellaneous</li>
+                    <li class="furniture-option">Patio</li>
+                    <li class="furniture-option">Outlets</li>
+                </ul>
+            </div>
+            <div class="furniture-panel">
+                <button class="furniture-button"><div data-src="ca-king"></div><div class="furniture-label">CA King</div></button>
+                <button class="furniture-button"><div data-src="king"></div><div class="furniture-label">King</div></button>
+                <button class="furniture-button"><div data-src="queen"></div><div class="furniture-label">Queen</div></button>
+                <button class="furniture-button"><div data-src="full"></div><div class="furniture-label">Full</div></button>
+                <button class="furniture-button"><div data-src="bunk"></div><div class="furniture-label">Bunk</div></button>
+                <button class="furniture-button"><div data-src="twin"></div><div class="furniture-label">Twin</div></button>
+                <button class="furniture-button"><div data-src="day-bed"></div><div class="furniture-label">Day Bed</div></button>
+            </div>
+            <div class="furniture-panel" hidden></div>
+            <div class="furniture-panel" hidden></div>
+            <div class="furniture-panel" hidden></div>
+            <div class="furniture-panel" hidden></div>
+            <div class="furniture-panel" hidden></div>
+            <div class="furniture-panel" hidden></div>
+        </div>
+        <button class="left-menu-accordion" aria-expanded="false">Compare</button>
+        <div class="left-menu-panel"></div>
+    </div>
+</section>
+<template class="menu-template">
+    <div class="embed-menu">
+        <button class="embed-bin-button">A</button>
+        <button class="embed-resize-button">B</button>
+        <button class="embed-duplicate-button">C</button>
+        <button class="embed-rotate-button">D</button>
+    </div>
+</template>

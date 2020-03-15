@@ -21,14 +21,14 @@ const floorOptions = [];
 const resize = () => {
     setDragGesture();
 };
-const hideNode = node => node.classList.add('excluded');
-const selectFloor = (e) => {
+const selectFloor = function(e) {
     const { target, currentTarget } = e;
     currentTarget.classList.toggle('expand');
-    if (target.classList.contains('excluded')) {
+    if (target.classList.contains('selected') === false) {
         const id = `#${target.dataset.ref}`;
-        floorOptions.forEach(hideNode);
-        target.classList.remove('excluded');
+        this.$option.classList.remove('selected');
+        this.$option = target;
+        target.classList.add('selected');
         $dirty.appendChild($floor);
         $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
         $scene.appendChild($floor);
@@ -51,6 +51,7 @@ const toggleMeasure = () => {
 const zoom = () => {
     $view.dataset.z = 1 + $zoomSlider.value / plan.zoomRatio;
     $zoomControl.dataset.z = + $zoomSlider.value + 100;
+    $view.style.setProperty('--rz', $view.dataset.sx / $view.dataset.z);
     setTransform($view);
     $measure.checked && setDragGesture();
 };
@@ -83,7 +84,6 @@ const mirror = () => {
             }
             $target.setAttribute('transform', $target.dataset.flip);
         };
-        
         $floor.dataset.reversed = true;
         $mirror.appendChild($pristine);
         $pristine.querySelectorAll(`#${$floor.id} text`).forEach(interpolate);
@@ -133,11 +133,11 @@ const setFloor = ({name, id, options}, idx) => {
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
     if(idx){
-        $floorOption.classList.add('excluded');
         $pristine.appendChild($target);
     }
     else {
         $floor = $target;
+        $floorOption.classList.add('selected');
         $pristine.appendChild($target.cloneNode(true));
     }
     $floorOption.dataset.ref = id;
@@ -152,7 +152,7 @@ const insertView = (text) => {
     drag = new Drag({ $scene, $view, $zoomSlider, zoom });
     measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
     init();
-    $floorSelector.onclick = selectFloor;
+    $floorSelector.onclick = selectFloor.bind({ $option: floorOptions[0] });
     $zoomSlider.oninput = zoom;
     $port.onwheel = wheel;
 };
@@ -163,16 +163,16 @@ const handlePlan = (raw) => {
         .then(handleText)
         .then(insertView);
 };
-const setTextDefaults = ($text) => {
-    $text.className = 'draggable text-field';
-    $text.dataset.x = $scene.width.baseVal.value / 2;
-    $text.dataset.y = $scene.height.baseVal.value / 2;
-    $text.dataset.sx = Math.sign($view.dataset.sx);
+export const setEmbedDefaults = ($el) => {
+    $el.dataset.x = $scene.width.baseVal.value / 2;
+    $el.dataset.y = $scene.height.baseVal.value / 2;
+    $el.dataset.sx = Math.sign($view.dataset.sx);
 };
 const addText = () => {
     const $text = document.createElement('pre');
     $text.textContent = 'Add Text';
-    setTextDefaults($text);
+    $text.className = 'draggable text-field';
+    setEmbedDefaults($text);
     $floor.querySelector('foreignObject').appendChild($text);
     linkActiveText($text);
     setTransform($text);
@@ -188,3 +188,5 @@ window.onresize = resize;
 fetch('plan.json')
     .then(handleJson)
     .then(handlePlan);
+
+export const getFloor = () => $floor;

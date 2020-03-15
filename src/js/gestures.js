@@ -87,13 +87,21 @@ export class Drag extends Gesture {
             linkActiveText($target);
         }
     }
+    focusEmbed(e) {
+        const $embed = e.target.closest('.furniture-embed');
+        console.log(222, $embed);
+        document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
+    }
     pointerdown = (e) => {
         const $disabled = e.target.closest('.disabled');
+        
+        
         if ($disabled) {
             return this.setActiveText($disabled);
         }
         const $area = e.target.closest('[data-drag-area]');
         if(this.pointers.length === 0 && $area) {
+            this.focusEmbed(e);
             this.$area = $area.dataset.dragArea
                 ? e.target.closest($area.dataset.dragArea)
                 : { dataset: {} };

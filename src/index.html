@@ -11,37 +11,6 @@
     <link rel="stylesheet" href="css/print.css" media="print" />
 </head>
 <body>
-    <input id="left-menu-toggle" type="checkbox"/>
-    <section class="left-menu">
-        <label class="left-menu-toggle" for="left-menu-toggle"></label>
-        <div class="left-menu-content">
-            <button class="left-menu-accordion" aria-expanded="true">Floorplan Options</button>
-            <div class="left-menu-panel"></div>
-            <button class="left-menu-accordion" aria-expanded="false">Furniture Planner</button>
-            <div class="left-menu-panel">
-                <div class="furniture-controls">
-                    <ul class="furniture-selector">
-                        <li class="furniture-option selected">Beds</li>
-                        <li class="furniture-option">Seating</li>
-                        <li class="furniture-option">Tables</li>
-                        <li class="furniture-option">Desks & Storage</li>
-                        <li class="furniture-option">Miscellaneous</li>
-                        <li class="furniture-option">Patio</li>
-                        <li class="furniture-option">Outlets</li>
-                    </ul>
-                </div>
-                <div class="furniture-panel"></div>
-                <div class="furniture-panel" hidden></div>
-                <div class="furniture-panel" hidden></div>
-                <div class="furniture-panel" hidden></div>
-                <div class="furniture-panel" hidden></div>
-                <div class="furniture-panel" hidden></div>
-                <div class="furniture-panel" hidden></div>
-            </div>
-            <button class="left-menu-accordion" aria-expanded="false">Compare</button>
-            <div class="left-menu-panel"></div>
-        </div>
-    </section>
     <main class="main">
         <header class="header">
             <h1 class="plan-name"></h1>
@@ -111,7 +80,6 @@
     <script src="js/text-panel.js" defer type="module"></script>
     <script src="js/gestures.js" defer type="module"></script>
     <script src="js/index.js" defer type="module"></script>
-    <script src="js/accordion.js" defer></script>
-    <script src="js/furniture-planner.js" defer></script>
+    <script src="js/media-query.js" defer  type="module"></script>
 </body>
 </html>

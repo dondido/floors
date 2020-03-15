@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Roboto, sans-serif;
 }
-.excluded,
+.floor-option,
 .furniture-option,
 .ruler,
 #lock-text,
@@ -112,8 +112,16 @@ body {
     top: 100px;
     width: 120px;
 }
-.furniture-option.selected,
-.floor-option:not(.excluded) {
+.furniture-selector {
+    left: auto;
+    top: 76px;
+    width: 138px;
+}
+.furniture-option.selected {
+    width: 190px;
+    padding: 5px 15px;
+}
+.selected {
     position: absolute;
     font-weight: 500;
     display: flex;
@@ -125,17 +133,14 @@ body {
     border-radius: 4px;
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }
-.furniture-option.selected:after,
-.floor-option:not(.excluded):after {
+.selected:after {
     content: url('../images/chevron.svg');
     filter: invert(56%) sepia(13%) saturate(221%) hue-rotate(180deg) brightness(90%) contrast(92%);
 }
-.furniture-option.selected:hover:after,
-.floor-option:not(.excluded):hover:after {
+.selected:hover:after {
     filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
-.expand .furniture-option.selected:after,
-.expand .floor-option:not(.excluded):after {
+.expand .selected:after {
     transform: rotate(90deg);
 }
 .furniture-option:hover,
@@ -143,7 +148,7 @@ body {
     color: #29abe2;
 }
 .furniture-option:not(.selected):hover,
-.floor-option.excluded:hover {
+.floor-option:not(.selected):hover {
     background-color: #29abe2;
     color: white;
 }
@@ -151,9 +156,11 @@ body {
 .floor-selector.expand {
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }
-.furniture-option,
 .floor-option {
     padding: 5px 5px 5px 15px;
+}
+.furniture-option {
+    padding: 5px 10px;
 }
 .expand .furniture-option,
 .expand .floor-option {
@@ -179,6 +186,15 @@ body {
     overflow: visible;
     width: 100%;
     height: 100%;
+}
+.view .foreignObject div {
+    position: absolute;
+}
+.furniture-embed {
+    display: inline-block;
+}
+.embed-menu button {
+    transform: scale(var(--rz));
 }
 .text-field {
     position: absolute;
@@ -625,82 +641,4 @@ body {
     position: relative;
     overflow: hidden;
     flex-grow: 1;
-}
-.left-menu {
-    position: relative;
-    flex-shrink: 0;
-    background-color: #80858e;
-    width: 290px;
-    height: 100vh;
-    transition: margin-left .3s;
-}
-#left-menu-toggle:checked ~ .left-menu {
-    margin-left: -290px;
-}
-#left-menu-toggle:checked ~ .left-menu .left-menu-toggle:before {
-    transform: scalex(-1);
-    background-color: rebeccapurple;
-}
-.left-menu-content {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-.left-menu-toggle:before {
-    content: url('../images/left-menu-button.svg');
-    display: block;
-}
-.left-menu-toggle {
-    z-index: 1;
-    width: 25px;
-    height: 16px;
-    padding: 6px 0 6px 10px;
-    border: .5px solid #bec4cc;
-    border-radius: 4px;
-    background-color: #f2f2f2;
-    box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 100%;
-    margin: auto;
-}
-.left-menu-accordion {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    line-height: 30px;
-    width: 100%;
-    background-color: rgb(211, 211, 211);
-    font-size: 16px;
-    color: black;
-    cursor: pointer;
-    padding: 10px 10px 10px 15px;
-    border: 0;
-    border-bottom: 1px solid black;
-}
-.left-menu-panel {
-    overflow: hidden;
-    background-color: white;
-    border-right: 1px solid black;
-    flex-grow: 0;
-    height: 0;
-}
-[aria-expanded="true"] {
-    background-color: #80858e;
-    color: #f2f2f2;
-}
-[aria-expanded="true"] + .left-menu-panel {
-    flex-grow: 1;
-    height: auto;
-}
-.left-menu-accordion:after {
-    content: url(../images/accordion-chevron.svg);
-    height: 20px;
-}
-.furniture-controls {
-    position: relative;
-    padding: 15px;
-    box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }

@@ -27,8 +27,9 @@ $textControlBody.querySelector('.text-control-lock-button').onclick = () => {
 };
 $textControlBody.querySelector('.text-control-reset-button').onclick = () => {
     $activeText.dataset.r = 0;
+    $textControlRotateInput.value = 0;
     $activeText.style.fontSize = '13px';
-    setTextDefaults($activeText);
+    $fontSlider.value = 13;
     setTransform($activeText);
 };
 $textControlTextarea.oninput = ({ target }) => $activeText.textContent = target.value;
