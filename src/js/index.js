@@ -163,16 +163,13 @@ const handlePlan = (raw) => {
         .then(handleText)
         .then(insertView);
 };
-export const setEmbedDefaults = ($el) => {
-    $el.dataset.x = $scene.width.baseVal.value / 2;
-    $el.dataset.y = $scene.height.baseVal.value / 2;
-    $el.dataset.sx = Math.sign($view.dataset.sx);
-};
 const addText = () => {
     const $text = document.createElement('pre');
     $text.textContent = 'Add Text';
     $text.className = 'draggable text-field';
-    setEmbedDefaults($text);
+    $text.dataset.x = $scene.width.baseVal.value / 2;
+    $text.dataset.y = $scene.height.baseVal.value / 2;
+    $text.dataset.sx = Math.sign($view.dataset.sx);
     $floor.querySelector('foreignObject').appendChild($text);
     linkActiveText($text);
     setTransform($text);

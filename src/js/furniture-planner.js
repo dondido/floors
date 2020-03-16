@@ -1,20 +1,26 @@
-import { getFloor, setEmbedDefaults } from './index.js';
+import { getFloor } from './index.js';
 import { setTransform } from './utils.js';
 
 let $activeEmbed;
-let $furnitureTools = document.querySelector('.menu-template').content.firstElementChild.cloneNode(true);
+const $furnitureTools = document.querySelector('.menu-template').content.firstElementChild.cloneNode(true);
 const $furnitureSelector = document.querySelector('.furniture-selector');
 const $furnitureOptions = Array.from($furnitureSelector.children);
 const $furniturePanels = Array.from(document.querySelectorAll('.furniture-panel'));
 const $furnitureButtons = Array.from(document.querySelectorAll('.furniture-button'));
-const addFurniture = ({ currentTarget }) => {
-    const $embed = currentTarget.firstElementChild.cloneNode(true);
+const addFurniture = ({ currentTarget, left, top }) => {
+    const $embed = document.createElement('div');
+    const $svg = currentTarget.firstElementChild.cloneNode(true);
+    const $floor = getFloor();
+    const $scene = $floor.parentElement;
     $activeEmbed = $embed;
+    $svg.className = 'furniture-body';
     $embed.className = 'furniture-embed draggable';
+    $embed.appendChild($svg);
     getFloor().querySelector('foreignObject').appendChild($embed);
-    $embed.firstElementChild.setAttribute('preserveAspectRatio', 'none');
-    $embed.prepend($furnitureTools);
-    setEmbedDefaults($embed);
+    $svg.firstElementChild.setAttribute('preserveAspectRatio', 'none');
+    $svg.prepend($furnitureTools);
+    $embed.dataset.x = left || $scene.width.baseVal.value / 2;
+    $embed.dataset.y = top || $scene.height.baseVal.value / 2;
     setTransform($embed);
 };
 const slotButton = async ($target) => {
@@ -50,4 +56,16 @@ const focusEmbed = ({ detail: { $embed } }) => {
 };
 document.body.addEventListener('focus-embed', focusEmbed);
 $furnitureSelector.onclick = selectOption.bind({ $panel: $furniturePanels[0], $option: $furnitureOptions[0] });
+$furnitureTools.querySelector('.embed-bin-button').onclick = () => {
+    $activeEmbed.remove();
+    $activeEmbed = null;
+};
+$furnitureTools.querySelector('.embed-duplicate-button').onclick = ({ target }) => {
+    const $furnitureBody = target.closest('.furniture-body');
+    console.log(111, $furnitureBody, $furnitureBody.dataset.src);
+    const { src } = $furnitureBody.dataset;
+    const $embed = $furnitureBody.parentElement;
+    const currentTarget = document.querySelector(`.furniture-button [data-src=${src}]`).parentElement;
+    addFurniture({ currentTarget, left: + $embed.dataset.x + 20, top: $embed.dataset.y });
+};
 $furnitureButtons.forEach(slotButton);

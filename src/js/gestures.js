@@ -2,10 +2,10 @@ import linkActiveText from './text-panel.js';
 import { setTransform } from './utils.js';
 
 const updateSide = (val) => {
-    const max = 168;
+    const max = 122;
     const min = 0;
     return Math.min(Math.max(val, min), max);
-}
+};
 
 class Gesture {
     constructor(props) {
@@ -85,7 +85,8 @@ export class Drag extends Gesture {
         return [ clientX / ratio, clientY / ratio ];
     }
     interpolate() {
-        return this.$target.classList.contains('text-field') && this.$target.dataset.sx < 0;
+        return this.$target.classList.contains('text-field') && this.$target.dataset.sx < 0
+            || this.$target.classList.contains('furniture-embed') && this.$view.dataset.sx < 0;
     }
     setActiveText($target) {
         if($target.classList.contains('text-field')) {
@@ -93,33 +94,56 @@ export class Drag extends Gesture {
         }
     }
     focusEmbed(e) {
-        const $embed = e.target.closest('.furniture-embed');
-        document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
+        const $furnitureEmbed = e.target.closest('.furniture-embed');
+        if($furnitureEmbed) {
+            const $embed = $furnitureEmbed.firstElementChild;
+            document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
+        }
     }
     initResize({ clientX, clientY, target }) {
         this.x1 = clientX;
         this.y1 = clientY;
-        this.$target = target.closest('.furniture-embed').lastElementChild;
+        this.$target = target.closest('.furniture-embed').querySelector('svg');
         this.width = parseInt(this.$target.getAttribute('width'));
         this.height = parseInt(this.$target.getAttribute('height'))
         document.body.onpointermove = this.resizeEmbed;
     }
-    
     resizeEmbed = ({ clientX, clientY }) => {
-        this.$target.setAttribute('width', updateSide(this.width + clientX - this.x1));
-        this.$target.setAttribute('height', updateSide(this.height + this.y1 - clientY));
+        const width = updateSide(this.width + (clientX - this.x1) * Math.sign(this.$view.dataset.sx));
+        const height = updateSide(this.height + this.y1 - clientY);
+        this.$target.setAttribute('width', width);
+        this.$target.setAttribute('height', height);
+    }
+    initRotate({ target }) {
+        const { left, right, top, bottom } = this.$view.getBoundingClientRect();
+        this.x1 = (left + right) / 2;
+        this.y1 = (top + bottom) / 2;
+        this.$target = target.closest('.furniture-embed').querySelector('svg');
+        document.body.onpointermove = this.rotateEmbed;
+    }
+    rotateEmbed = ({ clientX, clientY }) => {
+        const deg = Math.atan2(clientY - this.y1, clientX - this.x1) * 180 / Math.PI * Math.sign(this.$view.dataset.sx);
+        this.$target.setAttribute('transform', `rotate(${deg})`);
     }
     pointerdown = (e) => {
         const $disabled = e.target.closest('.disabled');
         if($disabled) {
             return this.setActiveText($disabled);
         }
+        if(
+            e.target.classList.contains('embed-bin-button')
+            || e.target.classList.contains('embed-duplicate-button')
+        ) {
+            return;
+        }
         const $area = e.target.closest('[data-drag-area]');
         if(this.pointers.length === 0 && $area) {
             this.focusEmbed(e);
-            console.log(112, e.target, e.target.classList.contains('embed-resize-button'))
             if(e.target.classList.contains('embed-resize-button')) {
                 return this.initResize(e);
+            }
+            if(e.target.classList.contains('embed-rotate-button')) {
+                return this.initRotate(e);
             }
             this.$area = $area.dataset.dragArea
                 ? e.target.closest($area.dataset.dragArea)

@@ -192,6 +192,12 @@ body {
 }
 .furniture-embed {
     display: inline-block;
+    width: 0;
+    height: 0;
+}
+.furniture-body {
+    display: inline-block;
+    transform: translate(-50%, -50%);
 }
 .embed-menu button {
     transform: scale(var(--rz));
