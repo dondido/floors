@@ -12,10 +12,8 @@ const addFurniture = ({ currentTarget }) => {
     $activeEmbed = $embed;
     $embed.className = 'furniture-embed draggable';
     getFloor().querySelector('foreignObject').appendChild($embed);
-    console.log(111, $furnitureTools, $furnitureTools.firstElementChild, $furnitureTools.innerHTML);
+    $embed.firstElementChild.setAttribute('preserveAspectRatio', 'none');
     $embed.prepend($furnitureTools);
-    console.log(112, $furnitureTools.remove);
-
     setEmbedDefaults($embed);
     setTransform($embed);
 };

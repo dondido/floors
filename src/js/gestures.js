@@ -1,6 +1,12 @@
 import linkActiveText from './text-panel.js';
 import { setTransform } from './utils.js';
 
+const updateSide = (val) => {
+    const max = 168;
+    const min = 0;
+    return Math.min(Math.max(val, min), max);
+}
+
 class Gesture {
     constructor(props) {
         Object.assign(this, props);
@@ -32,8 +38,7 @@ export class Measure extends Gesture {
     toFt(value) {
         const { $scene, $view, plan } = this;
         const { sy, z = 1 } = $view.dataset;
-        const widthRatio = $scene.clientWidth / $scene.width.baseVal.value;
-        const ratio = widthRatio === 1 ? $scene.clientHeight / $scene.height.baseVal.value : widthRatio;
+        const ratio = $scene.clientWidth / $scene.width.baseVal.value;
         const [feet, inches = '0'] = String(value / (ratio * plan.footRatio * sy * z)).split('.');
         return `${feet}' ${Math.round(inches[0] * 1.2)}''`;
     }
@@ -75,33 +80,47 @@ export class Drag extends Gesture {
         document.body.onpointermove = null;
     }
     getPointerXY({ clientX, clientY }) {
-        const { sy = 1, z = 1 } = this.$area.dataset;
-        const ratio = sy * z; 
+        const { dataset: { sy = 1, z = 1 }, offsetWidth, firstElementChild } = this.$area;
+        const ratio = sy * z * Math.min(1, offsetWidth / firstElementChild.width.baseVal.value); 
         return [ clientX / ratio, clientY / ratio ];
     }
     interpolate() {
         return this.$target.classList.contains('text-field') && this.$target.dataset.sx < 0;
     }
     setActiveText($target) {
-        if ($target.classList.contains('text-field')) {
+        if($target.classList.contains('text-field')) {
             linkActiveText($target);
         }
     }
     focusEmbed(e) {
         const $embed = e.target.closest('.furniture-embed');
-        console.log(222, $embed);
         document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
+    }
+    initResize({ clientX, clientY, target }) {
+        this.x1 = clientX;
+        this.y1 = clientY;
+        this.$target = target.closest('.furniture-embed').lastElementChild;
+        this.width = parseInt(this.$target.getAttribute('width'));
+        this.height = parseInt(this.$target.getAttribute('height'))
+        document.body.onpointermove = this.resizeEmbed;
+    }
+    
+    resizeEmbed = ({ clientX, clientY }) => {
+        this.$target.setAttribute('width', updateSide(this.width + clientX - this.x1));
+        this.$target.setAttribute('height', updateSide(this.height + this.y1 - clientY));
     }
     pointerdown = (e) => {
         const $disabled = e.target.closest('.disabled');
-        
-        
-        if ($disabled) {
+        if($disabled) {
             return this.setActiveText($disabled);
         }
         const $area = e.target.closest('[data-drag-area]');
         if(this.pointers.length === 0 && $area) {
             this.focusEmbed(e);
+            console.log(112, e.target, e.target.classList.contains('embed-resize-button'))
+            if(e.target.classList.contains('embed-resize-button')) {
+                return this.initResize(e);
+            }
             this.$area = $area.dataset.dragArea
                 ? e.target.closest($area.dataset.dragArea)
                 : { dataset: {} };
@@ -115,7 +134,6 @@ export class Drag extends Gesture {
             this.y1 = cy - y;
             this.initialZoom = + this.$zoomSlider.value;
             document.body.onpointermove = this.pointermove;
-            
         }
         this.pointers.push(e);
     }
