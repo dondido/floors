@@ -72,6 +72,8 @@ body {
 .reset-button:active:before {
     filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
+.furniture-control-x-button:focus,
+.furniture-control-bin-button:focus,
 .text-control-x-button:focus,
 .text-control-bin-button:focus,
 .print-button:focus,
@@ -175,8 +177,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
     overflow: visible;
 }
 .view svg {
@@ -192,6 +192,7 @@ body {
 }
 .furniture-embed {
     display: inline-block;
+    position: absolute;
     width: 0;
     height: 0;
 }
@@ -372,10 +373,14 @@ body {
     display: inline-block;
     vertical-align: middle;
 }
+.furniture-control-x-button,
+.furniture-control-bin-button,
 .text-control-x-button,
 .text-control-bin-button {
     padding: 4px;
 }
+.furniture-control-x-button,
+.furniture-control-bin-button,
 .text-control-x-button,
 .text-control-bin-button,
 .print-button {
@@ -390,6 +395,8 @@ body {
 .print-button:before {
     content: url('../images/print.svg');
 }
+.furniture-control-x-button:before,
+.furniture-control-bin-button:before,
 .text-control-x-button:before,
 .text-control-bin-button:before {
     content: url('../images/bin.svg');
@@ -398,11 +405,17 @@ body {
     height: 23px;
     display: block;
 }
+.furniture-control-x-button:before,
 .text-control-x-button:before {
     content: url('../images/x.svg');
     width: 15px;
     height: 15px;
 }
+.furniture-control-body:disabled .furniture-control-input .furniture-control-lock-button:before,
+.furniture-control-lock-button:hover:before,
+.furniture-control-reset-button:hover:before,
+.furniture-control-x-button:hover:before,
+.furniture-control-bin-button:hover:before,
 .text-control-body:disabled .text-control-input .text-control-lock-button:before,
 .left-menu-toggle:hover:before,
 .text-control-lock-button:hover:before,
@@ -428,6 +441,7 @@ body {
     height: 360px;
     right: 60px;
 }
+.furniture-control-header,
 .text-control-header {
     padding: 10px;
     background-color: #80858e;
@@ -435,6 +449,7 @@ body {
     display: flex;
     align-items: center;
 }
+.furniture-control-body,
 .text-control-body {
     margin: 0;
     display: inline-block;
@@ -453,6 +468,7 @@ body {
     min-height: 54px;
     margin-bottom: 10px;
 }
+.furniture-control-header-title,
 .text-control-header-title {
     flex-grow: 1;
 }
@@ -463,12 +479,12 @@ body {
     padding: 6px 0;
     background: transparent;
 }
-  .font-slider::-webkit-slider-runnable-track {
+.font-slider::-webkit-slider-runnable-track {
     width: 100%;
     height: 1px;
     cursor: pointer;
     background: #000000;
-  }
+}
   .font-slider::-webkit-slider-thumb {
     background: #000000;
     height: 14px;
@@ -523,9 +539,10 @@ body {
   .font-slider:focus::-ms-fill-lower {
     background: #000000;
   }
-  .font-slider:focus::-ms-fill-upper {
+.font-slider:focus::-ms-fill-upper {
     background: #030303;
-  }
+}
+.furniture-control-input,
 .text-control-input {
     display: inline-block;
     box-sizing: border-box;
@@ -560,16 +577,22 @@ body {
     transform: translate3d(220%, 15%, 0);
     transition: transform 200ms linear;
 }
+.furniture-control-rotate-input-container,
 .text-control-rotate-input-container {
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 3px;
 }
+.furniture-control-rotate-input,
 .text-control-rotate-input {
     width: 45px;
     border: none;
 }
+.furniture-control-flip-horizontal-button,
+.furniture-control-flip-vertical-button,
+.furniture-control-lock-button,
+.furniture-control-reset-button,
 .text-control-lock-button,
 .text-control-reset-button {
     display: block;
@@ -586,30 +609,85 @@ body {
     cursor: pointer;
     box-sizing: border-box;
 }
+.furniture-control {
+    position: absolute;
+}
+.furniture-control-flip-horizontal-button,
+.furniture-control-flip-vertical-button {
+    width: 122px;
+}
+.furniture-control-flip-horizontal-button:before,
+.furniture-control-flip-vertical-button:before {
+    content: url('../images/flip.svg');
+    display: block;
+}
+.furniture-control-flip-vertical-button:before {
+    transform: rotate(90deg);
+}
+.furniture-control-lock-button,
+.furniture-control-reset-button {
+    width: 58px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.furniture-control-reset-button {
+    margin-left: 3px;
+}
+.furniture-control-lock-button {
+    margin-right: 3px;
+}
+.furniture-control-rotate-title,
 .text-control-rotate-title {
     display: flex;
     margin-bottom: 4px;
 }
+.furniture-control-rotate-title:before,
 .text-control-rotate-title:before {
     content: url('../images/rotate.svg');
     margin-right: 4px;
 }
+.furniture-control-height-title:before,
+.furniture-control-width-title:before {
+    content: url('../images/left-right-arrow.svg');
+    position: absolute;
+    left: 0;
+}
+.furniture-control-height-title,
+.furniture-control-width-title {
+    padding-left: 17px;
+    height: 15px;
+    margin-bottom: 4px;
+    position: relative;
+}
+.furniture-control-width-title:before {
+    top: 1px;
+}
+.furniture-control-height-title:before {
+    transform: rotate(90deg);
+}
+.furniture-control-lock-button:before,
 .text-control-lock-button:before {
     content: url('../images/lock.svg');
 }
+.furniture-control-reset-button:before,
 .text-control-reset-button:before {
     content: url('../images/reset.svg');
     width: 15px;
     display: inline-block;
 }
+.furniture-control-reset-button:after,
 .text-control-reset-button:after {
     content: 'Reset';
     display: block;
 }
+.furniture-control-lock-button:after,
 .text-control-lock-button:after {
     content: 'Lock';
     display: block;
 }
+.furniture-control-body:disabled .furniture-control-input .furniture-control-lock-button,
+.furniture-control-reset-button:hover,
+.furniture-control-lock-button:hover,
 .text-control-body:disabled .text-control-input .text-control-lock-button,
 .text-control-reset-button:hover,
 .text-control-lock-button:hover {
@@ -619,6 +697,7 @@ body {
 .text-field {
     cursor: pointer;
 }
+.furniture-control-rotate-button,
 .text-control-rotate-button {
     display: inline-block;
     vertical-align: middle;
@@ -634,10 +713,12 @@ body {
     margin: auto;
     box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
 }
+.furniture-control-rotate-button:active,
 .text-control-rotate-button:active {
     box-shadow: 0 0 3px 2px rgba(0,0,0,.3);
 }
 @-moz-document url-prefix() {
+    .furniture-control-rotate-button,
     .text-control-rotate-button {
         padding: 0 0 2px;
         box-sizing: border-box;
@@ -645,6 +726,7 @@ body {
 }
 .main {
     position: relative;
+    height: 100vh;
     overflow: hidden;
     flex-grow: 1;
 }

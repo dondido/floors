@@ -6,11 +6,12 @@ const insertMenu = (text) => {
     import('./accordion.js');
 };
 const shouldLoadMenu = () => {
+    console.log(112, isDesktop())
     if (isDesktop()) {
-        document.body.removeEventListener('resize', shouldLoadMenu);
+        window.removeEventListener('resize', shouldLoadMenu);
         return fetch('menu.html')
             .then(toText)
             .then(insertMenu);
     }
 };
-shouldLoadMenu() || document.body.addEventListener('resize', shouldLoadMenu);
+shouldLoadMenu() || window.addEventListener('resize', shouldLoadMenu);

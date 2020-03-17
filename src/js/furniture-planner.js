@@ -2,6 +2,7 @@ import { getFloor } from './index.js';
 import { setTransform } from './utils.js';
 
 let $activeEmbed;
+const $furnitureControl = document.querySelector('.furniture-control');
 const $furnitureTools = document.querySelector('.menu-template').content.firstElementChild.cloneNode(true);
 const $furnitureSelector = document.querySelector('.furniture-selector');
 const $furnitureOptions = Array.from($furnitureSelector.children);
@@ -12,6 +13,7 @@ const addFurniture = ({ currentTarget, left, top }) => {
     const $svg = currentTarget.firstElementChild.cloneNode(true);
     const $floor = getFloor();
     const $scene = $floor.parentElement;
+    $furnitureControl.hidden = false;
     $activeEmbed = $embed;
     $svg.className = 'furniture-body';
     $embed.className = 'furniture-embed draggable';
@@ -62,7 +64,6 @@ $furnitureTools.querySelector('.embed-bin-button').onclick = () => {
 };
 $furnitureTools.querySelector('.embed-duplicate-button').onclick = ({ target }) => {
     const $furnitureBody = target.closest('.furniture-body');
-    console.log(111, $furnitureBody, $furnitureBody.dataset.src);
     const { src } = $furnitureBody.dataset;
     const $embed = $furnitureBody.parentElement;
     const currentTarget = document.querySelector(`.furniture-button [data-src=${src}]`).parentElement;

@@ -6,7 +6,7 @@
         <div class="left-menu-panel"></div>
         <button class="left-menu-accordion" aria-expanded="false">Furniture Planner</button>
         <div class="left-menu-panel">
-            <div class="furniture-controls">
+            <div class="furniture-tools">
                 <button class="furniture-reset-button">Reset</button>
                 <ul class="furniture-selector">
                     <li class="furniture-option selected">Beds</li>
@@ -18,6 +18,52 @@
                     <li class="furniture-option">Outlets</li>
                 </ul>
             </div>
+
+            <div class="furniture-control" hidden>
+                <div class="furniture-control-header">
+                    <div class="furniture-control-header-title">Furniture Controls</div>
+                    <button class="furniture-control-bin-button"></button>
+                    <button class="furniture-control-x-button"></button>
+                </div>
+                <input id="lock-text" type="checkbox"/>
+                <fieldset class="furniture-control-body">
+                    <div class="furniture-control-input">
+                        <div class="furniture-control-width-title">Width (in)</div>
+                        <div class="furniture-control-rotate-input-container">
+                            <input type="number" class="furniture-control-rotate-input" value="0"/>
+                            <button class="furniture-control-rotate-button">+</button>
+                            <button class="furniture-control-rotate-button">-</button>
+                        </div>
+                    </div>
+                    <div class="furniture-control-input">
+                        <label for="lock-text" class="furniture-control-flip-horizontal-button">Flip Horizontal</label>
+                    </div>
+                    <div class="furniture-control-input">
+                        <div class="furniture-control-height-title">Height (in)</div>
+                        <div class="furniture-control-rotate-input-container">
+                            <input type="number" class="furniture-control-rotate-input" value="0"/>
+                            <button class="furniture-control-rotate-button">+</button>
+                            <button class="furniture-control-rotate-button">-</button>
+                        </div>
+                    </div>
+                    <div class="furniture-control-input">
+                        <button class="furniture-control-flip-vertical-button">Flip Vertical</button>
+                    </div>
+                    <div class="furniture-control-input">
+                        <div class="furniture-control-rotate-title">Rotate (deg)</div>
+                        <div class="furniture-control-rotate-input-container">
+                            <input type="number" class="furniture-control-rotate-input" value="0"/>
+                            <button class="furniture-control-rotate-button">+</button>
+                            <button class="furniture-control-rotate-button">-</button>
+                        </div>
+                    </div>
+                    <div class="furniture-control-input">
+                        <label for="lock-text" class="furniture-control-lock-button">
+                        </label><button class="furniture-control-reset-button"></button>
+                    </div>
+                </fieldset>
+            </div>
+
             <div class="furniture-panel">
                 <button class="furniture-button"><div data-src="ca-king"></div><div class="furniture-label">CA King</div></button>
                 <button class="furniture-button"><div data-src="king"></div><div class="furniture-label">King</div></button>

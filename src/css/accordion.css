@@ -80,7 +80,7 @@
 [aria-expanded="true"]:after {
     transform: rotate(90deg);
 }
-.furniture-controls {
+.furniture-tools {
     position: relative;
     height: 50px;
     padding: 15px;

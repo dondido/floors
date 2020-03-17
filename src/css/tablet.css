@@ -2,6 +2,7 @@
     background-color: #f2f2f2;
 }
 .text-button,
+.left-menu,
 .zoom-control {
     display: none;
 }
