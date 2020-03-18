@@ -154,6 +154,6 @@
     bottom: -40px;
     right: -40px;
 }
-.embed-menu + svg * {
+.embed-menu + svg [fill="#FFFFFF"] {
     fill: #46bfda;
 }

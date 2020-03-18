@@ -585,6 +585,8 @@ body {
     padding: 3px;
 }
 .furniture-control-rotate-input,
+.furniture-control-horizontal-input,
+.furniture-control-vertical-input,
 .text-control-rotate-input {
     width: 45px;
     border: none;
@@ -615,6 +617,7 @@ body {
 .furniture-control-flip-horizontal-button,
 .furniture-control-flip-vertical-button {
     width: 122px;
+    overflow: hidden;
 }
 .furniture-control-flip-horizontal-button:before,
 .furniture-control-flip-vertical-button:before {
@@ -697,7 +700,12 @@ body {
 .text-field {
     cursor: pointer;
 }
-.furniture-control-rotate-button,
+.furniture-control-width-plus-button,
+.furniture-control-width-minus-button,
+.furniture-control-height-plus-button,
+.furniture-control-height-minus-button,
+.furniture-control-rotate-plus-button,
+.furniture-control-rotate-minus-button,
 .text-control-rotate-button {
     display: inline-block;
     vertical-align: middle;
@@ -713,11 +721,23 @@ body {
     margin: auto;
     box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
 }
-.furniture-control-rotate-button:active,
+.furniture-control-width-plus-button:active,
+.furniture-control-width-minus-button:active,
+.furniture-control-height-plus-button:active,
+.furniture-control-height-minus-button:active,
+.furniture-control-rotate-plus-button:active,
+.furniture-control-rotate-minus-button:active,
+.furniture-control-rotate-button:active:active,
 .text-control-rotate-button:active {
     box-shadow: 0 0 3px 2px rgba(0,0,0,.3);
 }
 @-moz-document url-prefix() {
+    .furniture-control-width-plus-button,
+    .furniture-control-width-minus-button,
+    .furniture-control-height-plus-button,
+    .furniture-control-height-minus-button,
+    .furniture-control-rotate-plus-button,
+    .furniture-control-rotate-minus-button,
     .furniture-control-rotate-button,
     .text-control-rotate-button {
         padding: 0 0 2px;

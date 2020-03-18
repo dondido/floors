@@ -94,11 +94,8 @@ export class Drag extends Gesture {
         }
     }
     focusEmbed(e) {
-        const $furnitureEmbed = e.target.closest('.furniture-embed');
-        if($furnitureEmbed) {
-            const $embed = $furnitureEmbed.firstElementChild;
-            document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
-        }
+        const $embed = e.target.closest('.furniture-embed')?.firstElementChild;
+        document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
     }
     initResize({ clientX, clientY, target }) {
         this.x1 = clientX;
@@ -113,6 +110,7 @@ export class Drag extends Gesture {
         const height = updateSide(this.height + this.y1 - clientY);
         this.$target.setAttribute('width', width);
         this.$target.setAttribute('height', height);
+        document.body.dispatchEvent(new CustomEvent('resize-embed', { detail: { width, height } }));
     }
     initRotate({ target }) {
         const { left, right, top, bottom } = this.$view.getBoundingClientRect();
@@ -123,7 +121,7 @@ export class Drag extends Gesture {
     }
     rotateEmbed = ({ clientX, clientY }) => {
         const deg = Math.atan2(clientY - this.y1, clientX - this.x1) * 180 / Math.PI * Math.sign(this.$view.dataset.sx);
-        this.$target.setAttribute('transform', `rotate(${deg})`);
+        document.body.dispatchEvent(new CustomEvent('rotate-embed', { detail: { deg } }));
     }
     pointerdown = (e) => {
         const $disabled = e.target.closest('.disabled');
