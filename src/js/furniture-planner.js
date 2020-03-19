@@ -85,10 +85,10 @@ const flipEmbed = ({ target }) => {
 };
 const handleRotation = () => {
     const $target = $furnitureRotateInput;
-    if ($target.value === '-1') {
+    if ($target.value < 0) {
         $target.value = 359;
     }
-    else if ($target.value === '360') {
+    else if ($target.value > 359) {
         $target.value = 0;
     }
     const { value } = $target;
@@ -111,9 +111,22 @@ const rotateEmbed = ({ detail: { deg } }) => {
 const resizeEmbed = ({ detail: { width, height } }) => {
     $furnitureHorizontalInput.value = width ? Math.round(width * 1.678) : $furnitureHorizontalInput.value;
     $furnitureVerticalInput.value = height ? Math.round(height * 1.678) : $furnitureVerticalInput.value;
+    updateEmbedWidth();
+    updateEmbedHeight();
 };
-const updateEmbedWidth = ({}) => {
-    //$furnitureHorizontalInput
+const updateSide = (val) => {
+    // furniture size must be between 0 and 240 inches, so: max = 240 / 1.678
+    const max = 240;
+    const min = 0;
+    return Math.min(Math.max(val, min), max);
+};
+const updateEmbedWidth = () => {
+    $furnitureHorizontalInput.value = updateSide($furnitureHorizontalInput.value);
+    $activeEmbed.querySelector('svg').setAttribute('width', $furnitureHorizontalInput.value / 1.678);
+};
+const updateEmbedHeight = () => {
+    $furnitureVerticalInput.value = updateSide($furnitureVerticalInput.value);
+    $activeEmbed.querySelector('svg').setAttribute('height', $furnitureVerticalInput.value / 1.678);
 };
 document.body.addEventListener('focus-embed', focusEmbed);
 document.body.addEventListener('rotate-embed', rotateEmbed);

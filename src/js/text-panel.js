@@ -7,10 +7,10 @@ const $textControlBody = $textControl.querySelector('.text-control-body');
 const $textControlTextarea = $textControlBody.querySelector('.text-control-textarea');
 const $textControlRotateInput = $textControlBody.querySelector('.text-control-rotate-input');
 const rotateText = ({ target }) => {
-    if (target.value === '-1') {
+    if (target.value < 0) {
         target.value = 359;
     }
-    else if (target.value === '360') {
+    else if (target.value > 359) {
         target.value = 0;
     }
     $activeText.dataset.r = target.value;

@@ -2,7 +2,8 @@ import linkActiveText from './text-panel.js';
 import { setTransform } from './utils.js';
 
 const updateSide = (val) => {
-    const max = 122;
+    // furniture size must be between 0 and 240 inches, so: max = 240 / 1.678
+    const max = 143;
     const min = 0;
     return Math.min(Math.max(val, min), max);
 };
@@ -106,10 +107,11 @@ export class Drag extends Gesture {
         document.body.onpointermove = this.resizeEmbed;
     }
     resizeEmbed = ({ clientX, clientY }) => {
-        const width = updateSide(this.width + (clientX - this.x1) * Math.sign(this.$view.dataset.sx));
-        const height = updateSide(this.height + this.y1 - clientY);
-        this.$target.setAttribute('width', width);
-        this.$target.setAttribute('height', height);
+        //Math.max(val, min)
+        const width = Math.max(this.width + (clientX - this.x1) * Math.sign(this.$view.dataset.sx), 0);
+        const height = Math.max(this.height + this.y1 - clientY, 0);
+        //this.$target.setAttribute('width', width);
+        //this.$target.setAttribute('height', height);
         document.body.dispatchEvent(new CustomEvent('resize-embed', { detail: { width, height } }));
     }
     initRotate({ target }) {
