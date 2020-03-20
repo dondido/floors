@@ -3,6 +3,7 @@ import { setTransform } from './utils.js';
 
 let $activeEmbed;
 const $furnitureControl = document.querySelector('.furniture-control');
+const $furnitureControlBody = $furnitureControl.querySelector('.furniture-control-body');
 const $furnitureHorizontalInput = $furnitureControl.querySelector('.furniture-control-horizontal-input');
 const $furnitureVerticalInput = $furnitureControl.querySelector('.furniture-control-vertical-input');
 const $furnitureRotateInput = $furnitureControl.querySelector('.furniture-control-rotate-input');
@@ -54,6 +55,11 @@ const selectOption = function(e) {
         this.$panel.hidden = true;
     }
 };
+const blurEmbed = () => {
+    $activeEmbed = null;
+    $furnitureControl.hidden = true;
+    $furnitureTools.remove();
+};
 const focusEmbed = ({ detail: { $embed } }) => {
     if($embed) {
         if ($embed.firstElementChild.classList.contains('embed-menu') === false) {
@@ -63,9 +69,7 @@ const focusEmbed = ({ detail: { $embed } }) => {
         }
     }
     else if($activeEmbed) {
-        $activeEmbed = null;
-        $furnitureControl.hidden = true;
-        $furnitureTools.remove();
+        blurEmbed();
     }
 };
 const flipEmbed = ({ target }) => {
@@ -128,6 +132,7 @@ const updateEmbedHeight = () => {
     $furnitureVerticalInput.value = updateSide($furnitureVerticalInput.value);
     $activeEmbed.querySelector('svg').setAttribute('height', $furnitureVerticalInput.value / 1.678);
 };
+const deleteFurnitureEmbed = $target => $target.remove();
 document.body.addEventListener('focus-embed', focusEmbed);
 document.body.addEventListener('rotate-embed', rotateEmbed);
 document.body.addEventListener('resize-embed', resizeEmbed);
@@ -155,6 +160,7 @@ $furnitureControl.querySelector('.furniture-control-reset-button').onclick = () 
 $furnitureButtons.forEach(slotButton);
 $furnitureRotateInput.oninput = rotateEmbed;
 $furnitureHorizontalInput.oninput = updateEmbedWidth;
+$furnitureVerticalInput.oninput = updateEmbedHeight;
 $furnitureControl.querySelector('.furniture-control-rotate-plus-button').onclick = () => {
     $furnitureRotateInput.value ++;
     handleRotation();
@@ -172,4 +178,11 @@ $furnitureControl.querySelector('.furniture-control-width-plus-button').onclick 
 $furnitureControl.querySelector('.furniture-control-width-minus-button').onclick = () => {
     $furnitureHorizontalInput.value --;
     $activeEmbed.querySelector('svg').setAttribute('height', Math.round($furnitureHorizontalInput.value / 1.678));
+};
+document.querySelector('.furniture-reset-button').onclick = () =>
+    Array.from(document.querySelectorAll('.furniture-embed'), deleteFurnitureEmbed);
+$furnitureControl.querySelector('.furniture-control-x-button').onclick = blurEmbed;
+$furnitureControlBody.querySelector('.furniture-control-lock-button').onclick = () => {
+    $furnitureControlBody.disabled = !$furnitureControlBody.disabled;
+    $activeEmbed.classList.toggle('disabled');
 };

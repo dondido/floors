@@ -1,4 +1,5 @@
 <input id="left-menu-toggle" type="checkbox"/>
+<input id="show-furniture" type="checkbox"/>
 <section class="left-menu">
     <label class="left-menu-toggle" for="left-menu-toggle"></label>
     <div class="left-menu-content">
@@ -17,15 +18,14 @@
                     <li class="furniture-option">Patio</li>
                     <li class="furniture-option">Outlets</li>
                 </ul>
+                <label for="show-furniture" class="furniture-control-show-button"></label>
             </div>
-
             <div class="furniture-control" hidden>
                 <div class="furniture-control-header">
                     <div class="furniture-control-header-title">Furniture Controls</div>
-                    <button class="furniture-control-bin-button"></button>
                     <button class="furniture-control-x-button"></button>
                 </div>
-                <input id="lock-text" type="checkbox"/>
+                <input id="lock-furniture" type="checkbox"/>
                 <fieldset class="furniture-control-body">
                     <div class="furniture-control-input">
                         <div class="furniture-control-width-title">Width (in)</div>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="furniture-control-input">
-                        <label for="lock-text" class="furniture-control-lock-button"></label>
+                        <label for="lock-furniture" class="furniture-control-lock-button"></label>
                         <button class="furniture-control-reset-button"></button>
                     </div>
                 </fieldset>

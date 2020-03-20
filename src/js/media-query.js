@@ -6,7 +6,6 @@ const insertMenu = (text) => {
     import('./accordion.js');
 };
 const shouldLoadMenu = () => {
-    console.log(112, isDesktop())
     if (isDesktop()) {
         window.removeEventListener('resize', shouldLoadMenu);
         return fetch('menu.html')

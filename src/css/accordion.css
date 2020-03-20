@@ -1,3 +1,8 @@
+#show-furniture,
+#lock-furniture,
+#show-furniture:checked ~ .main .furniture-embed {
+    display: none;
+}
 .left-menu {
     position: relative;
     z-index: 1;
@@ -154,6 +159,34 @@
     bottom: -40px;
     right: -40px;
 }
+.furniture-reset-button:focus {
+    outline: none;
+}
+.furniture-reset-button:hover {
+    color: #46bfda;
+}
+#show-furniture:checked + .left-menu .furniture-control-show-button:before,
+.furniture-reset-button:hover:before {
+    filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
+}
 .embed-menu + svg [fill="#FFFFFF"] {
     fill: #46bfda;
+}
+.furniture-control-show-button {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 36px;
+    width: 30px;
+    height: 30px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-left: 10px;
+    box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
+    cursor: pointer;
+}
+.furniture-control-show-button:before {
+    content: url(../images/eye.svg);
+    margin: 3px;
+    display: block;
 }

@@ -1,13 +1,6 @@
 import linkActiveText from './text-panel.js';
 import { setTransform } from './utils.js';
 
-const updateSide = (val) => {
-    // furniture size must be between 0 and 240 inches, so: max = 240 / 1.678
-    const max = 143;
-    const min = 0;
-    return Math.min(Math.max(val, min), max);
-};
-
 class Gesture {
     constructor(props) {
         Object.assign(this, props);
@@ -107,11 +100,8 @@ export class Drag extends Gesture {
         document.body.onpointermove = this.resizeEmbed;
     }
     resizeEmbed = ({ clientX, clientY }) => {
-        //Math.max(val, min)
         const width = Math.max(this.width + (clientX - this.x1) * Math.sign(this.$view.dataset.sx), 0);
         const height = Math.max(this.height + this.y1 - clientY, 0);
-        //this.$target.setAttribute('width', width);
-        //this.$target.setAttribute('height', height);
         document.body.dispatchEvent(new CustomEvent('resize-embed', { detail: { width, height } }));
     }
     initRotate({ target }) {
@@ -125,10 +115,15 @@ export class Drag extends Gesture {
         const deg = Math.atan2(clientY - this.y1, clientX - this.x1) * 180 / Math.PI * Math.sign(this.$view.dataset.sx);
         document.body.dispatchEvent(new CustomEvent('rotate-embed', { detail: { deg } }));
     }
+    focusTarget(target) {
+        target.closest('.furniture-embed')
+            ? this.focusEmbed({ target: target.parentNode })
+            : this.setActiveText(target);
+    }
     pointerdown = (e) => {
         const $disabled = e.target.closest('.disabled');
         if($disabled) {
-            return this.setActiveText($disabled);
+            return this.focusTarget($disabled);
         }
         if(
             e.target.classList.contains('embed-bin-button')

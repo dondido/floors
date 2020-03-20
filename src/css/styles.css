@@ -73,7 +73,6 @@ body {
     filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
 .furniture-control-x-button:focus,
-.furniture-control-bin-button:focus,
 .text-control-x-button:focus,
 .text-control-bin-button:focus,
 .print-button:focus,
@@ -123,6 +122,10 @@ body {
     width: 190px;
     padding: 5px 15px;
 }
+.floor-option {
+    line-height: 20px;
+    padding: 5px 5px 5px 15px;
+}
 .selected {
     position: absolute;
     font-weight: 500;
@@ -157,9 +160,6 @@ body {
 .furniture-selector.expand,
 .floor-selector.expand {
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
-}
-.floor-option {
-    padding: 5px 5px 5px 15px;
 }
 .furniture-option {
     padding: 5px 10px;
@@ -374,13 +374,11 @@ body {
     vertical-align: middle;
 }
 .furniture-control-x-button,
-.furniture-control-bin-button,
 .text-control-x-button,
 .text-control-bin-button {
     padding: 4px;
 }
 .furniture-control-x-button,
-.furniture-control-bin-button,
 .text-control-x-button,
 .text-control-bin-button,
 .print-button {
@@ -396,7 +394,6 @@ body {
     content: url('../images/print.svg');
 }
 .furniture-control-x-button:before,
-.furniture-control-bin-button:before,
 .text-control-x-button:before,
 .text-control-bin-button:before {
     content: url('../images/bin.svg');
@@ -415,7 +412,6 @@ body {
 .furniture-control-lock-button:hover:before,
 .furniture-control-reset-button:hover:before,
 .furniture-control-x-button:hover:before,
-.furniture-control-bin-button:hover:before,
 .text-control-body:disabled .text-control-input .text-control-lock-button:before,
 .left-menu-toggle:hover:before,
 .text-control-lock-button:hover:before,
