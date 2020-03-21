@@ -115,10 +115,9 @@ export class Drag extends Gesture {
         const deg = Math.atan2(clientY - this.y1, clientX - this.x1) * 180 / Math.PI * Math.sign(this.$view.dataset.sx);
         document.body.dispatchEvent(new CustomEvent('rotate-embed', { detail: { deg } }));
     }
-    focusTarget(target) {
-        target.closest('.furniture-embed')
-            ? this.focusEmbed({ target: target.parentNode })
-            : this.setActiveText(target);
+    focusTarget($disabled) {
+        const $target = $disabled.closest('.furniture-embed');
+        $target ? this.focusEmbed({ target: $target }) : this.setActiveText($disabled);
     }
     pointerdown = (e) => {
         const $disabled = e.target.closest('.disabled');

@@ -170,17 +170,17 @@ $furnitureControl.querySelector('.furniture-control-rotate-minus-button').onclic
     handleRotation();
 };
 $furnitureControl.querySelector('.furniture-control-width-plus-button').onclick = () => {
-    console.log(110, $furnitureHorizontalInput.value);
     $furnitureHorizontalInput.value ++;
-    console.log(111, $furnitureHorizontalInput.value);
     $activeEmbed.querySelector('svg').setAttribute('width', Math.round($furnitureHorizontalInput.value / 1.678));
 };
 $furnitureControl.querySelector('.furniture-control-width-minus-button').onclick = () => {
     $furnitureHorizontalInput.value --;
     $activeEmbed.querySelector('svg').setAttribute('height', Math.round($furnitureHorizontalInput.value / 1.678));
 };
-document.querySelector('.furniture-reset-button').onclick = () =>
+document.querySelector('.furniture-reset-button').onclick = () => {
     Array.from(document.querySelectorAll('.furniture-embed'), deleteFurnitureEmbed);
+    blurEmbed();
+};
 $furnitureControl.querySelector('.furniture-control-x-button').onclick = blurEmbed;
 $furnitureControlBody.querySelector('.furniture-control-lock-button').onclick = () => {
     $furnitureControlBody.disabled = !$furnitureControlBody.disabled;

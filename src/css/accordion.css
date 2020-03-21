@@ -26,7 +26,8 @@
     flex-direction: column;
     height: 100vh;
     position: relative;
-    background-color: #80858e;
+    background-color: #d3d3d3;
+    border-right: 1px solid black;
 }
 .left-menu-toggle:before {
     content: url('../images/left-menu-button.svg');
@@ -51,7 +52,7 @@
     align-items: center;
     justify-content: space-between;
     line-height: 30px;
-    width: 100%;
+    width: 290px;
     background-color: rgb(211, 211, 211);
     font-size: 16px;
     color: black;
@@ -59,6 +60,14 @@
     padding: 10px 10px 10px 15px;
     border: 0;
     border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+.furniture-control-header {
+    line-height: 30px;
+    border-right: 1px solid black;
+}
+[aria-expanded="true"] + .left-menu-panel + .left-menu-accordion {
+    border-top: 1px solid black;
 }
 .left-menu-accordion:focus {
     outline: none;
@@ -66,7 +75,6 @@
 .left-menu-panel {
     overflow: hidden;
     background-color: white;
-    border-right: 1px solid black;
     flex-grow: 0;
     height: 0;
 }
@@ -139,26 +147,56 @@
     width: 100%;
     height: 100%;
 }
+.embed-resize-button,
+.embed-duplicate-button,
+.embed-rotate-button,
 .embed-bin-button {
     position: absolute;
-    top: -40px;
-    left: -40px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+.embed-bin-button {
+    top: -48px;
+    left: -50px;
 }
 .embed-resize-button {
-    position: absolute;
-    top: -40px;
-    right: -40px;
+    top: -46px;
+    right: -46px;
 }
 .embed-duplicate-button {
-    position: absolute;
     bottom: -40px;
-    left: -40px;
+    left: -52px;
 }
 .embed-rotate-button {
-    position: absolute;
     bottom: -40px;
-    right: -40px;
+    right: -50px;
 }
+.embed-bin-button:before {
+    content: url(../images/bin-embed.svg);
+    width: 38px;
+    display: block;
+}
+.embed-resize-button:before {
+    content: url(../images/left-right-arrow.svg);
+    transform: rotate(-45deg);
+    width: 33px;
+    display: block;
+}
+.embed-rotate-button:before {
+    content: url(../images/rotate-embed.svg);
+    width: 38px;
+    display: block;
+}
+.embed-duplicate-button:before {
+    content: url(../images/duplicate.svg);
+    width: 38px;
+    display: block;
+}
+.embed-resize-button:focus,
+.embed-duplicate-button:focus,
+.embed-rotate-button:focus,
+.embed-bin-button:focus,
 .furniture-reset-button:focus {
     outline: none;
 }
@@ -166,6 +204,9 @@
     color: #46bfda;
 }
 #show-furniture:checked + .left-menu .furniture-control-show-button:before,
+.furniture-control-flip-horizontal-button:hover:before,
+.furniture-control-flip-vertical-button:hover:before,
+.embed-resize-button:before,
 .furniture-reset-button:hover:before {
     filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
 }
