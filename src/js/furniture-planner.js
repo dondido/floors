@@ -14,9 +14,10 @@ const $furniturePanels = Array.from(document.querySelectorAll('.furniture-panel'
 const $furnitureButtons = Array.from(document.querySelectorAll('.furniture-button'));
 const updateFuntitureControl = () => {
     const $svg = $activeEmbed.querySelector('svg');
+    const [ val ] = $svg.transform.baseVal;
     $furnitureHorizontalInput.value = Math.round($svg.width.baseVal.value * 1.678);
     $furnitureVerticalInput.value = Math.round($svg.height.baseVal.value * 1.678);
-    $furnitureRotateInput.value = $svg.transform.baseVal[0]?.angle || 0;
+    $furnitureRotateInput.value = val ? val.angle : 0;
 };
 const addFurniture = ({ currentTarget, left, top }) => {
     const $embed = document.createElement('div');
@@ -79,7 +80,8 @@ const flipEmbed = ({ target }) => {
     const [sx, sy] = target.dataset.s.split(' ');
     if (transform) {
         const regex = /scale\(([^)]*)\)/;
-        const s = transform.match(regex)?.pop();
+        const match = transform.match(regex);
+        const s = match && match.pop();
         if(s) {
             const [sx1, sy1] = s.split(' ');
             return $svg.setAttribute('transform', transform.replace(regex, `scale(${sx1 * sx} ${sy1 * sy})`));
@@ -101,7 +103,8 @@ const handleRotation = () => {
     const transform = $svg.getAttribute('transform');
     if (transform) {
         const regex = /rotate\(([^)]*)\)/;
-        const s = transform.match(regex)?.pop();
+        const match = transform.match(regex);
+        const s = match && match.pop();
         if(s) {
             return $svg.setAttribute('transform', transform.replace(regex, `rotate(${value})`));
         }

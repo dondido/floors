@@ -88,7 +88,8 @@ export class Drag extends Gesture {
         }
     }
     focusEmbed(e) {
-        const $embed = e.target.closest('.furniture-embed')?.firstElementChild;
+        const $furnitureEmbed = e.target.closest('.furniture-embed');
+        const $embed = $furnitureEmbed && $furnitureEmbed.firstElementChild;
         document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
     }
     initResize({ clientX, clientY, target }) {

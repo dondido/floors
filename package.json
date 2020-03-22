@@ -4,6 +4,7 @@
   "description": "Floor viewer",
   "main": ".eslintrc.js",
   "scripts": {
+    "build": "node build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,6 @@
   "devDependencies": {
     "clean-css": "^4.2.3",
     "read-modify-write": "^1.0.4",
-    "terser": "^4.6.3"
+    "terser": "^4.6.7"
   }
 }
