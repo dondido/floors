@@ -137,9 +137,8 @@
 .furniture-button [data-src] {
     margin: auto;
 }
-@-moz-document url-prefix() {
-    .furniture-button [data-src] {
-    }
+.furniture-button svg {
+    overflow: visible;
 }
 .furniture-button:focus {
     outline: none;

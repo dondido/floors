@@ -22,26 +22,26 @@
 	18.475,19.125 18.475,12.825 19.075,12.825 19.075,19.125 19.075,12.825 18.475,12.825 18.475,19.125 19.075,19.125 20.125,19.125 
 	20.125,12.825 "></polygon>
 <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M2.725,7.725v32.601V7.725z"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
 	M3.625,0.725v2.6h1.149v-0.55c3.733-0.633,7.467-0.633,11.2,0v0.55h1.05v-2.6C12.392-0.075,7.925-0.075,3.625,0.725z" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
 	M3.625,3.325v2.65l-0.9,0.95v0.8h5.05v-1.2c-1.166,0.066-2.166-0.15-3-0.65v-0.6v-1.95" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
 	M7.774,6.525h5.15c1.4,0,2.417-0.217,3.05-0.65v-0.6c-3.733-0.8-7.467-0.8-11.2,0" style="stroke: rgb(0, 0, 0);"></path>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	17.975,40.325 17.975,7.725 12.925,7.725 7.774,7.725 " style="stroke: rgb(0, 0, 0);"></polyline>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="12.925" y1="6.525" x2="12.925" y2="7.725" style="stroke: rgb(0, 0, 0);"></line>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="12.925" y1="6.525" x2="12.925" y2="7.725" style="stroke: rgb(0, 0, 0);"></line>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
 	M17.024,0.725h0.95c0.867-0.3,1.717-0.3,2.55,0v40.8c-0.833,0.334-1.683,0.334-2.55,0v-1.199H2.725v1.199
 	c-1,0.301-1.866,0.301-2.6,0v-40.8c0.866-0.367,1.733-0.367,2.6,0h0.9" style="stroke: rgb(0, 0, 0);"></path>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	17.975,7.725 17.975,6.925 17.024,5.975 17.024,3.325 " style="stroke: rgb(0, 0, 0);"></polyline>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="17.975" y1="0.725" x2="17.975" y2="6.925" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="15.975" y1="3.325" x2="15.975" y2="5.275" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="2.725" y1="0.725" x2="2.725" y2="6.925" style="stroke: rgb(0, 0, 0);"></line>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="17.975" y1="0.725" x2="17.975" y2="6.925" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="15.975" y1="3.325" x2="15.975" y2="5.275" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="2.725" y1="0.725" x2="2.725" y2="6.925" style="stroke: rgb(0, 0, 0);"></line>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	1.575,12.825 2.175,12.825 2.175,19.125 1.575,19.125 0.524,19.125 0.524,12.825 1.575,12.825 1.575,19.125 " style="stroke: rgb(0, 0, 0);"></polyline>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	19.075,12.825 20.125,12.825 20.125,19.125 19.075,19.125 18.475,19.125 18.475,12.825 19.075,12.825 19.075,19.125 " style="stroke: rgb(0, 0, 0);"></polyline>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="2.725" y1="7.725" x2="2.725" y2="40.325" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="2.725" y1="7.725" x2="2.725" y2="40.325" style="stroke: rgb(0, 0, 0);"></line>
 </svg>

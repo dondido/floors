@@ -135,7 +135,7 @@
 	C5.63,15.743,5.264,15.477,4.93,15.177z"></path>
 <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M16.48,10.826c0.433-0.366,0.866-0.783,1.3-1.25
 	C17.347,10.043,16.913,10.46,16.48,10.826z"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M17.38,3.627
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M17.38,3.627
 	c-0.233,0.666-0.5,1.266-0.8,1.8c0.733,1.134,1.133,2.417,1.2,3.85l0.149,0.101c-0.033,0.066-0.083,0.133-0.149,0.199
 	c0,0.033,0,0.084,0,0.15c0,1.166-0.2,2.233-0.601,3.2c0.167,0.233,0.334,0.483,0.5,0.75l0.4,0.6l0.2,0.3
 	c-0.9,0.467-1.767,0.783-2.601,0.95c-0.1,0-0.183,0.017-0.25,0.05c-0.034,0.002-0.067,0.018-0.1,0.051
@@ -145,96 +145,96 @@
 	c0-0.133,0-0.267,0-0.4c-0.3-0.3-0.6-0.633-0.9-1c0.4-0.3,0.801-0.566,1.2-0.8c0.367-1.399,1.084-2.634,2.15-3.7
 	c1.434-1.434,3.116-2.232,5.05-2.399c0.066-0.134,0.15-0.267,0.25-0.4l0.65-0.85c0.5,0.399,0.916,0.833,1.25,1.3
 	c1.399,0.2,2.683,0.75,3.85,1.65c0.5,0,1.066,0.066,1.7,0.199l0.45,0.101L17.38,3.627z" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M16.58,5.427
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M16.58,5.427
 	c-0.133,0.2-0.267,0.399-0.4,0.6c-0.1,0.233-0.217,0.417-0.35,0.55c0.267,0.566,0.467,1.167,0.6,1.801
 	c0.167,0.1,0.351,0.217,0.551,0.35l0.399,0.25l0.4,0.3" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M6.28,5.377
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M6.28,5.377
 	c0.434,0.3,0.95,0.883,1.55,1.75l0.65,1.649C8.88,8.91,9.23,9.21,9.53,9.677L9.43,9.127L9.38,8.826
 	C9.313,8.561,9.297,8.21,9.33,7.776c0-0.433,0.1-0.8,0.3-1.1c-0.167-0.467-0.433-0.9-0.8-1.3c-0.167-0.2-0.333-0.384-0.5-0.551
 	l-0.8-0.399c-0.566-0.267-1.2-0.5-1.9-0.7c-0.233-0.066-0.467-0.117-0.7-0.15v0.7l-0.05,0.4c-0.066,0.767-0.066,1.45,0,2.05
 	c0,0.1,0.017,0.233,0.05,0.4c0.134,0.633,0.634,1.232,1.5,1.8c0.167-0.101,0.4-0.184,0.7-0.25c0.467-0.101,0.917-0.067,1.351,0.1" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M4.93,4.276
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M4.93,4.276
 	c-0.166,0.134-0.333,0.267-0.5,0.4c-0.666,0.667-1.166,1.384-1.5,2.149l0.5-0.1c0.467-0.133,0.95-0.133,1.45,0" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M1.08,9.326
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M1.08,9.326
 	c0.4,0.4,0.833,0.75,1.3,1.051c0.134,0.1,0.267,0.199,0.4,0.3c0.133,0.134,0.333,0.233,0.6,0.3c0.367,0.033,0.783,0.017,1.25-0.05
 	c0.233-0.4,0.5-0.8,0.8-1.2l0.45-0.45c0.2-0.1,0.384-0.216,0.55-0.35" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M2.93,6.826L2.48,6.927
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M2.93,6.826L2.48,6.927
 	c-0.367,0.167-0.733,0.366-1.101,0.6" style="stroke: rgb(0, 0, 0);"></path>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" x1="4.83" y1="9.127" x2="1.28" y2="8.526" style="stroke: rgb(0, 0, 0);"></line>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M10.73,1.477
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" x1="4.83" y1="9.127" x2="1.28" y2="8.526" style="stroke: rgb(0, 0, 0);"></line>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M10.73,1.477
 	c0.199,0.267,0.366,0.533,0.5,0.8l0.35,0.65c0.434,0.134,0.85,0.316,1.25,0.55c0.367-0.233,0.733-0.35,1.1-0.35
 	c0.2,0,0.417,0,0.65,0" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M9.63,6.677
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M9.63,6.677
 	c0.101-0.2,0.25-0.366,0.45-0.5c0.4-0.333,0.9-0.634,1.5-0.9l0.3-0.05c0.033-0.3,0.05-0.6,0.05-0.9c0-0.199-0.017-0.383-0.05-0.55
 	l-0.3-0.85" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M8.58,1.427
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M8.58,1.427
 	c-0.3,0.466-0.55,0.933-0.75,1.399c-0.066,0.101-0.116,0.2-0.15,0.301C7.48,3.526,7.43,3.96,7.53,4.427" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M9.53,5.227
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M9.53,5.227
 	c0.133-0.367,0.233-0.816,0.3-1.35c0.033-0.434,0.033-0.851,0-1.25c-0.033-0.434-0.1-0.851-0.2-1.25" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M9.53,9.677v0.05
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M9.53,9.677v0.05
 	c0.292,0.13,0.509,0.197,0.649,0.2h0.2c0.033,0,0.083,0,0.15,0c0.633-0.067,1.183-0.384,1.649-0.95c0.167-0.2,0.317-0.483,0.45-0.85
 	l0.05-0.25l0.051-0.101c0.033-0.167,0.05-0.399,0.05-0.7c0-0.266-0.017-0.55-0.05-0.85c-0.033-0.367-0.134-0.767-0.301-1.2
 	l-0.55,0.2c0.067,0.533-0.183,1.184-0.75,1.95c-0.667,0.933-1.233,1.583-1.7,1.95" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M8.73,12.377l-0.95,1.55
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M8.73,12.377l-0.95,1.55
 	c-0.434,0.966-0.65,1.816-0.65,2.55c-0.033,0.166-0.033,0.35,0,0.55c0.134-0.1,0.233-0.167,0.3-0.2
 	c0.134-0.066,0.25-0.116,0.351-0.149c0.467-0.267,0.866-0.534,1.2-0.8c0.199-0.101,0.35-0.217,0.449-0.351
 	c0.601-0.5,0.867-1.267,0.801-2.3v-0.1C9.997,12.96,9.797,12.76,9.63,12.526c-0.433-0.566-0.55-1.2-0.35-1.899
 	c0.033-0.134,0.066-0.234,0.1-0.301c0.033-0.133,0.067-0.232,0.101-0.3c0-0.033,0.017-0.066,0.05-0.1h0.649" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M12.73,7.776
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M12.73,7.776
 	c0.732-0.333,1.383-0.417,1.949-0.25c0.233-0.167,0.467-0.316,0.7-0.45l0.25-0.3c0.067-0.066,0.134-0.134,0.2-0.2" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M16.73,3.427
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M16.73,3.427
 	c-0.2,0.1-0.567,0.333-1.101,0.7c-0.3,0.199-0.633,0.434-1,0.699c-0.533,0.4-1.167,0.867-1.899,1.4" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M17.38,8.977
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M17.38,8.977
 	c-0.233,0.066-0.517,0.15-0.85,0.25c-0.5,0.1-1.101,0.2-1.8,0.3c-1.301,0.134-2.067,0.2-2.301,0.2" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M14.68,7.526
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M14.68,7.526
 	c0.067,0,0.134,0.017,0.2,0.05c0.5,0.2,1.017,0.467,1.55,0.801" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M11.93,4.326
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M11.93,4.326
 	c0.301-0.366,0.601-0.649,0.9-0.85" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M5.63,3.727
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M5.63,3.727
 	c0.667-0.434,1.4-0.733,2.2-0.9" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M17.18,12.927
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M17.18,12.927
 	c-0.333-0.4-0.649-0.767-0.949-1.101l-0.051-0.05c-0.133-0.134-0.333-0.267-0.6-0.399c-0.2,0.133-0.367,0.217-0.5,0.25l-0.65,0.149
 	c-0.399,0.101-0.816,0.116-1.25,0.05c0.101,0.434,0.184,0.851,0.25,1.25c0,0.101,0,0.2,0,0.301c0.667,0.033,1.317,0.116,1.95,0.25
 	c0.4,0.066,0.783,0.149,1.15,0.25l0.149,0.05l1.4,0.35" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M16.23,11.826
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M16.23,11.826
 	c0.1-0.333,0.183-0.666,0.25-1c-0.301,0.2-0.584,0.384-0.851,0.551h-0.05" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M10.53,9.927
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M10.53,9.927
 	c0.333,0.033,0.667,0.1,1,0.2c0.733,0.199,1.183,0.583,1.35,1.149c0.101,0.2,0.2,0.384,0.3,0.55" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M13.08,17.276
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M13.08,17.276
 	c0.1-0.533,0.167-1.05,0.2-1.55c0-0.166,0-0.316,0-0.45c0.033-0.5-0.134-0.983-0.5-1.45c-0.5-0.033-0.95-0.083-1.351-0.149
 	c-0.232-0.101-0.449-0.167-0.649-0.2l0.75,2.15c0.133,0.266,0.267,0.533,0.399,0.8c0.2,0.433,0.384,0.8,0.551,1.1
 	c0.133,0.267,0.25,0.45,0.35,0.55" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M13.28,15.727
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M13.28,15.727
 	c0.133-0.1,0.283-0.2,0.45-0.3c-0.167-0.034-0.317-0.083-0.45-0.15" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M12.78,13.826
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M12.78,13.826
 	c0.267,0,0.5,0,0.7,0c0-0.133-0.018-0.283-0.051-0.449" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M13.73,15.427
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M13.73,15.427
 	c0.199,0.066,0.399,0.116,0.6,0.149h0.45c0.166,0,0.383,0,0.649,0" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M9.53,9.727l-0.101,0.3
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M9.53,9.727l-0.101,0.3
 	l-0.25,0.55l-0.6,0.801c-0.533,0.566-1.066,0.833-1.6,0.8c-0.233,0-0.434-0.017-0.601-0.05c-0.333,0.533-0.533,1.066-0.6,1.6v0.85
 	v0.15c0.033,0.4,0.116,0.816,0.25,1.25c0.1,0.434,0.25,0.883,0.45,1.35c0.233-0.1,0.449-0.199,0.649-0.3" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M10.23,13.127
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M10.23,13.127
 	c0.066,0,0.116,0.033,0.149,0.1l0.351,0.2c0.033,0,0.05,0.017,0.05,0.05" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M9.43,10.026l-2.05,0.55
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M9.43,10.026l-2.05,0.55
 	c-1.267,0.5-2.116,0.884-2.55,1.15c0.233,0.066,0.483,0.166,0.75,0.3c0.267,0.034,0.533,0.067,0.8,0.101" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M7.78,16.677
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M7.78,16.677
 	c0.533,0.1,1.083,0.149,1.649,0.149c0.067,0,0.134,0,0.2,0c-0.033-0.033-0.066-0.066-0.1-0.1c-0.167-0.2-0.351-0.483-0.55-0.85" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M9.63,16.826
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M9.63,16.826
 	c0.134,0.167,0.333,0.351,0.601,0.551c0.267,0.199,0.55,0.383,0.85,0.55" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M13.43,13.076
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M13.43,13.076
 	c-0.666,0.033-2.017-0.883-4.05-2.75" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M4.83,11.727
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M4.83,11.727
 	c-0.167-0.033-0.316-0.084-0.45-0.15c0.066-0.199,0.15-0.416,0.25-0.649" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M1.73,13.026
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M1.73,13.026
 	c0.066-0.134,0.133-0.267,0.199-0.399l0.45-0.851c0.066-0.066,0.134-0.116,0.2-0.149c-0.1-0.4-0.167-0.816-0.2-1.25" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M2.58,11.627
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M2.58,11.627
 	c0.233-0.234,0.5-0.45,0.8-0.65" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M2.03,14.727
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M2.03,14.727
 	c0.133,0,0.333-0.05,0.6-0.15c0.267-0.166,0.634-0.399,1.101-0.699c0.1-0.066,0.216-0.15,0.35-0.25l1.5-1.601" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M3.28,15.377
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M3.28,15.377
 	c0.434,0,0.85-0.033,1.25-0.101c0.133-0.033,0.267-0.066,0.399-0.1c0.301-0.134,0.584-0.333,0.851-0.601" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M4.93,15.177
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M4.93,15.177
 	c0.334,0.3,0.7,0.566,1.101,0.8" style="stroke: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M16.48,10.826
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M16.48,10.826
 	c0.433-0.366,0.866-0.783,1.3-1.25" style="stroke: rgb(0, 0, 0);"></path>
 </svg>

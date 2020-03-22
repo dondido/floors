@@ -101,31 +101,31 @@
 	h-1.25h-0.7h-0.949h-0.75h-0.65h-0.95h-0.85h-0.65h-0.95H8.976h-1.15h-0.75h-0.95h-0.8h-0.75h-0.95H2.926V14.625z M25.476,9.274
 	h15.3v0.05h-1.2h-0.649h-0.95h-0.8h-0.7h-0.95h-0.85h-0.65h-0.95h-0.85h-1.15h-0.7h-0.949h-0.9h-0.55h-0.95h-0.85h-0.7V9.274z
 	 M21.775,9.274h2.75v0.05h-0.8h-1.351h-0.6V9.274z" style="fill: rgb(0, 0, 0);"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
 	M43.426,0.574v7.5l-0.351,1.2v5.351c0,0.3-0.149,0.449-0.45,0.449h-1.85h-37.9H0.926c-0.301,0-0.45-0.149-0.45-0.449V9.274
 	l-0.351-1.2v-7.5c0-0.3,0.15-0.449,0.45-0.449h42.4C43.275,0.125,43.426,0.274,43.426,0.574z" style="stroke: rgb(0, 0, 0);"></path>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	20.825,9.274 2.875,9.274 2.875,14.625 2.875,15.074 " style="stroke: rgb(0, 0, 0);"></polyline>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="2.875" y1="9.274" x2="0.476" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="40.775" y1="9.274" x2="40.775" y2="9.324" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="40.775" y1="14.625" x2="40.775" y2="15.074" style="stroke: rgb(0, 0, 0);"></line>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="2.875" y1="9.274" x2="0.476" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="40.775" y1="9.274" x2="40.775" y2="9.324" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="40.775" y1="14.625" x2="40.775" y2="15.074" style="stroke: rgb(0, 0, 0);"></line>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	43.075,9.274 40.775,9.274 25.476,9.274 " style="stroke: rgb(0, 0, 0);"></polyline>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	0.125,8.074 14.676,8.074 14.476,7.524 14.476,7.125 19.476,7.125 19.476,6.074 20.525,6.074 20.525,7.125 22.825,7.125 
 	22.825,6.074 23.825,6.074 23.825,7.125 28.926,7.125 28.926,7.524 28.676,8.074 43.426,8.074 " style="stroke: rgb(0, 0, 0);"></polyline>
-<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
 	14.676,8.074 14.875,8.625 28.426,8.625 28.676,8.074 " style="stroke: rgb(0, 0, 0);"></polyline>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="23.825" y1="7.125" x2="22.825" y2="7.125" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="21.775" y1="9.274" x2="20.825" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="24.525" y1="9.274" x2="21.775" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="20.525" y1="7.125" x2="19.476" y2="7.125" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="24.525" y1="9.274" x2="25.476" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
-<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="14.476" y1="7.524" x2="28.926" y2="7.524" style="stroke: rgb(0, 0, 0);"></line>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M34.976,18.675
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="23.825" y1="7.125" x2="22.825" y2="7.125" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="21.775" y1="9.274" x2="20.825" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="24.525" y1="9.274" x2="21.775" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="20.525" y1="7.125" x2="19.476" y2="7.125" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="24.525" y1="9.274" x2="25.476" y2="9.274" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="14.476" y1="7.524" x2="28.926" y2="7.524" style="stroke: rgb(0, 0, 0);"></line>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M34.976,18.675
 	c0-0.7-0.351-1.05-1.05-1.05h-23.5c-0.7,0-1.051,0.35-1.051,1.05v5.7c0,0.699,0.351,1.05,1.051,1.05h23.5
 	c0.699,0,1.05-0.351,1.05-1.05V18.675z" style="stroke: rgb(0, 0, 0);"></path>
-<rect x="8.726" y="16.925" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" width="26.95" height="9.2" style="stroke: rgb(0, 0, 0);"></rect>
+<rect x="8.726" y="16.925" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" width="26.95" height="9.2" style="stroke: rgb(0, 0, 0);"></rect>
 <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.1" d="M2.926,14.625V9.324h0.699
 	 M4.575,9.324h0.75h0.8v3.9h0.45h0.5v-3.9h0.75h1.15h0.899v3.9h0.351h0.6v-3.9h0.65h0.85h0.95h0.65h0.75 M15.625,9.324h0.7h1.25
 	h0.851 M19.375,9.324h0.601h0.85v-0.05 M2.926,14.625h1.199v-1.4h-0.5v-3.9 M40.775,9.324v5.301h-1.2 M38.926,9.324h0.649h1.2

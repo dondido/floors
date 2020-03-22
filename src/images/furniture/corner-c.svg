@@ -7,10 +7,10 @@
 	11.875,23.375 3.925,31.325 15.375,42.774 23.325,34.825 "></polygon>
 <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="5.575,31.375 15.274,41.075 21.625,34.725 11.925,25.024 
 	5.575,31.375 11.925,25.024 21.625,34.725 15.274,41.075 "></polygon>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" d="M45.875,38.325
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M45.875,38.325
 	c0-0.101,0-0.2,0-0.301c0-2.6-1.066-4.649-3.2-6.149c-0.7-0.467-1.45-0.851-2.25-1.15l-1-0.3h-12.55c-4.667,0-7.95-1.883-9.851-5.65
 	c-0.6-1.166-1.017-2.466-1.25-3.899l-0.199-1.75v-11.4c0-3.066-1.267-5.25-3.801-6.55c-0.8-0.4-1.683-0.7-2.649-0.9l-1.15-0.15
 	h-7.85v45.899h45.75v-5.55C45.875,39.808,45.875,39.091,45.875,38.325z" style="stroke: rgb(0, 0, 0);"></path>
-<rect x="5.528" y="27.453" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -0.128 66.0964)" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" width="16.193" height="11.243" style="stroke: rgb(0, 0, 0);"></rect>
-<rect x="6.741" y="28.559" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -0.1546 66.0356)" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.25" width="13.717" height="8.981" style="stroke: rgb(0, 0, 0);"></rect>
+<rect x="5.528" y="27.453" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -0.128 66.0964)" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" width="16.193" height="11.243" style="stroke: rgb(0, 0, 0);"></rect>
+<rect x="6.741" y="28.559" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -0.1546 66.0356)" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" width="13.717" height="8.981" style="stroke: rgb(0, 0, 0);"></rect>
 </svg>
