@@ -175,19 +175,19 @@ $furnitureControl.querySelector('.furniture-control-rotate-minus-button').onclic
 };
 $furnitureControl.querySelector('.furniture-control-width-plus-button').onclick = () => {
     $furnitureHorizontalInput.value ++;
-    $activeEmbed.querySelector('svg').setAttribute('width', Math.round($furnitureHorizontalInput.value / 1.678));
+    updateEmbedWidth();
 };
 $furnitureControl.querySelector('.furniture-control-width-minus-button').onclick = () => {
     $furnitureHorizontalInput.value --;
-    $activeEmbed.querySelector('svg').setAttribute('width', Math.round($furnitureHorizontalInput.value / 1.678));
+    updateEmbedWidth();
 };
 $furnitureControl.querySelector('.furniture-control-height-plus-button').onclick = () => {
     $furnitureVerticalInput.value ++;
-    $activeEmbed.querySelector('svg').setAttribute('height', Math.round($furnitureVerticalInput.value / 1.678));
+    updateEmbedHeight();
 };
 $furnitureControl.querySelector('.furniture-control-height-minus-button').onclick = () => {
     $furnitureVerticalInput.value --;
-    $activeEmbed.querySelector('svg').setAttribute('height', Math.round($furnitureVerticalInput.value / 1.678));
+    updateEmbedHeight();
 };
 document.querySelector('.furniture-reset-button').onclick = () => {
     Array.from(document.querySelectorAll('.furniture-embed'), deleteFurnitureEmbed);
