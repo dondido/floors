@@ -47,7 +47,6 @@ const selectOption = function(e) {
     const { target, currentTarget } = e;
     currentTarget.classList.toggle('expand');
     if (target.classList.contains('selected') === false) {
-        console.log(222, this.$panel);
         this.$panel.hidden = true;
         this.$option.classList.remove('selected');
         this.$panel = $furniturePanels[$furnitureOptions.indexOf(target)];
