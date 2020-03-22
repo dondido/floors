@@ -39,7 +39,7 @@ const addFurniture = ({ currentTarget, left, top }) => {
 };
 const slotButton = async ($target) => {
     const $placeHolder = $target.firstElementChild;
-    const response = await fetch(`/images/furniture/${$placeHolder.dataset.src}.svg`);
+    const response = await fetch(`images/furniture/${$placeHolder.dataset.src}.svg`);
     const svg = await response.text();
     $placeHolder.innerHTML = svg;
     $target.onclick = addFurniture;
