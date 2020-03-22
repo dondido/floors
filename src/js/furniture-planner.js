@@ -47,7 +47,7 @@ const slotButton = async ($target) => {
 const selectOption = function(e) {
     const { target, currentTarget } = e;
     currentTarget.classList.toggle('expand');
-    if (target.classList.contains('selected') === false) {
+    if (target.classList.contains('selected') === false && target.isSameNode(currentTarget) === false) {
         this.$panel.hidden = true;
         this.$option.classList.remove('selected');
         this.$panel = $furniturePanels[$furnitureOptions.indexOf(target)];

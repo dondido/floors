@@ -24,7 +24,7 @@ const resize = () => {
 const selectFloor = function(e) {
     const { target, currentTarget } = e;
     currentTarget.classList.toggle('expand');
-    if (target.classList.contains('selected') === false) {
+    if (target.classList.contains('selected') === false && target.isSameNode(currentTarget) === false) {
         const id = `#${target.dataset.ref}`;
         this.$option.classList.remove('selected');
         this.$option = target;
