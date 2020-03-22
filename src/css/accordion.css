@@ -1,5 +1,6 @@
 #show-furniture,
 #lock-furniture,
+.left-menu-panel [hidden],
 #show-furniture:checked ~ .main .furniture-embed {
     display: none;
 }
@@ -73,6 +74,9 @@
     outline: none;
 }
 .left-menu-panel {
+    display: flex;
+    position: relative;
+    flex-direction: column;
     overflow: hidden;
     background-color: white;
     flex-grow: 0;
@@ -95,7 +99,7 @@
 }
 .furniture-tools {
     position: relative;
-    height: 50px;
+    min-height: 50px;
     padding: 15px;
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }
@@ -121,7 +125,7 @@
     border: 1px solid #f2f2f2;
     border-radius: 4px;
     padding: 5px;
-    width: 104px;
+    width: 100px;
     margin: 20px 20px 0;
     font-size: 12px;
     display: flex;
@@ -130,6 +134,13 @@
     justify-content: space-between;
     cursor: pointer;
 }
+.furniture-button [data-src] {
+    margin: auto;
+}
+@-moz-document url-prefix() {
+    .furniture-button [data-src] {
+    }
+}
 .furniture-button:focus {
     outline: none;
 }
@@ -137,8 +148,12 @@
     margin-top: 10px;
 }
 .furniture-panel {
+    overflow: auto;
+}
+.furniture-panel-content {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 20px;
 }
 .embed-menu {
     position: absolute;
@@ -230,4 +245,20 @@
     content: url(../images/eye.svg);
     margin: 3px;
     display: block;
+}
+.furniture-panel {
+    scrollbar-color: #aeb3b9 #f1f1f1;
+    scrollbar-width: thin;
+}
+/* width */
+.furniture-panel::-webkit-scrollbar {
+    width: 6px;
+}
+/* Track */
+.furniture-panel::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}   
+/* Handle */
+.furniture-panel::-webkit-scrollbar-thumb {
+    background: #aeb3b9; 
 }

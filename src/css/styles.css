@@ -610,6 +610,7 @@ body {
 }
 .furniture-control {
     position: absolute;
+    top: 80px;
 }
 .furniture-control-flip-horizontal-button,
 .furniture-control-flip-vertical-button {

@@ -47,12 +47,13 @@ const selectOption = function(e) {
     const { target, currentTarget } = e;
     currentTarget.classList.toggle('expand');
     if (target.classList.contains('selected') === false) {
-        this.$panel.hidden = false;
+        console.log(222, this.$panel);
+        this.$panel.hidden = true;
         this.$option.classList.remove('selected');
         this.$panel = $furniturePanels[$furnitureOptions.indexOf(target)];
         this.$option = target;
         this.$option.classList.add('selected');
-        this.$panel.hidden = true;
+        this.$panel.hidden = false;
     }
 };
 const blurEmbed = () => {
@@ -66,6 +67,7 @@ const focusEmbed = ({ detail: { $embed } }) => {
             $activeEmbed = $embed;
             $furnitureControl.hidden = false;
             $embed.prepend($furnitureTools);
+            updateFuntitureControl();
         }
     }
     else if($activeEmbed) {
@@ -110,7 +112,7 @@ const handleRotation = () => {
 };
 const rotateEmbed = ({ detail: { deg } }) => {
     $furnitureRotateInput.value = Math.round(deg + 180);
-    rotateEmbed();
+    handleRotation();
 };
 const resizeEmbed = ({ detail: { width, height } }) => {
     $furnitureHorizontalInput.value = width ? Math.round(width * 1.678) : $furnitureHorizontalInput.value;
@@ -158,7 +160,7 @@ $furnitureControl.querySelector('.furniture-control-reset-button').onclick = () 
     $svg.removeAttribute('transform');
 };
 $furnitureButtons.forEach(slotButton);
-$furnitureRotateInput.oninput = rotateEmbed;
+$furnitureRotateInput.oninput = handleRotation;
 $furnitureHorizontalInput.oninput = updateEmbedWidth;
 $furnitureVerticalInput.oninput = updateEmbedHeight;
 $furnitureControl.querySelector('.furniture-control-rotate-plus-button').onclick = () => {
@@ -175,7 +177,15 @@ $furnitureControl.querySelector('.furniture-control-width-plus-button').onclick 
 };
 $furnitureControl.querySelector('.furniture-control-width-minus-button').onclick = () => {
     $furnitureHorizontalInput.value --;
-    $activeEmbed.querySelector('svg').setAttribute('height', Math.round($furnitureHorizontalInput.value / 1.678));
+    $activeEmbed.querySelector('svg').setAttribute('width', Math.round($furnitureHorizontalInput.value / 1.678));
+};
+$furnitureControl.querySelector('.furniture-control-height-plus-button').onclick = () => {
+    $furnitureVerticalInput.value ++;
+    $activeEmbed.querySelector('svg').setAttribute('height', Math.round($furnitureVerticalInput.value / 1.678));
+};
+$furnitureControl.querySelector('.furniture-control-height-minus-button').onclick = () => {
+    $furnitureVerticalInput.value --;
+    $activeEmbed.querySelector('svg').setAttribute('height', Math.round($furnitureVerticalInput.value / 1.678));
 };
 document.querySelector('.furniture-reset-button').onclick = () => {
     Array.from(document.querySelectorAll('.furniture-embed'), deleteFurnitureEmbed);
