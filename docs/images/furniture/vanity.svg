@@ -1,0 +1,43 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="39.2px" height="21.65px" viewBox="0 0 39.2 21.65" enable-background="new 0 0 39.2 21.65" xml:space="preserve" class="ng-scope">
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="34.125,1.875 5.675,1.875 7.375,3.825 32.476,3.825 
+	34.125,1.875 32.476,3.825 7.375,3.825 5.675,1.875 "></polygon>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="36.476,0.675 36.476,1.325 33.625,4.675 6.175,4.675 
+	3.325,1.325 3.325,0.675 3.325,1.325 6.175,4.675 33.625,4.675 36.476,1.325 "></polygon>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M0.575,7.975h5.6c0.5-0.8,1.2-1.35,2.101-1.65
+	c0.1-0.033,0.2-0.067,0.3-0.1c0.7-0.167,1.4-0.117,2.1,0.15c0.967,0.367,1.95,0.717,2.95,1.05c0.566,0.167,1.15,0.35,1.75,0.55
+	c1.134,0.3,2.267,0.467,3.4,0.5c0.3,0,0.583,0,0.85,0s0.533,0,0.8,0c1.167-0.033,2.301-0.2,3.4-0.5c1.634-0.5,3.217-1.033,4.75-1.6
+	c0.8-0.3,1.583-0.316,2.35-0.05c0.9,0.3,1.617,0.85,2.15,1.65h5.6h-5.6c-0.533-0.8-1.25-1.35-2.15-1.65
+	c-0.767-0.267-1.55-0.25-2.35,0.05c-1.533,0.567-3.116,1.1-4.75,1.6c-1.1,0.3-2.233,0.467-3.4,0.5c-0.267,0-0.533,0-0.8,0
+	s-0.55,0-0.85,0c-1.134-0.033-2.267-0.2-3.4-0.5c-0.6-0.2-1.184-0.383-1.75-0.55c-1-0.333-1.983-0.684-2.95-1.05
+	c-0.699-0.267-1.399-0.316-2.1-0.15c-0.1,0.033-0.2,0.067-0.3,0.1c-0.9,0.3-1.601,0.85-2.101,1.65H0.575h-0.45v-6.4
+	c0-0.6,0.3-0.9,0.9-0.9h2.3v-0.55h33.15v0.55h1.75c0.566,0,0.85,0.3,0.85,0.9v6.4h-0.4v11c0,0.6-0.3,0.899-0.899,0.899h-10.75v1h1.6
+	v0.65h-4v-0.65h1.601v-1H12.925h-0.8h0.8v1h-0.8v-1h-10.7c-0.566,0-0.85-0.3-0.85-0.899V7.975z"></path>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="7.375,3.825 7.625,4.125 32.226,4.125 32.476,3.825 
+	32.226,4.125 7.625,4.125 "></polygon>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="12.125,20.875 12.925,20.875 14.525,20.875 14.525,21.525 
+	10.525,21.525 10.525,20.875 "></polygon>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M27.025,19.875h-0.8H27.025z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M27.025,20.875h-0.8H27.025z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M36.476,1.325H3.325H36.476z"></path>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+	34.125,1.875 5.675,1.875 7.375,3.825 32.476,3.825 " style="stroke: rgb(0, 0, 0);"></polygon>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M36.476,0.675v0.65l-2.851,3.35H6.175l-2.85-3.35v-0.65h-2.3c-0.601,0-0.9,0.3-0.9,0.9v6.4h0.45h5.6c0.5-0.8,1.2-1.35,2.101-1.65
+	c0.1-0.033,0.2-0.067,0.3-0.1c0.7-0.167,1.4-0.117,2.1,0.15c0.967,0.367,1.95,0.717,2.95,1.05c0.566,0.167,1.15,0.35,1.75,0.55
+	c1.134,0.3,2.267,0.467,3.4,0.5c0.3,0,0.583,0,0.85,0s0.533,0,0.8,0c1.167-0.033,2.301-0.2,3.4-0.5c1.634-0.5,3.217-1.033,4.75-1.6
+	c0.8-0.3,1.583-0.316,2.35-0.05c0.9,0.3,1.617,0.85,2.15,1.65h5.6h0.4v-6.4c0-0.6-0.283-0.9-0.85-0.9H36.476z" style="stroke: rgb(0, 0, 0);"></path>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+	3.325,0.675 3.325,0.125 36.476,0.125 36.476,0.675 " style="stroke: rgb(0, 0, 0);"></polyline>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+	7.375,3.825 7.625,4.125 32.226,4.125 32.476,3.825 " style="stroke: rgb(0, 0, 0);"></polyline>
+<rect x="12.125" y="19.875" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" width="0.8" height="1" style="stroke: rgb(0, 0, 0);"></rect>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" points="
+	12.925,20.875 14.525,20.875 14.525,21.525 10.525,21.525 10.525,20.875 12.125,20.875 " style="stroke: rgb(0, 0, 0);"></polyline>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M12.125,19.875h-10.7c-0.566,0-0.85-0.3-0.85-0.899v-11" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M38.675,7.975v11c0,0.6-0.3,0.899-0.899,0.899h-10.75v1h1.6v0.65h-4v-0.65h1.601v-1H12.925" style="stroke: rgb(0, 0, 0);"></path>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="27.025" y1="19.875" x2="26.226" y2="19.875" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="27.025" y1="20.875" x2="26.226" y2="20.875" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="36.476" y1="1.325" x2="3.325" y2="1.325" style="stroke: rgb(0, 0, 0);"></line>
+</svg>

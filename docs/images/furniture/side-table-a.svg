@@ -1,0 +1,20 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12.9px" height="12.85px" viewBox="0 0 12.9 12.85" enable-background="new 0 0 12.9 12.85" xml:space="preserve" class="ng-scope">
+<rect x="0.125" y="0.125" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" width="12.65" height="12.6"></rect>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M10.375,6.425h-3.9v3.9c1.067,0,1.967-0.367,2.7-1.101
+	C9.975,8.392,10.375,7.458,10.375,6.425c0,1.033-0.4,1.967-1.2,2.8c-0.733,0.733-1.633,1.101-2.7,1.101v-3.9H10.375z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M6.475,1.275v1.199c1.067,0,1.967,0.384,2.7,1.15
+	c0.8,0.767,1.2,1.7,1.2,2.8h1.15h-1.15c0-1.1-0.4-2.033-1.2-2.8c-0.733-0.767-1.633-1.15-2.7-1.15V1.275z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M6.475,2.475c-1.1,0-2.05,0.384-2.85,1.15
+	c-0.767,0.767-1.15,1.7-1.15,2.8h4V2.475v3.95h-4c0-1.1,0.384-2.033,1.15-2.8C4.425,2.858,5.375,2.475,6.475,2.475z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M6.475,11.575v-1.25c-1.1,0-2.05-0.367-2.85-1.101
+	c-0.767-0.833-1.15-1.767-1.15-2.8H1.325h1.149c0,1.033,0.384,1.967,1.15,2.8c0.8,0.733,1.75,1.101,2.85,1.101V11.575z"></path>
+<rect x="0.125" y="0.125" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" width="12.65" height="12.6" style="stroke: rgb(0, 0, 0);"></rect>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M10.375,6.425h-3.9v3.9
+	c1.067,0,1.967-0.367,2.7-1.101C9.975,8.392,10.375,7.458,10.375,6.425z" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M6.475,1.275v1.199
+	c1.067,0,1.967,0.384,2.7,1.15c0.8,0.767,1.2,1.7,1.2,2.8h1.15" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M6.475,2.475
+	c-1.1,0-2.05,0.384-2.85,1.15c-0.767,0.767-1.15,1.7-1.15,2.8h4V2.475z" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M6.475,11.575v-1.25
+	c-1.1,0-2.05-0.367-2.85-1.101c-0.767-0.833-1.15-1.767-1.15-2.8H1.325" style="stroke: rgb(0, 0, 0);"></path>
+</svg>

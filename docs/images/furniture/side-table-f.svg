@@ -1,0 +1,14 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18.25px" height="18.25px" viewBox="0 0 18.25 18.25" enable-background="new 0 0 18.25 18.25" xml:space="preserve" class="ng-scope">
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="9.024,18.125 6.074,18.125 6.074,0.125 6.074,18.125 
+	3.125,18.125 3.125,0.125 3.125,18.125 0.125,18.125 0.125,0.125 3.125,0.125 6.074,0.125 9.024,0.125 12.024,0.125 15.024,0.125 
+	15.024,18.125 12.024,18.125 12.024,0.125 12.024,18.125 9.024,18.125 9.024,0.125 "></polygon>
+<rect x="15.024" y="0.125" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" width="3.101" height="18"></rect>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" points="15.024,0.125 
+	12.024,0.125 9.024,0.125 6.074,0.125 3.125,0.125 0.125,0.125 0.125,18.125 3.125,18.125 6.074,18.125 9.024,18.125 12.024,18.125 
+	15.024,18.125 18.125,18.125 18.125,0.125 " style="stroke: rgb(0, 0, 0);"></polygon>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="12.024" y1="0.125" x2="12.024" y2="18.125" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="15.024" y1="18.125" x2="15.024" y2="0.125" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="9.024" y1="0.125" x2="9.024" y2="18.125" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="3.125" y1="18.125" x2="3.125" y2="0.125" style="stroke: rgb(0, 0, 0);"></line>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" x1="6.074" y1="18.125" x2="6.074" y2="0.125" style="stroke: rgb(0, 0, 0);"></line>
+</svg>

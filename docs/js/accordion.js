@@ -1,0 +1,1 @@
+const $accordionToggles=Array.from(document.querySelectorAll(".left-menu-accordion")),collapse=e=>e.setAttribute("aria-expanded",!1),attachListener=e=>e.onclick=({target:e})=>{const t="true"===e.getAttribute("aria-expanded");$accordionToggles.forEach(collapse),e.setAttribute("aria-expanded",!t)};import("./furniture-planner.js"),$accordionToggles.forEach(attachListener);

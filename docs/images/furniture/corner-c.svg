@@ -1,0 +1,16 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46px" height="46.149px" viewBox="0 0 46 46.149" enable-background="new 0 0 46 46.149" xml:space="preserve" class="ng-scope">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M45.875,38.325c0,0.766,0,1.482,0,2.149v5.55H0.125V0.125h7.85
+	l1.15,0.15c0.967,0.2,1.85,0.5,2.649,0.9c2.534,1.3,3.801,3.483,3.801,6.55v11.4l0.199,1.75c0.233,1.433,0.65,2.733,1.25,3.899
+	c1.9,3.768,5.184,5.65,9.851,5.65h12.55l1,0.3c0.8,0.3,1.55,0.684,2.25,1.15c2.134,1.5,3.2,3.55,3.2,6.149
+	C45.875,38.125,45.875,38.225,45.875,38.325z"></path>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="11.875,23.375 23.325,34.825 15.375,42.774 3.925,31.325 
+	11.875,23.375 3.925,31.325 15.375,42.774 23.325,34.825 "></polygon>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="5.575,31.375 15.274,41.075 21.625,34.725 11.925,25.024 
+	5.575,31.375 11.925,25.024 21.625,34.725 15.274,41.075 "></polygon>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M45.875,38.325
+	c0-0.101,0-0.2,0-0.301c0-2.6-1.066-4.649-3.2-6.149c-0.7-0.467-1.45-0.851-2.25-1.15l-1-0.3h-12.55c-4.667,0-7.95-1.883-9.851-5.65
+	c-0.6-1.166-1.017-2.466-1.25-3.899l-0.199-1.75v-11.4c0-3.066-1.267-5.25-3.801-6.55c-0.8-0.4-1.683-0.7-2.649-0.9l-1.15-0.15
+	h-7.85v45.899h45.75v-5.55C45.875,39.808,45.875,39.091,45.875,38.325z" style="stroke: rgb(0, 0, 0);"></path>
+<rect x="5.528" y="27.453" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -0.128 66.0964)" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" width="16.193" height="11.243" style="stroke: rgb(0, 0, 0);"></rect>
+<rect x="6.741" y="28.559" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -0.1546 66.0356)" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" width="13.717" height="8.981" style="stroke: rgb(0, 0, 0);"></rect>
+</svg>

@@ -1,0 +1,11 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="7.5px" height="28.1px" viewBox="0 0 7.5 28.1" enable-background="new 0 0 7.5 28.1" xml:space="preserve" class="ng-scope">
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="2.975,26.575 2.975,1.725 2.975,26.575 1.024,24.125 
+	1.024,21.025 1.024,7.125 0.975,4.225 2.975,1.725 2.975,0.125 7.375,0.125 7.375,27.975 2.975,27.975 "></polygon>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#908F8F" points="1.024,21.025 0.125,19.925 0.125,8.225 1.024,7.125 " style="fill: rgb(0, 0, 0);"></polygon>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" points="1.024,7.125 
+	1.024,21.025 1.024,24.125 2.975,26.575 2.975,1.725 0.975,4.225 " style="stroke: rgb(0, 0, 0);"></polygon>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" points="1.024,21.025 
+	0.125,19.925 0.125,8.225 1.024,7.125 " style="stroke: rgb(0, 0, 0);"></polyline>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" points="2.975,1.725 
+	2.975,0.125 7.375,0.125 7.375,27.975 2.975,27.975 2.975,26.575 " style="stroke: rgb(0, 0, 0);"></polyline>
+</svg>

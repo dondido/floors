@@ -1,0 +1,52 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="35.005px" height="19.45px" viewBox="0 0 35.005 19.45" enable-background="new 0 0 35.005 19.45" xml:space="preserve" class="ng-scope">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M27.103,3.425l6.15,0.2c0.267,0.066,0.483,0.267,0.65,0.6
+	c0.066,0.101,0.1,0.184,0.1,0.25c1.233,3.467,1.167,7.15-0.2,11.05c-0.133,0.234-0.367,0.367-0.7,0.4l-6,0.2v3.2h-19.2v-3.2l-6-0.2
+	c-0.333-0.033-0.567-0.166-0.7-0.4c-1.367-3.899-1.433-7.583-0.2-11.05c0-0.066,0.033-0.149,0.1-0.25
+	c0.167-0.333,0.383-0.533,0.65-0.6l6.15-0.2v-3.3h19.2V3.425v1.5V3.425z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M27.103,14.825v1.3V14.825c1.067,0.033,2.133,0.083,3.2,0.149
+	c1.467-3.466,1.467-6.884,0-10.25c-1.1,0.101-2.167,0.167-3.2,0.2V14.825v-9.9c1.034-0.033,2.1-0.1,3.2-0.2
+	c1.467,3.366,1.467,6.784,0,10.25C29.236,14.908,28.169,14.858,27.103,14.825z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M2.203,4.875h0.05c0.167,0.267,0.45,1.3,0.85,3.1
+	c0.367,1.866,0.05,4.05-0.95,6.55v0.051l0.05,0.05c0.267,0.566,0.783,0.716,1.55,0.45c0.333-0.033,0.65-0.066,0.95-0.101
+	c-1.467-3.466-1.467-6.884,0-10.25c-0.3-0.033-0.617-0.066-0.95-0.1c-0.567-0.333-1.067-0.267-1.5,0.2L2.203,4.875l0.05-0.05
+	c0.433-0.467,0.933-0.533,1.5-0.2c0.333,0.033,0.65,0.066,0.95,0.1c-1.467,3.366-1.467,6.784,0,10.25
+	c-0.3,0.034-0.617,0.067-0.95,0.101c-0.767,0.266-1.284,0.116-1.55-0.45l-0.05-0.05v-0.051c1-2.5,1.316-4.684,0.95-6.55
+	c-0.4-1.8-0.683-2.833-0.85-3.1H2.203c-1.033,3.1-1.05,6.316-0.05,9.649C1.153,11.191,1.169,7.975,2.203,4.875z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M7.903,4.925c-1.033-0.033-2.1-0.1-3.2-0.2
+	C5.803,4.825,6.87,4.892,7.903,4.925z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M7.903,14.825v-9.9v-1.5v1.5V14.825
+	c-1.067,0.033-2.133,0.083-3.2,0.149C5.77,14.908,6.836,14.858,7.903,14.825z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M7.903,16.125v-1.3V16.125z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M30.303,4.725c0.3-0.033,0.617-0.066,0.95-0.1
+	c0.566-0.333,1.066-0.267,1.5,0.2l0.05,0.05c1.033,3.1,1.05,6.316,0.05,9.649v0.101c-0.3,0.566-0.833,0.716-1.6,0.45
+	c-0.333-0.033-0.65-0.066-0.95-0.101c0.3,0.034,0.617,0.067,0.95,0.101c0.767,0.266,1.3,0.116,1.6-0.45v-0.101
+	c1-3.333,0.983-6.55-0.05-9.649l-0.05-0.05c-0.434-0.467-0.934-0.533-1.5-0.2C30.919,4.658,30.603,4.691,30.303,4.725z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M32.853,14.524c-1-2.5-1.316-4.684-0.95-6.55
+	c0.4-1.8,0.683-2.833,0.85-3.1h0.05h-0.05c-0.167,0.267-0.45,1.3-0.85,3.1C31.536,9.841,31.853,12.024,32.853,14.524z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M7.903,16.125l-6-0.2c-0.333-0.033-0.567-0.166-0.7-0.4c-1.367-3.899-1.433-7.583-0.2-11.05c0-0.066,0.033-0.149,0.1-0.25
+	c0.167-0.333,0.383-0.533,0.65-0.6l6.15-0.2" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M27.103,3.425l6.15,0.2c0.267,0.066,0.483,0.267,0.65,0.6c0.066,0.101,0.1,0.184,0.1,0.25c1.233,3.467,1.167,7.15-0.2,11.05
+	c-0.133,0.234-0.367,0.367-0.7,0.4l-6,0.2" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M27.103,14.825c1.067,0.033,2.133,0.083,3.2,0.149c1.467-3.466,1.467-6.884,0-10.25c-1.1,0.101-2.167,0.167-3.2,0.2" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M2.203,4.875h0.05c0.167,0.267,0.45,1.3,0.85,3.1c0.367,1.866,0.05,4.05-0.95,6.55v0.051l0.05,0.05
+	c0.267,0.566,0.783,0.716,1.55,0.45c0.333-0.033,0.65-0.066,0.95-0.101c-1.467-3.466-1.467-6.884,0-10.25
+	c-0.3-0.033-0.617-0.066-0.95-0.1c-0.567-0.333-1.067-0.267-1.5,0.2L2.203,4.875z" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M7.903,4.925c-1.033-0.033-2.1-0.1-3.2-0.2" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M7.903,14.825c-1.067,0.033-2.133,0.083-3.2,0.149" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M2.153,14.524c-1-3.333-0.983-6.55,0.05-9.649" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M30.303,4.725c0.3-0.033,0.617-0.066,0.95-0.1c0.566-0.333,1.066-0.267,1.5,0.2l0.05,0.05c1.033,3.1,1.05,6.316,0.05,9.649v0.101
+	c-0.3,0.566-0.833,0.716-1.6,0.45c-0.333-0.033-0.65-0.066-0.95-0.101" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3" d="
+	M32.853,14.524c-1-2.5-1.316-4.684-0.95-6.55c0.4-1.8,0.683-2.833,0.85-3.1h0.05" style="stroke: rgb(0, 0, 0);"></path>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" points="27.103,16.125 
+	27.103,19.325 7.903,19.325 7.903,16.125 7.903,14.825 7.903,4.925 7.903,3.425 7.903,0.125 27.103,0.125 27.103,3.425 
+	27.103,4.925 27.103,14.825 " style="stroke: rgb(0, 0, 0);"></polygon>
+</svg>

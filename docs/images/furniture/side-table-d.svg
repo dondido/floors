@@ -1,0 +1,26 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="14.75px" height="14.851px" viewBox="0 0 14.75 14.851" enable-background="new 0 0 14.75 14.851" xml:space="preserve" class="ng-scope">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M14.625,7.426c0,2-0.699,3.716-2.1,5.149
+	c-1.434,1.434-3.15,2.15-5.15,2.15s-3.699-0.717-5.1-2.15c-1.434-1.434-2.15-3.149-2.15-5.149s0.717-3.717,2.15-5.15
+	c1.4-1.434,3.1-2.15,5.1-2.15s3.717,0.717,5.15,2.15C13.926,3.709,14.625,5.426,14.625,7.426z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M11.325,7.426H7.426v3.899c1.066,0,1.966-0.366,2.699-1.1
+	C10.926,9.392,11.325,8.459,11.325,7.426c0,1.033-0.399,1.966-1.2,2.8c-0.733,0.733-1.633,1.1-2.699,1.1V7.426H11.325z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M7.426,2.275v1.2c1.066,0,1.966,0.383,2.699,1.149
+	c0.801,0.767,1.2,1.7,1.2,2.801h1.15h-1.15c0-1.101-0.399-2.034-1.2-2.801C9.392,3.858,8.492,3.476,7.426,3.476V2.275z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M7.426,7.426h-4c0,1.033,0.383,1.966,1.149,2.8
+	c0.8,0.733,1.75,1.1,2.851,1.1c-1.101,0-2.051-0.366-2.851-1.1c-0.767-0.834-1.149-1.767-1.149-2.8H7.426v-3.95
+	c-1.101,0-2.051,0.383-2.851,1.149c-0.767,0.767-1.149,1.7-1.149,2.801h-1.15h1.15c0-1.101,0.383-2.034,1.149-2.801
+	c0.8-0.767,1.75-1.149,2.851-1.149V7.426z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M7.426,12.575v-1.25V12.575z"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M14.625,7.426
+	c0-2-0.699-3.717-2.1-5.15c-1.434-1.434-3.15-2.15-5.15-2.15s-3.699,0.717-5.1,2.15c-1.434,1.434-2.15,3.15-2.15,5.15
+	s0.717,3.716,2.15,5.149c1.4,1.434,3.1,2.15,5.1,2.15s3.717-0.717,5.15-2.15C13.926,11.142,14.625,9.426,14.625,7.426z" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M11.325,7.426H7.426v3.899
+	c1.066,0,1.966-0.366,2.699-1.1C10.926,9.392,11.325,8.459,11.325,7.426z" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M7.426,2.275v1.2
+	c1.066,0,1.966,0.383,2.699,1.149c0.801,0.767,1.2,1.7,1.2,2.801h1.15" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M7.426,7.426h-4
+	c0,1.033,0.383,1.966,1.149,2.8c0.8,0.733,1.75,1.1,2.851,1.1" style="stroke: rgb(0, 0, 0);"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" d="M7.426,7.426v-3.95
+	c-1.101,0-2.051,0.383-2.851,1.149c-0.767,0.767-1.149,1.7-1.149,2.801h-1.15" style="stroke: rgb(0, 0, 0);"></path>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" x1="7.426" y1="12.575" x2="7.426" y2="11.325" style="stroke: rgb(0, 0, 0);"></line>
+</svg>

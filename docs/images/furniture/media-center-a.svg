@@ -1,0 +1,8 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55.85px" height="11.1px" viewBox="0 0 55.85 11.1" enable-background="new 0 0 55.85 11.1" xml:space="preserve" class="ng-scope">
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="15.875,0.125 15.875,10.975 15.875,0.125 39.975,0.125 
+	55.725,0.125 55.725,10.975 39.975,10.975 15.875,10.975 0.125,10.975 0.125,0.125 "></polygon>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M39.975,10.975V0.125V10.975z"></path>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" points="15.875,0.125 
+	39.975,0.125 55.725,0.125 55.725,10.975 39.975,10.975 15.875,10.975 0.125,10.975 0.125,0.125 15.875,0.125 15.875,10.975 " style="stroke: rgb(0, 0, 0);"></polyline>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#383635" stroke-width="0.3" x1="39.975" y1="10.975" x2="39.975" y2="0.125" style="stroke: rgb(0, 0, 0);"></line>
+</svg>
