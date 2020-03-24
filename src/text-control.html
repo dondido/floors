@@ -1,0 +1,33 @@
+<div class="text-control" hidden>
+    <div class="text-control-header">
+        <div class="text-control-header-title">Text Editor</div>
+        <button class="text-control-bin-button"></button>
+        <button class="text-control-x-button"></button>
+    </div>
+    <input id="lock-text" type="checkbox"/>
+    <fieldset class="text-control-body">
+        Text
+        <textarea class="text-control-textarea">Add Text</textarea>
+        Font Size
+        <input type="range" min="8" max="24" value="13" class="font-slider">
+        <div class="text-control-input">
+            <div>Highlight Text</div>
+            <input type="checkbox" id="text-control-highlight-toggle"/>
+            <label class="text-control-toggle" for="text-control-highlight-toggle"></label>
+        </div>
+        <div class="text-control-input">
+            <label for="lock-text" class="text-control-lock-button"></label>
+        </div>
+        <div class="text-control-input">
+            <div class="text-control-rotate-title">Rotate (deg)</div>
+            <div class="text-control-rotate-input-container">
+                <input type="number" class="text-control-rotate-input" value="0"/>
+                <button class="text-control-rotate-button">+</button>
+                <button class="text-control-rotate-button">-</button>
+            </div>
+        </div>
+        <div class="text-control-input">
+            <button class="text-control-reset-button"></button>
+        </div>
+    </fieldset>
+</div>

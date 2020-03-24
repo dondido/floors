@@ -20,6 +20,17 @@ const rotateByDegree = ({ target }) => {
     target.textContent === '+' ? $textControlRotateInput.value ++ : $textControlRotateInput.value --;
     rotateText({ target: $textControlRotateInput });
 };
+const focusText = ({ detail: { $text } }) => {
+    $textControl.hidden = false;
+    if($text.isSameNode($activeText)) {
+        return;
+    }
+    $activeText = $text;
+    $textControlBody.disabled = $activeText.classList.contains('disabled');
+    $textControlTextarea.value = $activeText.textContent;
+    $fontSlider.value = parseInt($activeText.style.fontSize) || 13;
+    $textControlRotateInput.value = $activeText.dataset.r || 0;
+};
 const attachRotateControl = $button => $button.onclick = rotateByDegree;
 $textControlBody.querySelector('.text-control-lock-button').onclick = () => {
     $textControlBody.disabled = !$textControlBody.disabled;
@@ -41,14 +52,4 @@ $textControl.querySelector('.text-control-bin-button').onclick = () => {
 $textControl.querySelector('.text-control-x-button').onclick = () => $textControl.hidden = true;
 $fontSlider.oninput = ({ target }) => $activeText.style.fontSize = `${target.value}px`;
 Array.from($textControlBody.querySelectorAll('.text-control-rotate-button')).forEach(attachRotateControl);
-export default ($text) => {
-    $textControl.hidden = false;
-    if($text.isSameNode($activeText)) {
-        return;
-    }
-    $activeText = $text;
-    $textControlBody.disabled = $activeText.classList.contains('disabled');
-    $textControlTextarea.value = $activeText.textContent;
-    $fontSlider.value = parseInt($activeText.style.fontSize) || 13;
-    $textControlRotateInput.value = $activeText.dataset.r || 0;
-};
+document.body.addEventListener('focus-text', focusText);

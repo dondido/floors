@@ -1,5 +1,4 @@
 import { Drag, Measure } from './gestures.js';
-import linkActiveText from './text-panel.js';
 import { setTransform } from './utils.js';
 
 let plan, $scene, $floor, $pristine, drag, measure;
@@ -172,7 +171,7 @@ const addText = () => {
     $text.dataset.y = $scene.height.baseVal.value / 2;
     $text.dataset.sx = Math.sign($view.dataset.sx);
     $floor.querySelector('foreignObject').appendChild($text);
-    linkActiveText($text);
+    document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
     setTransform($text);
 };
 const planPromise = fetch('plan.json')

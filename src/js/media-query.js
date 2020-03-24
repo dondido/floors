@@ -4,13 +4,21 @@ const insertMenu = (text) => {
     document.body.insertAdjacentHTML('afterbegin', text);
     import('./accordion.js');
 };
-const shouldLoadMenu = () => {
+const insertTextControl = (text) => {
+    document.querySelector('.right-menu').insertAdjacentHTML('afterbegin', text);
+    import('./text-panel.js');
+};
+const applyDesktopBreakpoint = () => {
     if (isDesktop()) {
-        window.removeEventListener('resize', shouldLoadMenu);
+        window.removeEventListener('resize', applyDesktopBreakpoint);
         document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="css/accordion.css" />');
-        return fetch('menu.html')
+        fetch('text-control.html')
+            .then(toText)
+            .then(insertTextControl);
+        fetch('menu.html')
             .then(toText)
             .then(insertMenu);
+        return true;
     }
 };
-shouldLoadMenu() || window.addEventListener('resize', shouldLoadMenu);
+applyDesktopBreakpoint() || window.addEventListener('resize', applyDesktopBreakpoint);

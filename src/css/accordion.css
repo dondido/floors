@@ -262,3 +262,29 @@
 .furniture-panel::-webkit-scrollbar-thumb {
     background: #aeb3b9; 
 }
+.floor-item-body,
+.floor-list {
+    padding: 0;
+    list-style: none;
+}
+.floor-item-summary::-webkit-details-marker {
+    display: none
+}
+.floor-item-summary {
+    font-weight: bold;
+    font-size: 19px;
+    list-style-image: none;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    color: #80858e;
+    cursor: pointer;
+}
+.floor-item-summary:focus {
+    outline: none;
+}
+.floor-item-details {
+    margin: 16px 12px;
+    border-bottom: 1px solid #aeb3b9;
+    padding: 16px 0;
+}

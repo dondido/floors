@@ -1,4 +1,3 @@
-import linkActiveText from './text-panel.js';
 import { setTransform } from './utils.js';
 
 class Gesture {
@@ -82,9 +81,9 @@ export class Drag extends Gesture {
         return this.$target.classList.contains('text-field') && this.$target.dataset.sx < 0
             || this.$target.classList.contains('furniture-embed') && this.$view.dataset.sx < 0;
     }
-    setActiveText($target) {
-        if($target.classList.contains('text-field')) {
-            linkActiveText($target);
+    setActiveText($text) {
+        if($text.classList.contains('text-field')) {
+            document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
         }
     }
     focusEmbed(e) {
