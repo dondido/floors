@@ -151,8 +151,9 @@
 }
 .furniture-panel-content {
     display: flex;
+    list-style: none;
     flex-wrap: wrap;
-    padding-bottom: 20px;
+    padding: 0 0 20px;
 }
 .embed-menu {
     position: absolute;

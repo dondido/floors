@@ -159,9 +159,10 @@ const insertView = (text) => {
 const handlePlan = (raw) => {
     plan = raw;
     document.querySelector('.plan-name').textContent = plan.name;
-    return fetch(plan.src)
+    fetch(plan.src)
         .then(handleText)
         .then(insertView);
+    return raw;
 };
 const addText = () => {
     const $text = document.createElement('pre');
@@ -174,6 +175,9 @@ const addText = () => {
     linkActiveText($text);
     setTransform($text);
 };
+const planPromise = fetch('plan.json')
+    .then(handleJson)
+    .then(handlePlan);
 document.querySelector('.print-button').onclick = () => window.print();
 document.querySelector('.reset-button').onclick = reset;
 document.querySelector('.text-button').onclick = addText;
@@ -182,8 +186,5 @@ $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
 
-fetch('plan.json')
-    .then(handleJson)
-    .then(handlePlan);
-
 export const getFloor = () => $floor;
+export default () => planPromise;

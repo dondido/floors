@@ -4,6 +4,7 @@ const attachListener = $target => $target.onclick = ({ target }) => {
     const expanded = target.getAttribute('aria-expanded') === 'true';
     $accordionToggles.forEach(collapse);
     target.setAttribute('aria-expanded', !expanded);
-}
+};
+import('./floor-options.js');
 import('./furniture-planner.js');
 $accordionToggles.forEach(attachListener);
