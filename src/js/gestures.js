@@ -81,10 +81,12 @@ export class Drag extends Gesture {
         return this.$target.classList.contains('text-field') && this.$target.dataset.sx < 0
             || this.$target.classList.contains('furniture-embed') && this.$view.dataset.sx < 0;
     }
-    setActiveText($text) {
-        if($text.classList.contains('text-field')) {
+    setActiveText($target) {
+        const $text = $target.classList.contains('text-field') && $target;
+        document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
+        /* if($text.classList.contains('text-field')) {
             document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
-        }
+        } */
     }
     focusEmbed(e) {
         const $furnitureEmbed = e.target.closest('.furniture-embed');

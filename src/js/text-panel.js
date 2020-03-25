@@ -21,6 +21,10 @@ const rotateByDegree = ({ target }) => {
     rotateText({ target: $textControlRotateInput });
 };
 const focusText = ({ detail: { $text } }) => {
+    if($text === false) {
+        $textControl.hidden = true;
+        return;
+    }
     $textControl.hidden = false;
     if($text.isSameNode($activeText)) {
         return;

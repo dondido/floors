@@ -266,6 +266,7 @@
 .floor-list {
     padding: 0;
     list-style: none;
+    margin-top: 16px;
 }
 .floor-item-summary::-webkit-details-marker {
     display: none
@@ -274,7 +275,6 @@
     font-weight: bold;
     font-size: 19px;
     list-style-image: none;
-    margin-bottom: 16px;
     display: flex;
     align-items: center;
     color: #80858e;
@@ -286,5 +286,16 @@
 .floor-item-details {
     margin: 16px 12px;
     border-bottom: 1px solid #aeb3b9;
-    padding: 16px 0;
+    padding: 0 0 16px;
+}
+.floor-item-body li {
+    padding: 5px 5px 5px 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 5px 0;
+    cursor: pointer;
+}
+.floor-item-body li:hover {
+    background-color: #d8dadd;
 }

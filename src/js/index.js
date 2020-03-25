@@ -29,7 +29,6 @@ const selectFloor = function(e) {
         this.$option = target;
         target.classList.add('selected');
         $dirty.appendChild($floor);
-        console.log(123, $dirty.querySelector(id))
         $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
         $scene.appendChild($floor);
         restore();
@@ -69,12 +68,12 @@ const interpolateForeign = ($text) => {
     $text.dataset.r = r * -1;
     setTransform($text);
 };
-const mirror = () => {
+const mirror = (e) => {
     if ($reverse.checked && $floor.dataset.reversed !== 'true') {
         const $texts = $floor.querySelectorAll('text');
         const interpolate = ($text, idx) => {
             const $target = $texts[idx];
-            if($text.dataset.flip === undefined) {
+            if($target.dataset.flip === undefined) {
                 const transform = $text.getAttribute('transform');
                 const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
                 $target.dataset.transform = transform;
@@ -89,14 +88,14 @@ const mirror = () => {
         $pristine.querySelectorAll(`#${$floor.id} text`).forEach(interpolate);
         $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
         $pristine.remove();
-        revertView();
+        e && revertView();
     }
     else if($reverse.checked === false && $floor.dataset.reversed === 'true') {
         const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
         $floor.dataset.reversed = false;
         $floor.querySelectorAll('text').forEach(interpolate);
         $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
-        revertView();
+        e && revertView();
     }
 };
 const init = () => {
