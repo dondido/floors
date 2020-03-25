@@ -29,6 +29,7 @@ const selectFloor = function(e) {
         this.$option = target;
         target.classList.add('selected');
         $dirty.appendChild($floor);
+        console.log(123, $dirty.querySelector(id))
         $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
         $scene.appendChild($floor);
         restore();
@@ -123,25 +124,30 @@ const setScale = () => {
         setTransform($view);
     }
 };
-const hideViewOptions = ({ id }) => document.getElementById(id).remove();
 const setFloor = ({name, id, options}, idx) => {
     const $floorOption = document.createElement('li');
-    const $target = document.getElementById(id);
-    $target.insertAdjacentHTML('beforeend', '<foreignObject data-drag-area=".view"></foreignObject>');
+    const $g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const ref = `floor-${id}`;
+    const hideViewOptions = ({ id }) => {
+        const $option = document.getElementById(id);
+        $option.setAttribute('display', 'none');
+        $g.appendChild($option);
+    };
+    $g.setAttribute('id', ref);
+    $g.appendChild(document.getElementById(id));
+    options && options.forEach(hideViewOptions);
+    $g.insertAdjacentHTML('beforeend', '<foreignObject data-drag-area=".view"></foreignObject>');
     $floorOption.textContent = name;
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
-    if(idx){
-        $pristine.appendChild($target);
-    }
-    else {
-        $floor = $target;
+    $pristine.appendChild($g);
+    if(idx === 0) {
+        $floor = $g.cloneNode(true);
         $floorOption.classList.add('selected');
-        $pristine.appendChild($target.cloneNode(true));
+        $scene.appendChild($floor)
     }
-    $floorOption.dataset.ref = id;
+    $floorOption.dataset.ref = ref;
     $floorSelector.appendChild($floorOption);
-    options && options.forEach(hideViewOptions);
 };
 const insertView = (text) => {
     $view.innerHTML = text;
@@ -185,5 +191,4 @@ $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
 
-export const getFloor = () => $floor;
-export default () => planPromise;
+export default () => ({ planPromise, $floor, $pristine });

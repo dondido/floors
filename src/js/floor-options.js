@@ -1,4 +1,5 @@
-import resolvePLan from './index.js';
+import inject from './index.js';
+
 
 const $floors = document.querySelector('.floor-option-template').content.firstElementChild.cloneNode(true);
 const $floorList = document.querySelector('.floor-list');
@@ -20,30 +21,15 @@ const setFloor = ({name, id, options}, idx) => {
     options.forEach(setOption);
     $floorList.appendChild($floor);
     
-    /* const $target = document.getElementById(id);
-    $target.insertAdjacentHTML('beforeend', '<foreignObject data-drag-area=".view"></foreignObject>');
-    $floorOption.textContent = name;
-    $floorOption.className = 'floor-option';
-    floorOptions.push($floorOption);
-    if(idx){
-        $pristine.appendChild($target);
-    }
-    else {
-        $floor = $target;
-        $floorOption.classList.add('selected');
-        $pristine.appendChild($target.cloneNode(true));
-    }
-    $floorOption.dataset.ref = id;
-    $floorSelector.appendChild($floorOption);
-    options && options.forEach(hideViewOptions); */
 };
 
 
 
 const setFloorOptions = (plan) => {
     plan.floors.forEach(setFloor);
-    console.log(123, resolvePLan, plan)
+    console.log(123, inject().$pristine)
 }
 
-resolvePLan()
+inject()
+    .planPromise
     .then(setFloorOptions);

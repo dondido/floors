@@ -1,4 +1,4 @@
-import { getFloor } from './index.js';
+import inject from './index.js';
 import { setTransform } from './utils.js';
 
 let $activeEmbed;
@@ -22,14 +22,14 @@ const updateFuntitureControl = () => {
 const addFurniture = ({ currentTarget, left, top }) => {
     const $embed = document.createElement('div');
     const $svg = currentTarget.firstElementChild.cloneNode(true);
-    const $floor = getFloor();
+    const { $floor } = inject();
     const $scene = $floor.parentElement;
     $furnitureControl.hidden = false;
     $activeEmbed = $embed;
     $svg.className = 'furniture-body';
     $embed.className = 'furniture-embed draggable';
     $embed.appendChild($svg);
-    getFloor().querySelector('foreignObject').appendChild($embed);
+    $floor.querySelector('foreignObject').appendChild($embed);
     $svg.firstElementChild.setAttribute('preserveAspectRatio', 'none');
     $svg.prepend($furnitureTools);
     $embed.dataset.x = left || $scene.width.baseVal.value / 2;
@@ -143,7 +143,7 @@ document.body.addEventListener('resize-embed', resizeEmbed);
 $furnitureSelector.onclick = selectOption.bind({ $panel: $furniturePanels[0], $option: $furnitureOptions[0] });
 $furnitureTools.querySelector('.embed-bin-button').onclick = () => {
     $activeEmbed.remove();
-    $activeEmbed = null;
+    blurEmbed();
 };
 $furnitureTools.querySelector('.embed-duplicate-button').onclick = ({ target }) => {
     const $furnitureBody = target.closest('.furniture-body');
