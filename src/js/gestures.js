@@ -73,6 +73,9 @@ export class Drag extends Gesture {
         document.body.onpointermove = null;
     }
     getPointerXY({ clientX, clientY }) {
+        if(this.$target.classList.contains('view')) {
+            return [clientX, clientY];
+        }
         const { dataset: { sy = 1, z = 1 }, offsetWidth, firstElementChild } = this.$area;
         const ratio = sy * z * Math.min(1, offsetWidth / firstElementChild.width.baseVal.value); 
         return [ clientX / ratio, clientY / ratio ];
@@ -84,9 +87,6 @@ export class Drag extends Gesture {
     setActiveText($target) {
         const $text = $target.classList.contains('text-field') && $target;
         document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
-        /* if($text.classList.contains('text-field')) {
-            document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
-        } */
     }
     focusEmbed(e) {
         const $furnitureEmbed = e.target.closest('.furniture-embed');
@@ -146,9 +146,9 @@ export class Drag extends Gesture {
                 : { dataset: {} };
             const { $scene } = this;
             const $target = e.target.closest('.draggable');
+            this.$target = $target;
             const { x = 0, y = 0 } = $target.dataset;
             const [ cx, cy ] = this.getPointerXY(e);
-            this.$target = $target;
             this.setActiveText($target);
             this.x1 = this.interpolate() ? - ($scene.width.baseVal.value - cx - x) : cx - x;
             this.y1 = cy - y;
