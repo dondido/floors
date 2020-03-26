@@ -23,11 +23,8 @@ const setFloor = ({name, id, options}, idx) => {
     
 };
 
-
-
 const setFloorOptions = (plan) => {
     plan.floors.forEach(setFloor);
-    console.log(123, inject().$pristine)
 }
 
 inject()

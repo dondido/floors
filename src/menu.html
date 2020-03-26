@@ -247,7 +247,20 @@
     <li class="floor-item">
         <details class="floor-item-details" open>
             <summary class="floor-item-summary"></summary>
-            <ul  class="floor-item-body"></ul>
+            <ul  class="floor-item-body" role="menu"></ul>
         </details>
     </li>
+</template>
+<template class="floor-option-item-template">
+    <li class="floor-option-item"><button class="floor-option-button"></button></li>
+</template>
+<template class="floor-option-item-template">
+    <div class="floor-option-info">
+        <div class="floor-option-info-desc">
+            <div>Selecting this option will also do the following</div>
+            <div>Disable and turn off:</div>
+            <ul class="floor-option-info-list"></ul>
+        </div>
+        <button class="floor-option-button">Click here to set options</button>
+    </div>
 </template>
