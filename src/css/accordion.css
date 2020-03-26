@@ -288,14 +288,22 @@
     border-bottom: 1px solid #aeb3b9;
     padding: 0 0 16px;
 }
-.floor-item-body li {
+.floor-option-item {
+    display: flex;
+}
+.floor-option-button {
+    width: 100%;
+    line-height: 19px;
+    margin: 5px 0;
     padding: 5px 5px 5px 15px;
     border-radius: 4px;
     font-size: 16px;
     box-sizing: border-box;
-    margin: 5px 0;
+    border: none;
+    background-color: transparent;
+    text-align: left;
     cursor: pointer;
 }
-.floor-item-body li:hover {
+.floor-option-button:hover {
     background-color: #d8dadd;
 }

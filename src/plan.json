@@ -10,11 +10,14 @@
             "options": [
                 {
                     "name": "Finished spaces",
-                    "id": "LL_OPT_1"
+                    "id": "LL_OPT_1",
+                    "enable": ["LL_OPT_2"],
+                    "disable": ["LLSFP"]
                 },
                 {
                     "name": "Finished basement and areaway",
-                    "id": "LL_OPT_2"
+                    "id": "LL_OPT_2",
+                    "disabled": "0"
                 },
                 {
                     "name": "Finished basement and areaway",
