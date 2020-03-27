@@ -1,5 +1,6 @@
 #show-furniture,
 #lock-furniture,
+.floor-option-info-desc,
 .left-menu-panel [hidden],
 #show-furniture:checked ~ .main .furniture-embed {
     display: none;
@@ -75,7 +76,6 @@
 }
 .left-menu-panel {
     display: flex;
-    position: relative;
     flex-direction: column;
     overflow: hidden;
     background-color: white;
@@ -222,6 +222,7 @@
 .furniture-control-flip-horizontal-button:hover:before,
 .furniture-control-flip-vertical-button:hover:before,
 .embed-resize-button:before,
+.floor-extra-option-button:before,
 .furniture-reset-button:hover:before {
     filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
 }
@@ -306,4 +307,60 @@
 }
 .floor-option-button:hover {
     background-color: #d8dadd;
+}
+.floor-option-info {
+    display: flex;
+    align-items: center;
+    padding: 0 18px 0 8px;
+    margin-right: -8px;
+}
+.floor-option-info:before {
+    content: url(../images/info.svg);
+}
+.floor-option-item:hover .floor-option-info-desc {
+    display: block;
+}
+.floor-option-info-desc {
+    position: fixed;
+    color: #000;
+    background-color: #f2f2f2;
+    box-shadow: 5px 3px 11px 0 rgba(0,0,0,.3);
+    border-radius: 11px;
+    border: 1px solid #bec4cc;
+    margin: -2px 0 0 32px;
+    padding: 10px;
+    font-size: 12px;
+    min-width: 100px;
+    max-width: 300px;
+    line-height: 20px;
+}
+.floor-option-info-list {
+    border-bottom: 1px solid;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+}
+.floor-option-info-desc:before {
+    position: absolute;
+    top: 50%;
+    left: -6px;
+    transform: translateY(-50%) rotate(45deg);
+    content: "";
+    box-sizing: border-box;
+    border: 7px solid #000;
+    border-color: transparent transparent #f2f2f2 #f2f2f2;
+    box-shadow: -1px 2px 0 0 #ccc;
+}
+.floor-extra-option-button:before {
+    content: url(../images/update-option.svg);
+    width: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.floor-extra-option-button {
+    border: 0;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    background-color: transparent;
 }

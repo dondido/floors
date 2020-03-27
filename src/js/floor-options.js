@@ -21,7 +21,7 @@ const setFloor = ({name, id, options}) => {
         if (disable) {
             const $floorInfo = $floorOptionInfo.cloneNode(true);
             $floorInfo.querySelector('.floor-option-info-list').innerHTML = disable.reduce(setDisabled, '');
-            $floorBody.appendChild($floorInfo);
+            $floorOption.appendChild($floorInfo);
         }
     };
     Object.assign(floorMap, options.reduce(mapNameToId, { [id]: name }));
