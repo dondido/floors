@@ -2,6 +2,7 @@
 #lock-furniture,
 .floor-option-info-desc,
 .left-menu-panel [hidden],
+.floor-option-button[data-disabled="0"] + .floor-option-info,
 #show-furniture:checked ~ .main .furniture-embed {
     display: none;
 }
@@ -301,8 +302,15 @@
     font-size: 16px;
     box-sizing: border-box;
     border: none;
-    background-color: transparent;
+    background-color: #d8dadd;
     text-align: left;
+    opacity: .5;
+    pointer-events: none;
+}
+.floor-option-button[data-disabled="0"] {
+    pointer-events: initial;
+    opacity: 1;
+    background-color: transparent;
     cursor: pointer;
 }
 .floor-option-button:hover {
@@ -363,4 +371,14 @@
     text-align: left;
     cursor: pointer;
     background-color: transparent;
+}
+.floor-option-button[aria-checked="true"] {
+    background-color: #29abe2;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.floor-option-button[aria-checked="true"]:before {
+    content: url(../images/tick.svg);
+    margin: 0 12px 0 -6px;
 }
