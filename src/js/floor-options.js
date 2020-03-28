@@ -5,23 +5,23 @@ const $floors = document.querySelector('.floor-option-template').content.firstEl
 const $floorOptionItem = document.querySelector('.floor-option-item-template').content.firstElementChild;
 const $floorOptionInfo = document.querySelector('.floor-option-info-template').content.firstElementChild;
 const $floorList = document.querySelector('.floor-list');
-const setDisabled = (acc, id) => `${acc}<li>${floorMap[id]}</li>`;
+const setDisabled = (acc, id) => `${acc}<li>${floorMap[id].name}</li>`;
 const mapNameToId = (acc, i) => Object.assign(acc, { [i.id]: i });
 
 const enableOption = ({ target }) => {
     const checked = target.getAttribute('aria-checked') !== 'true';
     const $floorBody = target.closest('.floor-item-body');
     const { id } = target.dataset;
-    console.log(123, id, floorMap[id])
     const { disable = [] } = floorMap[id];
-    const disableOthers = (ref) => {
-        console.log(112, ref)
+    const toggleOthers = (ref) => {
         const $target = $floorBody.querySelector(`[data-id="${ref}"]`);
-        $target.dataset.disabled ++;
+        $target.disabled = checked;
+        $target.setAttribute('aria-checked', false);
     };
+    target.disabled = false;
     target.setAttribute('aria-checked', checked);
     document.getElementById(id).setAttribute('display', checked ? 'inline' : 'none');
-    disable.forEach(disableOthers);
+    disable.forEach(toggleOthers);
 };
 
 const setFloor = (floor) => {

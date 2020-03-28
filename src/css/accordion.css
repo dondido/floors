@@ -2,7 +2,7 @@
 #lock-furniture,
 .floor-option-info-desc,
 .left-menu-panel [hidden],
-.floor-option-button[data-disabled="0"] + .floor-option-info,
+.floor-option-button + .floor-option-info,
 #show-furniture:checked ~ .main .furniture-embed {
     display: none;
 }
@@ -213,6 +213,8 @@
 .embed-duplicate-button:focus,
 .embed-rotate-button:focus,
 .embed-bin-button:focus,
+.floor-option-button,
+.floor-extra-option-button,
 .furniture-reset-button:focus {
     outline: none;
 }
@@ -301,22 +303,22 @@
     border-radius: 4px;
     font-size: 16px;
     box-sizing: border-box;
+    background-color: transparent;
     border: none;
-    background-color: #d8dadd;
     text-align: left;
     opacity: .5;
-    pointer-events: none;
 }
-.floor-option-button[data-disabled="0"] {
-    pointer-events: initial;
+.floor-option-button:hover {
+    background-color: #d8dadd;
+}
+.floor-option-button:not(:disabled) {
     opacity: 1;
-    background-color: transparent;
     cursor: pointer;
 }
 .floor-option-button:hover {
     background-color: #d8dadd;
 }
-.floor-option-info {
+.floor-option-button:disabled + .floor-option-info {
     display: flex;
     align-items: center;
     padding: 0 18px 0 8px;
