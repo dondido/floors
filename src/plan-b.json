@@ -11,16 +11,19 @@
                 {
                     "name": "Finished spaces",
                     "id": "LL_OPT_1",
+                    "disabled": "0",
                     "disable": ["LL_OPT_2", "LL_OPT_3"]
                 },
                 {
                     "name": "Finished basement and areaway",
                     "id": "LL_OPT_2",
+                    "disabled": "0",
                     "disable": ["LL_OPT_1", "LL_OPT_3"]
                 },
                 {
                     "name": "Finished basement and areaway",
                     "id": "LL_OPT_3",
+                    "disabled": "0",
                     "disable": ["LL_OPT_1", "LL_OPT_2"]
                 }
             ]
@@ -39,8 +42,7 @@
                 },
                 {
                     "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT3",
-                    "required": ["ML_OPT1", "ML_OPT2"]
+                    "id": "ML_OPT3"
                 }
             ]
         },
@@ -50,14 +52,11 @@
             "options": [
                 {
                     "name": "Master bath",
-                    "id": "UL_OPT1",
-                    "disable": ["UL"]
+                    "id": "UL_OPT1"
                 },
                 {
                     "name": "Elevation A&E",
-                    "id": "UL_OPT2",
-                    "disable": ["UL"],
-                    "required": ["UL_OPT1"]
+                    "id": "UL_OPT2"
                 }
             ]
         },
@@ -66,5 +65,20 @@
             "id": "OA"
         }
     ]
+    "options": ["LL_OPT_1", "LL_OPT_2", "LL_OPT_3", "ML_OPT1", "ML_OPT2", "ML_OPT3", "UL_OPT1", "UL_OPT2"],
+    "library": {
+        "LLSFP": {
+            "name": "Lower Level",
+            "options": ["LL_OPT_1", "LL_OPT_2", "LL_OPT_3"]
+        },
+        "ML": {
+            "name": "Main Level",
+            "options": ["ML_OPT1", "ML_OPT2", "ML_OPT3"]
+        },
+        "UL": {
+            "name": "Upper Level",
+            "options": ["UL_OPT1", "UL_OPT2"]
+        },
+    } 
 }
 

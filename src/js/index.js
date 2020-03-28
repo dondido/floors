@@ -1,7 +1,7 @@
 import { Drag, Measure } from './gestures.js';
 import { setTransform } from './utils.js';
 
-let plan, $scene, $floor, $pristine, drag, measure;
+let plan, $scene, $floor, $pristine, $selectedFloorOption, drag, measure;
 const handleJson = response => response.json();
 const handleText = response => response.text();
 const $mirror = document.querySelector('.mirror');
@@ -20,13 +20,12 @@ const floorOptions = [];
 const resize = () => {
     setDragGesture();
 };
-const selectFloor = function(e) {
-    const { target, currentTarget } = e;
-    currentTarget.classList.toggle('expand');
-    if (target.classList.contains('selected') === false && target.isSameNode(currentTarget) === false) {
+const selectFloor = ({ target }) => {
+    $floorSelector.classList.toggle('expand');
+    if (target.classList.contains('selected') === false && target.isSameNode($floorSelector) === false) {
         const id = `#${target.dataset.ref}`;
-        this.$option.classList.remove('selected');
-        this.$option = target;
+        $selectedFloorOption.classList.remove('selected');
+        $selectedFloorOption = target;
         target.classList.add('selected');
         $dirty.appendChild($floor);
         $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
@@ -127,11 +126,7 @@ const setFloor = ({name, id, options}, idx) => {
     const $floorOption = document.createElement('li');
     const $g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     const ref = `floor-${id}`;
-    const hideViewOptions = ({ id }) => {
-        const $option = document.getElementById(id);
-        $option.setAttribute('display', 'none');
-        $g.appendChild($option);
-    };
+    const hideViewOptions = ({ id }) => $pristine.appendChild(document.getElementById(id));
     $g.setAttribute('id', ref);
     $g.appendChild(document.getElementById(id));
     options && options.forEach(hideViewOptions);
@@ -156,7 +151,8 @@ const insertView = (text) => {
     drag = new Drag({ $scene, $view, $zoomSlider, zoom });
     measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
     init();
-    $floorSelector.onclick = selectFloor.bind({ $option: floorOptions[0] });
+    $selectedFloorOption = floorOptions[0];
+    $floorSelector.onclick = selectFloor;
     $zoomSlider.oninput = zoom;
     $port.onwheel = wheel;
 };
@@ -190,4 +186,4 @@ $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
 
-export default () => ({ planPromise, $floor, $pristine });
+export default () => ({ planPromise, $floor, $pristine, selectFloor });
