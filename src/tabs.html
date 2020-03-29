@@ -1,0 +1,30 @@
+<input type="checkbox" name="tabs" id="tab-options" />
+<ul class="mobile=tabs" role="tablist">
+    <li>
+        <label for="tab-options" role="tab" aria-selected="true">Options</label>
+    </li>
+</ul>
+<ul class="floor-list"></ul>
+<template class="floor-option-template">
+    <li class="floor-item">
+        <details class="floor-item-details" open>
+            <summary class="floor-item-summary"></summary>
+            <ul  class="floor-item-body" role="menu"></ul>
+        </details>
+    </li>
+</template>
+<template class="floor-option-item-template">
+    <li class="floor-option-item">
+        <button class="floor-option-button" role="menuitemcheckbox"></button>
+    </li>
+</template>
+<template class="floor-option-info-template">
+    <div class="floor-option-info">
+        <div class="floor-option-info-desc">
+            <div class="floor-option-info-content">Selecting this option will also do the following</div>
+            <div class="floor-option-info-content">Disable and turn off:</div>
+            <ul class="floor-option-info-list"></ul>
+            <button class="floor-extra-option-button">Click here to set options</button>
+        </div>
+    </div>
+</template>

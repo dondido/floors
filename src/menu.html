@@ -3,10 +3,16 @@
 <section class="left-menu">
     <label class="left-menu-toggle" for="left-menu-toggle"></label>
     <div class="left-menu-content">
-        <button class="left-menu-accordion" aria-expanded="true">Floorplan Options</button>
-        <div class="left-menu-panel">
+        <button class="left-menu-accordion floor-options-tab" aria-expanded="true">
+            <div><span class="desktop">Floorplan </span>Options</div>
+        </button>
+        <div class="left-menu-panel floor-options-panel">
             <div class="tab-content">
                 <button class="floor-reset-button">Reset Options</button>
+                <div class="floor-switcher-menu">
+                    <button class="floor-prev-button"></button>
+                    <button class="floor-next-button"></button>
+                </div>
                 <ul class="floor-list"></ul>
             </div>
         </div>

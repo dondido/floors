@@ -1,9 +1,9 @@
 const $accordionToggles = Array.from(document.querySelectorAll('.left-menu-accordion'));
 const collapse = $target => $target.setAttribute('aria-expanded', false);
-const attachListener = $target => $target.onclick = ({ target }) => {
-    const expanded = target.getAttribute('aria-expanded') === 'true';
+const attachListener = $target => $target.onclick = ({ currentTarget }) => {
+    const expanded = currentTarget.getAttribute('aria-expanded') === 'true';
     $accordionToggles.forEach(collapse);
-    target.setAttribute('aria-expanded', !expanded);
+    currentTarget.setAttribute('aria-expanded', !expanded);
 };
 import('./floor-options.js');
 import('./furniture-planner.js');

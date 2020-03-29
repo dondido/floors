@@ -2,11 +2,101 @@
     background-color: #f2f2f2;
     z-index: 1;
 }
+.left-menu-accordion,
+.left-menu-panel,
 .text-button,
-.left-menu,
+.desktop,
+.floor-reset-button,
 .zoom-control {
     display: none;
 }
+.floor-options-tab,
+.floor-options-panel {
+    display: block;
+}
 .toolbar {
     height: 192px;
+}
+.left-menu {
+    position: absolute;
+    opacity: .93;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.left-menu-accordion {
+    background: #f2f2f2;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #bec4cc;
+}
+.floor-options-panel {
+    overflow: hidden;
+    width: 100vw;
+    height: 0;
+    background-color: #2f323a;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+}
+.floor-item-summary {
+    pointer-events: none;
+    text-align: center;
+    margin: -10px 0 10px;
+}
+.floor-options-tab[aria-expanded="true"] + .floor-options-panel {
+    height: 350px;
+}
+.tab-content {
+    position: relative;
+    margin: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.floor-item-body,
+.floor-list {
+    padding: 0;
+    list-style: none;
+}
+.floor-switcher-menu {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #80858e;
+    margin-bottom: 10px;
+    padding: 4px 0;
+}
+.floor-prev-button,
+.floor-option-button,
+.floor-next-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.floor-prev-button:before,
+.floor-next-button:before {
+    content: url(../images/accordion-chevron.svg);
+    height: 20px;
+    display: block;
+    filter: invert(100%) sepia(53%) saturate(2%) hue-rotate(75deg) brightness(104%) contrast(101%);
+}
+.floor-prev-button:before {
+    transform: scale(-1);
+}
+.floor-option-button {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    padding: 5px 0;
+    text-align: left;
+}
+.floor-item-body {
+    overflow: auto;
+    max-height: 280px;
 }

@@ -11,6 +11,8 @@ body {
 #reverse,
 #measure,
 #interface,
+.floor-option-info-desc,
+.floor-switcher-menu,
 #text-control-highlight-toggle,
 #interface:checked ~ *,
 #interface:checked ~ .right-menu .zoom-control {
@@ -760,4 +762,35 @@ fieldset:disabled button:hover:before {
     height: 100vh;
     overflow: hidden;
     flex-grow: 1;
+}
+
+
+
+.floor-item-summary::-webkit-details-marker {
+    display: none
+}
+.floor-item-summary {
+    list-style-image: none;
+}
+.floor-option-item:hover .floor-option-info-desc {
+    display: block;
+}
+.floor-option-info-desc {
+    position: fixed;
+    color: #000;
+    background-color: #f2f2f2;
+    box-shadow: 5px 3px 11px 0 rgba(0,0,0,.3);
+    border-radius: 11px;
+    border: 1px solid #bec4cc;
+    margin: -2px 0 0 32px;
+    padding: 10px;
+    font-size: 12px;
+    min-width: 100px;
+    max-width: 300px;
+    line-height: 20px;
+    transform: translateY(-50%);
+}
+.floor-option-button:disabled {
+    opacity: .5;
+    cursor: auto;
 }
