@@ -350,7 +350,6 @@ body {
 }
 .header {
     position: absolute;
-    z-index: 1;
     padding: 0 25px;
     height: 48px;
     border-bottom: 1px #808080 solid;
@@ -610,7 +609,7 @@ body {
 }
 .furniture-control {
     position: absolute;
-    top: 80px;
+    margin-top: 80px;
 }
 .furniture-control-flip-horizontal-button,
 .furniture-control-flip-vertical-button {

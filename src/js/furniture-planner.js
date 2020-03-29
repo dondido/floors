@@ -10,7 +10,7 @@ const $furnitureRotateInput = $furnitureControl.querySelector('.furniture-contro
 const $furnitureTools = document.querySelector('.menu-template').content.firstElementChild.cloneNode(true);
 const $furnitureSelector = document.querySelector('.furniture-selector');
 const $furnitureOptions = Array.from($furnitureSelector.children);
-const $furniturePanels = Array.from(document.querySelectorAll('.furniture-panel'));
+const $furniturePanels = Array.from(document.querySelectorAll('.tab-content'));
 const $furnitureButtons = Array.from(document.querySelectorAll('.furniture-button'));
 const updateFuntitureControl = () => {
     const $svg = $activeEmbed.querySelector('svg');

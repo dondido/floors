@@ -31,16 +31,18 @@
             "options": [
                 {
                     "name": "Sunroom, fireplace and nook",
-                    "id": "ML_OPT1"
+                    "id": "ML_OPT1",
+                    "disable": ["ML", "ML_OPT2", "ML_OPT3"]
                 },
                 {
                     "name": "Morning room, side load garage, 2-sided fireplace and gourmet kitchen",
-                    "id": "ML_OPT2"
+                    "id": "ML_OPT2",
+                    "disable": ["ML", "ML_OPT1", "ML_OPT3"]
                 },
                 {
                     "name": "Family room, nook, study and 3-car garage",
                     "id": "ML_OPT3",
-                    "required": ["ML_OPT1", "ML_OPT2"]
+                    "disable": ["ML", "ML_OPT1", "ML_OPT2"]
                 }
             ]
         },
@@ -51,13 +53,12 @@
                 {
                     "name": "Master bath",
                     "id": "UL_OPT1",
-                    "disable": ["UL"]
+                    "disable": ["UL", "UL_OPT2"]
                 },
                 {
                     "name": "Elevation A&E",
                     "id": "UL_OPT2",
-                    "disable": ["UL"],
-                    "required": ["UL_OPT1"]
+                    "disable": ["UL", "UL_OPT1"]
                 }
             ]
         },
@@ -67,4 +68,3 @@
         }
     ]
 }
-

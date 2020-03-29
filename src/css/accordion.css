@@ -105,6 +105,7 @@
     padding: 15px;
     box-shadow: 0 1px 11px 2px rgba(0,0,0,.3);
 }
+.floor-reset-button,
 .furniture-reset-button {
     border: none;
     background: none;
@@ -116,6 +117,11 @@
     display: flex;
     align-items: center;
 }
+.floor-reset-button {
+    position: relative;
+    margin: -6px 0px 0px auto;
+}
+.floor-reset-button:before,
 .furniture-reset-button:before {
     content: url(../images/reset.svg);
     width: 12px;
@@ -148,10 +154,10 @@
 .furniture-label {
     margin-top: 10px;
 }
-.furniture-panel {
+.tab-content {
     overflow: auto;
 }
-.furniture-panel-content {
+.furniture-content {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
@@ -216,9 +222,11 @@
 .embed-bin-button:focus,
 .floor-option-button,
 .floor-extra-option-button,
+.floor-reset-button,
 .furniture-reset-button:focus {
     outline: none;
 }
+.floor-reset-button:hover,
 .furniture-reset-button:hover {
     color: #46bfda;
 }
@@ -227,6 +235,7 @@
 .furniture-control-flip-vertical-button:hover:before,
 .embed-resize-button:before,
 .floor-extra-option-button:before,
+.floor-reset-button:hover:before,
 .furniture-reset-button:hover:before {
     filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
 }
@@ -251,20 +260,20 @@
     margin: 3px;
     display: block;
 }
-.furniture-panel {
+.tab-content {
     scrollbar-color: #aeb3b9 #f1f1f1;
     scrollbar-width: thin;
 }
 /* width */
-.furniture-panel::-webkit-scrollbar {
+.tab-content::-webkit-scrollbar {
     width: 6px;
 }
 /* Track */
-.furniture-panel::-webkit-scrollbar-track {
+.tab-content::-webkit-scrollbar-track {
     background: #f1f1f1; 
 }   
 /* Handle */
-.furniture-panel::-webkit-scrollbar-thumb {
+.tab-content::-webkit-scrollbar-thumb {
     background: #aeb3b9; 
 }
 .floor-item-body,
@@ -285,6 +294,14 @@
     color: #80858e;
     cursor: pointer;
 }
+.floor-item-summary:before {
+    content: url(../images/chevron.svg);
+    margin: 0 8px;
+    filter: invert(56%) sepia(3%) saturate(902%) hue-rotate(180deg) brightness(93%) contrast(87%);
+}
+[open] .floor-item-summary:before {
+    transform: rotate(90deg);
+}
 .floor-item-summary:focus {
     outline: none;
 }
@@ -297,6 +314,7 @@
     display: flex;
 }
 .floor-option-button {
+    font-weight: 600;
     width: 100%;
     line-height: 19px;
     margin: 5px 0;
@@ -307,14 +325,14 @@
     background-color: transparent;
     border: none;
     text-align: left;
-    opacity: .5;
+    cursor: pointer;
 }
 .floor-option-button:hover {
     background-color: #d8dadd;
 }
-.floor-option-button:not(:disabled) {
-    opacity: 1;
-    cursor: pointer;
+.floor-option-button:disabled {
+    opacity: .5;
+    cursor: auto;
 }
 .floor-option-button:disabled:hover {
     background-color: #d8dadd;
@@ -344,6 +362,7 @@
     min-width: 100px;
     max-width: 300px;
     line-height: 20px;
+    transform: translateY(-50%);
 }
 .floor-option-info-list {
     border-bottom: 1px solid;
@@ -381,14 +400,13 @@
     display: flex;
     align-items: center;
 }
-.floor-option-button:disabled {
-    background-color: transparent;
-    color: initial;
-}
 .floor-option-button[aria-checked="true"]:before {
     content: url(../images/tick.svg);
     margin: 0 12px 0 -6px;
 }
-.floor-option-button:disabled:before {
-    content: '';
+.highlight-summary {
+    color: #29abe2;
+}
+.highlight-summary:before {
+    filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
 }

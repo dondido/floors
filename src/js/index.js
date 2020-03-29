@@ -20,16 +20,20 @@ const floorOptions = [];
 const resize = () => {
     setDragGesture();
 };
-const selectFloor = ({ target }) => {
-    $floorSelector.classList.toggle('expand');
+const selectFloor = ({ target }, collapse) => {
+    collapse || $floorSelector.classList.toggle('expand');
     if (target.classList.contains('selected') === false && target.isSameNode($floorSelector) === false) {
         const id = `#${target.dataset.ref}`;
+        const $summary = document.querySelector(`[data-id=${target.dataset.ref}]`);
+        const $highlightSummary = document.querySelector('.highlight-summary');
         $selectedFloorOption.classList.remove('selected');
         $selectedFloorOption = target;
         target.classList.add('selected');
         $dirty.appendChild($floor);
         $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
         $scene.appendChild($floor);
+        $highlightSummary && $highlightSummary.classList.remove('highlight-summary');
+        $summary && $summary.classList.add('highlight-summary');
         restore();
     }
 };
@@ -186,4 +190,4 @@ $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
 
-export default () => ({ planPromise, $floor, $pristine, selectFloor });
+export default () => ({ planPromise, $floor, $pristine, $dirty, selectFloor });
