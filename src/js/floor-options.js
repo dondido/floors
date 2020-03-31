@@ -1,24 +1,40 @@
 import inject from './index.js';
 
+let currentFloorIndex = 0;
 const floorMap = {};
 const infos = [];
+const floorNodes = [];
 const $floors = document.querySelector('.floor-option-template').content.firstElementChild;
 const $floorOptionItem = document.querySelector('.floor-option-item-template').content.firstElementChild;
 const $floorOptionInfo = document.querySelector('.floor-option-info-template').content.firstElementChild;
+const $floorOptionsTab = document.querySelector('.floor-options-tab');
 const $floorList = document.querySelector('.floor-list');
 const $floorListContainer = $floorList.parentElement;
+const $prev = document.querySelector('.floor-prev-button');
+const $next = document.querySelector('.floor-next-button');
 const setDisabled = (acc, id) => `${acc}<li>${floorMap[id].name}</li>`;
 const mapNameToId = function(acc, i) {
     return Object.assign(acc, { [i.id]: { parentId: `floor-${this.id}`, ...i } });
 };
 const updateY = ($target) => {
-    const { top, bottom } =  $target.parentElement.getBoundingClientRect();
-    $target.style.top = `${(top + bottom) / 2}px`;
+    if (window.innerWidth > 1024) {
+        const { top, bottom } =  $target.parentElement.getBoundingClientRect();
+        $target.style.top = `${(top + bottom) / 2}px`;
+    }
 };
 const deleteElement = id => {
     const $target = document.getElementById(id);
     $target && $target.remove();
 };
+const updateFloorOptionsCount = (acc, $target) => {
+    const count = $target.querySelectorAll('.floor-option-button[aria-checked="true"]').length;
+    
+    $target.querySelector('.floor-item-summary').dataset.count = count;
+    console.log(123,$target.innerHTML, $target.querySelector('.floor-item-summary').dataset.count, count)
+    return acc + count;
+};
+const updateTotalOptionsCount = () =>
+    $floorOptionsTab.dataset.count = floorNodes.reduce(updateFloorOptionsCount, 0);
 const enableOption = ({ target, checked = target.getAttribute('aria-checked') !== 'true' }) => {
     const count = checked ? 1 : -1;
     const $floorBody = target.closest('.floor-item-body');
@@ -38,16 +54,14 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
         $ref.getAttribute('aria-checked') !== 'true' && enableOption({ target: $ref });
     };
     selectFloor({ target: document.querySelector(`[data-ref="${parentId}"]`) }, true);
-    if (checked) {
-        const $parent = document.getElementById(parentId);
-        const $option = $pristine.querySelector(`#${id}`).cloneNode(true);
-        $parent ? $parent.appendChild($option) : inject().$floor.prepend($option)
-    }
-    else {
-        deleteElement(id);
-    }
+    const $parent = document.getElementById(parentId);
+    checked ? $parent.prepend($pristine.querySelector(`#${id}`).cloneNode(true)) : deleteElement(id);
     disable.forEach(toggleOthers);
-    required.forEach(enableRequired)
+    required.forEach(enableRequired);
+    
+    if($parent.querySelectorAll('g').length === 0) {
+        $parent.prepend($pristine.querySelector(`#${parentId.slice(6)}`).cloneNode(true));
+    }
     for (const i in floorMap) {
         const { required } = floorMap[i];
         if (required && required.includes(id)) {
@@ -61,6 +75,7 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
     }
     target.setAttribute('aria-checked', checked);
     target.disabled = false;
+    updateTotalOptionsCount();
     setTimeout(() => infos.forEach(updateY));
 };
 const setButtonRequiredCount = ($button, count) => {
@@ -73,6 +88,7 @@ const setFloor = (floor, idx) => {
         return;
     }
     const $floor = $floors.cloneNode(true);
+    floorNodes.push($floor);
     const $floorBody = $floor.querySelector('.floor-item-body');
     const $summary = $floor.querySelector('.floor-item-summary');
     const setOption = ({ name, id, disable, required = [] }) => {
@@ -85,7 +101,7 @@ const setFloor = (floor, idx) => {
         if (disable || required.length) {
             const $floorInfo = $floorOptionInfo.cloneNode(true);
             const $subButton = $floorInfo.querySelector('.floor-extra-option-button');
-            infos.push($floorInfo.firstElementChild);
+            infos.push($floorInfo.querySelector('.floor-option-info-desc'));
             if (disable) {
                 $floorInfo.querySelector('.floor-option-info-list').innerHTML = disable.reduce(setDisabled, '');
             }
@@ -93,8 +109,13 @@ const setFloor = (floor, idx) => {
                 $floorInfo.classList.add('hide-content');
             }
             $subButton.dataset.id = id;
-            $subButton.onclick = () => enableOption({ target: $button, checked: true });
+            $subButton.onclick = () => {
+                enableOption({ target: $button, checked: true });
+                $floorInfo.firstElementChild.setAttribute('aria-checked', false);
+            };
             $floorOption.appendChild($floorInfo);
+            $floorInfo.querySelector('.submenu-button').onclick = ({ target }) =>
+                target.setAttribute('aria-checked', target.getAttribute('aria-checked') !== 'true')
         }
         setButtonRequiredCount($button, required.length);
     };
@@ -124,12 +145,34 @@ const setFloorOptions = ({ floors }) => {
         }
     }
     floors.forEach(setFloor);
+    floorNodes[0].classList.add('current-floor');
     document.querySelector('.floor-reset-button').onclick = () => {
         floors.forEach(mopFloor);
         Array.from($floorList.querySelectorAll('.floor-option-button'), uncheckButton);
+        updateTotalOptionsCount();
         setTimeout(() => infos.forEach(updateY));
     };
 };
+const updateSliderButtons = () => {
+    $prev.disabled = false;
+    $next.disabled = false;
+    if(currentFloorIndex === 0) {
+        $prev.disabled = true;
+    }
+    if(currentFloorIndex === floorNodes.length - 1) {
+        $next.disabled = true;
+    }
+};
+const updateSlide = ({ target }) => {
+    floorNodes[currentFloorIndex].classList.remove('current-floor');
+    currentFloorIndex = + target.dataset.slide + currentFloorIndex;
+    floorNodes[currentFloorIndex].classList.add('current-floor');
+    updateSliderButtons();
+};
+
+$prev.onclick = updateSlide;
+$next.onclick = updateSlide;
+updateSliderButtons();
 
 inject()
     .planPromise

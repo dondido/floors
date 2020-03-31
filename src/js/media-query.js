@@ -13,7 +13,7 @@ const applyDesktopBreakpoint = () => {
         window.removeEventListener('resize', applyDesktopBreakpoint);
         document.body.insertAdjacentHTML(
             'beforeend',
-            '<link rel="stylesheet" href="css/accordion.css" />'
+            '<link rel="stylesheet" href="css/accordion.css" media="(min-width: 1025px)" />'
         );
         fetch('text-control.html')
             .then(toText)

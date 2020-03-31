@@ -3,15 +3,15 @@
 <section class="left-menu">
     <label class="left-menu-toggle" for="left-menu-toggle"></label>
     <div class="left-menu-content">
-        <button class="left-menu-accordion floor-options-tab" aria-expanded="true">
+        <button class="left-menu-accordion floor-options-tab" aria-expanded="true" data-count="0">
             <div><span class="desktop">Floorplan </span>Options</div>
         </button>
         <div class="left-menu-panel floor-options-panel">
             <div class="tab-content">
                 <button class="floor-reset-button">Reset Options</button>
                 <div class="floor-switcher-menu">
-                    <button class="floor-prev-button"></button>
-                    <button class="floor-next-button"></button>
+                    <button class="floor-prev-button" data-slide="-1"></button>
+                    <button class="floor-next-button" data-slide="1"></button>
                 </div>
                 <ul class="floor-list"></ul>
             </div>
@@ -253,7 +253,7 @@
 <template class="floor-option-template">
     <li class="floor-item">
         <details class="floor-item-details" open>
-            <summary class="floor-item-summary"></summary>
+            <summary class="floor-item-summary" data-count="0"></summary>
             <ul  class="floor-item-body" role="menu"></ul>
         </details>
     </li>
@@ -265,6 +265,7 @@
 </template>
 <template class="floor-option-info-template">
     <div class="floor-option-info">
+        <button class="submenu-button" aria-expanded="false"></button>
         <div class="floor-option-info-desc">
             <div class="floor-option-info-content">Selecting this option will also do the following</div>
             <div class="floor-option-info-content">Disable and turn off:</div>
