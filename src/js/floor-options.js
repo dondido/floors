@@ -28,9 +28,7 @@ const deleteElement = id => {
 };
 const updateFloorOptionsCount = (acc, $target) => {
     const count = $target.querySelectorAll('.floor-option-button[aria-checked="true"]').length;
-    
     $target.querySelector('.floor-item-summary').dataset.count = count;
-    console.log(123,$target.innerHTML, $target.querySelector('.floor-item-summary').dataset.count, count)
     return acc + count;
 };
 const updateTotalOptionsCount = () =>
@@ -40,7 +38,7 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
     const $floorBody = target.closest('.floor-item-body');
     const { id } = target.dataset;
     const { disable = [], required = [], parentId } = floorMap[id];
-    const { $pristine, selectFloor } = inject();
+    const { $pristine, selectFloor, mirror } = inject();
     const toggleOthers = (ref) => {
         const $target = $floorBody.querySelector(`[data-id="${ref}"]`);
         if ($target) {
@@ -58,10 +56,10 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
     checked ? $parent.prepend($pristine.querySelector(`#${id}`).cloneNode(true)) : deleteElement(id);
     disable.forEach(toggleOthers);
     required.forEach(enableRequired);
-    
     if($parent.querySelectorAll('g').length === 0) {
         $parent.prepend($pristine.querySelector(`#${parentId.slice(6)}`).cloneNode(true));
     }
+    mirror();
     for (const i in floorMap) {
         const { required } = floorMap[i];
         if (required && required.includes(id)) {

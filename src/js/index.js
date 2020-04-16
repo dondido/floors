@@ -72,34 +72,41 @@ const interpolateForeign = ($text) => {
     setTransform($text);
 };
 const mirror = (e) => {
-    if ($reverse.checked && $floor.dataset.reversed !== 'true') {
-        const $texts = $floor.querySelectorAll('text');
-        const interpolate = ($text, idx) => {
-            const $target = $texts[idx];
-            if($target.dataset.flip === undefined) {
-                const transform = $text.getAttribute('transform');
-                const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
-                $target.dataset.transform = transform;
-                matrix[0] = -1;
-                matrix[4] = $text.getBoundingClientRect().right;
-                $target.dataset.flip = `matrix(${matrix.join()})`;  
+    if ($reverse.checked) {
+        Array.from($floor.children, $mod => {
+            if($mod.nodeName === 'g' && $mod.dataset.reversed !== 'true') {
+                const $texts = $mod.querySelectorAll('text');
+                const interpolate = ($text, idx) => {
+                    const $target = $texts[idx];
+                    if($target.dataset.flip === undefined) {
+                        const transform = $text.getAttribute('transform');
+                        const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
+                        $target.dataset.transform = transform;
+                        matrix[0] = -1;
+                        matrix[4] = $text.getBoundingClientRect().right;
+                        $target.dataset.flip = `matrix(${matrix.join()})`;
+                    }
+                    $target.setAttribute('transform', $target.dataset.flip);
+                };
+                $mod.dataset.reversed = true;
+                $mirror.appendChild($pristine);
+                $pristine.querySelectorAll(`#${$mod.id} text`).forEach(interpolate);
+                $mod.querySelectorAll('.text-field').forEach(interpolateForeign);
+                $pristine.remove();
             }
-            $target.setAttribute('transform', $target.dataset.flip);
-        };
-        $floor.dataset.reversed = true;
-        $mirror.appendChild($pristine);
-        $pristine.querySelectorAll(`#${$floor.id} text`).forEach(interpolate);
-        $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
-        $pristine.remove();
-        e && revertView();
+        });
     }
-    else if($reverse.checked === false && $floor.dataset.reversed === 'true') {
-        const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
-        $floor.dataset.reversed = false;
-        $floor.querySelectorAll('text').forEach(interpolate);
-        $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
-        e && revertView();
+    else {
+        Array.from($floor.children, $mod => {
+            if($mod.nodeName === 'g' && $mod.dataset.reversed === 'true') {
+                const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
+                $mod.dataset.reversed = false;
+                $mod.querySelectorAll('text').forEach(interpolate);
+                $mod.querySelectorAll('.text-field').forEach(interpolateForeign);
+            }
+        });
     }
+    e && revertView();
 };
 const init = () => {
     setScale();
@@ -190,4 +197,4 @@ $reverse.onchange = mirror;
 $measure.onchange = toggleMeasure;
 window.onresize = resize;
 
-export default () => ({ planPromise, $floor, $pristine, $dirty, selectFloor });
+export default () => ({ planPromise, $floor, $pristine, $dirty, selectFloor, mirror });
