@@ -177,8 +177,11 @@ body {
     display: flex;
 }
 .port {
+    position: relative;
     touch-action: none;
     user-select: none;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .view {
     position: relative;
@@ -219,9 +222,6 @@ body {
     padding: 17px 10px;
     margin: 0;
     text-align: center;
-}
-#reverse:checked ~ .port {
-    transform: scaleX(1);
 }
 .mirror {
     position: fixed;

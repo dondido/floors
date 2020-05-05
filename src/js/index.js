@@ -65,47 +65,44 @@ const revertView = () => {
     $view.dataset.sx *= -1;
     setTransform($view);
 };
-const interpolateForeign = ($text) => {
-    const { sx = 1, r = 0 } = $text.dataset;
-    $text.dataset.sx = sx * -1;
-    $text.dataset.r = r * -1;
-    setTransform($text);
+const flipA = $mod => {
+    if($mod.nodeName === 'g' && $mod.dataset.reversed !== 'true') {
+        const $texts = $mod.querySelectorAll('text');
+        const interpolate = ($text, idx) => {
+            const $target = $texts[idx];
+            if($target.dataset.flip === undefined) {
+                const transform = $text.getAttribute('transform');
+                const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
+                $target.dataset.transform = transform;
+                matrix[0] = -1;
+                matrix[4] = $text.getBoundingClientRect().right;
+                $target.dataset.flip = `matrix(${matrix.join()})`;
+            }
+            $target.setAttribute('transform', $target.dataset.flip);
+        };
+        $mod.dataset.reversed = true;
+        $mirror.appendChild($pristine);
+        $pristine.querySelectorAll(`#${$mod.id} text`).forEach(interpolate);
+        $pristine.remove();
+    }
+};
+const flipB = $mod => {
+    if($mod.nodeName === 'g' && $mod.dataset.reversed === 'true') {
+        const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
+        $mod.dataset.reversed = false;
+        $mod.querySelectorAll('text').forEach(interpolate);
+    }
 };
 const mirror = (e) => {
-    if ($reverse.checked) {
-        Array.from($floor.children, $mod => {
-            if($mod.nodeName === 'g' && $mod.dataset.reversed !== 'true') {
-                const $texts = $mod.querySelectorAll('text');
-                const interpolate = ($text, idx) => {
-                    const $target = $texts[idx];
-                    if($target.dataset.flip === undefined) {
-                        const transform = $text.getAttribute('transform');
-                        const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
-                        $target.dataset.transform = transform;
-                        matrix[0] = -1;
-                        matrix[4] = $text.getBoundingClientRect().right;
-                        $target.dataset.flip = `matrix(${matrix.join()})`;
-                    }
-                    $target.setAttribute('transform', $target.dataset.flip);
-                };
-                $mod.dataset.reversed = true;
-                $mirror.appendChild($pristine);
-                $pristine.querySelectorAll(`#${$mod.id} text`).forEach(interpolate);
-                $mod.querySelectorAll('.text-field').forEach(interpolateForeign);
-                $pristine.remove();
-            }
-        });
-    }
-    else {
-        Array.from($floor.children, $mod => {
-            if($mod.nodeName === 'g' && $mod.dataset.reversed === 'true') {
-                const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
-                $mod.dataset.reversed = false;
-                $mod.querySelectorAll('text').forEach(interpolate);
-                $mod.querySelectorAll('.text-field').forEach(interpolateForeign);
-            }
-        });
-    }
+    const dir = $reverse.checked ? -1 : 1;
+    const interpolateForeign = ($text) => {
+        const { sx = 1, r = 0 } = $text.dataset;
+        $text.dataset.sx = Math.abs(sx) * dir;
+        $text.dataset.r = Math.abs(r) * dir;
+        setTransform($text);
+    };
+    Array.from($floor.children, $reverse.checked ? flipA : flipB);
+    $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
     e && revertView();
 };
 const init = () => {
