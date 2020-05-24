@@ -1,0 +1,70 @@
+{
+    "name": "Cameron",
+    "src": "floors/llstd.svg",
+    "footRatio": "9",
+    "zoomRatio": "100",
+    "floors": [
+        {
+            "name": "Lower Level",
+            "id": "LLSFP",
+            "options": [
+                {
+                    "name": "Finished spaces",
+                    "id": "LL_OPT_1",
+                    "disable": ["LLSFP", "LL_OPT_2", "LL_OPT_3"]
+                },
+                {
+                    "name": "Finished basement and areaway",
+                    "id": "LL_OPT_2",
+                    "disable": ["LLSFP", "LL_OPT_1", "LL_OPT_3"]
+                },
+                {
+                    "name": "Finished basement and areaway",
+                    "id": "LL_OPT_3",
+                    "disable": ["LLSFP", "LL_OPT_1", "LL_OPT_2"]
+                }
+            ]
+        },
+        {
+            "name": "Main Level",
+            "id": "ML",
+            "options": [
+                {
+                    "name": "Sunroom, fireplace and nook",
+                    "id": "ML_OPT1",
+                    "disable": ["ML", "ML_OPT2", "ML_OPT3"]
+                },
+                {
+                    "name": "Morning room, side load garage, 2-sided fireplace and gourmet kitchen",
+                    "id": "ML_OPT2",
+                    "disable": ["ML", "ML_OPT1", "ML_OPT3"]
+                },
+                {
+                    "name": "Family room, nook, study and 3-car garage",
+                    "id": "ML_OPT3",
+                    "disable": ["ML", "ML_OPT1", "ML_OPT2"]
+                }
+            ]
+        },
+        {
+            "name": "Upper Level",
+            "id": "UL",
+            "options": [
+                {
+                    "name": "Master bath",
+                    "id": "UL_OPT1",
+                    "disable": ["UL", "UL_OPT2"]
+                },
+                {
+                    "name": "Elevation A&E",
+                    "id": "UL_OPT2",
+                    "disable": ["UL", "UL_OPT1"]
+                }
+            ]
+        },
+        {
+            "name": "Optional Attic",
+            "id": "OA"
+        }
+    ]
+}
