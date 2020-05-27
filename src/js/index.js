@@ -130,20 +130,26 @@ const setScale = () => {
         setTransform($view);
     }
 };
-const setFloor = ({name, id, options}, idx) => {
+const setFloor = ({name, id, options}, i) => {
     const $floorOption = document.createElement('li');
     const $g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     const ref = `floor-${id}`;
-    const hideViewOptions = ({ id }) => $pristine.appendChild(document.getElementById(id));
+    const hideViewOptions = ({ id }, ii) => {
+        const $o = document.getElementById(id);
+        $pristine.appendChild($o);
+        $o.setAttribute('idx', i + (ii + 1) / 1000);
+    };
+    const $c = document.getElementById(id);
     $g.setAttribute('id', ref);
-    $g.appendChild(document.getElementById(id));
+    $c.setAttribute('idx', i);
+    $g.appendChild($c);
     options && options.forEach(hideViewOptions);
-    $g.insertAdjacentHTML('beforeend', '<foreignObject data-drag-area=".view"></foreignObject>');
+    $g.insertAdjacentHTML('beforeend', '<foreignObject idx="99" data-drag-area=".view"></foreignObject>');
     $floorOption.textContent = name;
     $floorOption.className = 'floor-option';
     floorOptions.push($floorOption);
     $pristine.appendChild($g);
-    if(idx === 0) {
+    if(i === 0) {
         $floor = $g.cloneNode(true);
         $floorOption.classList.add('selected');
         $scene.appendChild($floor)

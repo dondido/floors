@@ -27,56 +27,44 @@
             "id": "MLSFP",
             "options": [
                 {
-                    "name": "Sunroom, fireplace and nook",
-                    "id": "ML_OPT_x5F_1_x5F_sunroom"
+                    "name": "Sunroom",
+                    "id": "Sunroom"
                 },
                 {
-                    "name": "Morning room, side load garage, 2-sided fireplace and gourmet kitchen",
-                    "id": "ML_OPT_x5F_1_x5F_Nook"
+                    "name": "Nook",
+                    "id": "Nook"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_1_x5F_fireplace"
+                    "name": "Fireplace",
+                    "id": "Fireplace"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_1_x5F_all"
+                    "name": "Morning Room",
+                    "id": "Morning_Room"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_2_x5F_morning_room"
-                },
-                {
-                    "name": "Family room, nook, study and 3-car garage",
+                    "name": "Side Load Garage",
                     "id": "ML_OPT_x5F_2_x5F_side_load_garage"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_2_x5F_2-sided_fireplace"
+                    "name": "Sided Fireplace",
+                    "id": "_x32_-Sided_Fireplace"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_2_x5F_gourmet_kitchen"
+                    "name": "Gourmet Kitchen",
+                    "id": "Gourmet_Kitchen"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_2_x5F_all"
+                    "name": "Family Room",
+                    "id": "Family_Room"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_3_x5F_family_room"
+                    "name": "Study",
+                    "id": "Study"
                 },
                 {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_3_x5F_Study"
-                },
-                {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_OPT_x5F_3_x5F_3-car_garage"
-                },
-                {
-                    "name": "Family room, nook, study and 3-car garage",
-                    "id": "ML_x5F_OPT_x5F_3_x5F_all"
+                    "name": "Car Garage",
+                    "id": "_x33_-Car_Garage"
                 }
             ]
         },
@@ -86,17 +74,17 @@
             "options": [
                 {
                     "name": "Master bath",
-                    "id": "UL_OPT_x5F_1"
+                    "id": "Master_Bad"
                 },
                 {
-                    "name": "Elevation A&E",
-                    "id": "UL_OPT_x5F_2"
-                },
-                {
-                    "name": "Elevation A&E",
-                    "id": "UL_x5F_OPT_x5F_all"
+                    "name": "Optional Plan",
+                    "id": "Optional_Plan"
                 }
             ]
+        },
+        {
+            "name": "Optional Attic",
+            "id": "OA"
         }
     ]
 }

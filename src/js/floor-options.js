@@ -53,7 +53,13 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
     };
     selectFloor({ target: document.querySelector(`[data-ref="${parentId}"]`) }, true);
     const $parent = document.getElementById(parentId);
-    checked ? $parent.prepend($pristine.querySelector(`#${id}`).cloneNode(true)) : deleteElement(id);
+    const insertAt = () => {
+        const $g = $pristine.querySelector(`#${id}`).cloneNode(true);
+        const idx = $g.getAttribute('idx');
+        const getNodeAfter = $n => idx < $n.getAttribute('idx');
+        Array.from($parent.children).find(getNodeAfter).insertAdjacentElement('beforebegin', $g);
+    };
+    checked ? insertAt() : deleteElement(id);
     disable.forEach(toggleOthers);
     required.forEach(enableRequired);
     if($parent.querySelectorAll('g').length === 0) {
