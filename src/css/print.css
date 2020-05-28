@@ -1,6 +1,8 @@
 .print-button,
 .toolbar,
 .text-control,
+.floor-selector,
+.left-menu,
 .zoom-control {
     display: none;
 }

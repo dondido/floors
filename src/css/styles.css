@@ -359,6 +359,7 @@ body {
 .header {
     position: absolute;
     padding: 0 25px;
+    z-index: 1;
     height: 48px;
     border-bottom: 1px #808080 solid;
     width: 100%;
