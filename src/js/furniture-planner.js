@@ -149,7 +149,7 @@ $furnitureTools.querySelector('.embed-duplicate-button').onclick = ({ target }) 
     const $furnitureBody = target.closest('.furniture-body');
     const { src } = $furnitureBody.dataset;
     const $embed = $furnitureBody.parentElement;
-    const currentTarget = document.querySelector(`.furniture-button [data-src=${src}]`).parentElement;
+    const currentTarget = document.querySelector(`.furniture-button [data-src="${src}"]`).parentElement;
     addFurniture({ currentTarget, left: + $embed.dataset.x + 20, top: $embed.dataset.y });
 };
 $furnitureControl.querySelector('.furniture-control-flip-horizontal-button').onclick = flipEmbed;
