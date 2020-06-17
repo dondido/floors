@@ -10,11 +10,13 @@
             "options": [
                 {
                     "name": "Finished spaces",
-                    "id": "LL_OPT_1"
+                    "id": "LL_OPT_1",
+                    "disable": ["LL_OPT_2"]
                 },
                 {
                     "name": "Finished basement and areaway",
-                    "id": "LL_OPT_2"
+                    "id": "LL_OPT_2",
+                    "disable": ["LL_OPT_1"]
                 },
                 {
                     "name": "Finished basement and areaway",
@@ -28,19 +30,23 @@
             "options": [
                 {
                     "name": "Sunroom",
-                    "id": "Sunroom"
+                    "id": "Sunroom",
+                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
                 },
                 {
                     "name": "Nook",
-                    "id": "Nook"
+                    "id": "Nook",
+                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
                 },
                 {
                     "name": "Fireplace",
-                    "id": "Fireplace"
+                    "id": "Fireplace",
+                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
                 },
                 {
                     "name": "Morning Room",
-                    "id": "Morning_Room"
+                    "id": "Morning_Room",
+                    "disable": ["Sunroom", "Nook", "Fireplace", "Family_Room"]
                 },
                 {
                     "name": "Side Load Garage",
@@ -48,7 +54,8 @@
                 },
                 {
                     "name": "Sided Fireplace",
-                    "id": "_x32_-Sided_Fireplace"
+                    "id": "Sided_Fireplace",
+                    "disable": ["Sunroom", "Nook", "Fireplace", "Family_Room"]
                 },
                 {
                     "name": "Gourmet Kitchen",
@@ -56,7 +63,8 @@
                 },
                 {
                     "name": "Family Room",
-                    "id": "Family_Room"
+                    "id": "Family_Room",
+                    "disable": ["Sunroom", "Nook", "Fireplace", "Morning_Room", "Sided_Fireplace"]
                 },
                 {
                     "name": "Study",
