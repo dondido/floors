@@ -50,7 +50,8 @@
                 },
                 {
                     "name": "Side Load Garage",
-                    "id": "ML_OPT_x5F_2_x5F_side_load_garage"
+                    "id": "ML_OPT_x5F_2_x5F_side_load_garage",
+                    "disable": ["_x33_-Car_Garage"]
                 },
                 {
                     "name": "Sided Fireplace",
@@ -71,8 +72,9 @@
                     "id": "Study"
                 },
                 {
-                    "name": "Car Garage",
-                    "id": "_x33_-Car_Garage"
+                    "name": "3 Car Garage",
+                    "id": "_x33_-Car_Garage",
+                    "disable": ["ML_OPT_x5F_2_x5F_side_load_garage"]
                 }
             ]
         },
