@@ -30,8 +30,7 @@
             "options": [
                 {
                     "name": "Sunroom",
-                    "id": "Sunroom",
-                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
+                    "id": "Sunroom"
                 },
                 {
                     "name": "Nook",
@@ -46,7 +45,7 @@
                 {
                     "name": "Morning Room",
                     "id": "Morning_Room",
-                    "disable": ["Sunroom", "Nook", "Fireplace", "Family_Room"]
+                    "disable": ["Nook", "Fireplace", "Family_Room"]
                 },
                 {
                     "name": "Side Load Garage",
@@ -54,9 +53,9 @@
                     "disable": ["_x33_-Car_Garage"]
                 },
                 {
-                    "name": "Sided Fireplace",
+                    "name": "2 Sided Fireplace",
                     "id": "Sided_Fireplace",
-                    "disable": ["Sunroom", "Nook", "Fireplace", "Family_Room"]
+                    "disable": ["Nook", "Fireplace", "Family_Room"]
                 },
                 {
                     "name": "Gourmet Kitchen",
@@ -65,7 +64,7 @@
                 {
                     "name": "Family Room",
                     "id": "Family_Room",
-                    "disable": ["Sunroom", "Nook", "Fireplace", "Morning_Room", "Sided_Fireplace"]
+                    "disable": ["Nook", "Fireplace", "Morning_Room", "Sided_Fireplace"]
                 },
                 {
                     "name": "Study",
