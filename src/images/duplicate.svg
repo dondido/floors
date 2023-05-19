@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
-    <rect stroke-width="2" stroke="#29abe2" fill="#29abe2" x="9.54" y="9.54" width="10.63" height="10.63"></rect>
-    <polyline fill="none" stroke-width="2" stroke="#29abe2" points="5.79 16.42 5.79 5.79 16.42 5.79"></polyline>
+    <rect stroke-width="2" stroke="#ee7623" fill="#ee7623" x="9.54" y="9.54" width="10.63" height="10.63"></rect>
+    <polyline fill="none" stroke-width="2" stroke="#ee7623" points="5.79 16.42 5.79 5.79 16.42 5.79"></polyline>
     <line stroke-width="2" stroke="white" x1="10.67" y1="14.73" x2="19.17" y2="14.73"></line>
     <line stroke-width="2" stroke="white" x1="14.92" y1="10.48" x2="14.92" y2="18.98"></line>
 </svg>

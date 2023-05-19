@@ -55,7 +55,7 @@
     justify-content: space-between;
     line-height: 30px;
     width: 290px;
-    background-color: rgb(211, 211, 211);
+    background-color: #bfb7b0;
     font-size: 16px;
     color: black;
     cursor: pointer;
@@ -83,8 +83,13 @@
     height: 0;
 }
 [aria-expanded="true"] {
-    background-color: #80858e;
+    background-color: #025157;
+}
+[aria-expanded="true"] * {
     color: #f2f2f2;
+}
+[aria-expanded="true"]:after {
+    filter: invert(97%) sepia(97%) saturate(11%) hue-rotate(224deg) brightness(102%) contrast(102%);
 }
 [aria-expanded="true"] + .left-menu-panel {
     flex-grow: 1;
@@ -212,7 +217,7 @@
 .floor-item-summary:before {
     content: url(../images/chevron.svg);
     margin: 0 8px;
-    filter: invert(56%) sepia(3%) saturate(902%) hue-rotate(180deg) brightness(93%) contrast(87%);
+    filter: invert(78%) sepia(56%) saturate(5832%) hue-rotate(343deg) brightness(94%) contrast(98%);
 }
 [open] .floor-item-summary:before {
     transform: rotate(90deg);
@@ -272,7 +277,7 @@
     box-shadow: -1px 2px 0 0 #ccc;
 }
 .floor-option-button[aria-checked="true"] {
-    background-color: #29abe2;
+    background-color: #ee7623;
     color: white;
     display: flex;
     align-items: center;
@@ -282,8 +287,8 @@
     margin: 0 12px 0 -6px;
 }
 .highlight-summary {
-    color: #29abe2;
+    color: #ee7623;
 }
 .highlight-summary:before {
-    filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
+    filter: invert(78%) sepia(56%) saturate(5832%) hue-rotate(343deg) brightness(94%) contrast(98%);
 }

@@ -1,7 +1,32 @@
+/* latin */
+@font-face {
+    font-family: 'Khula';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 300;
+    src: local('Khula Light'), local('khula-light'), url(/fonts/khula-light.ttf) format('ttf');
+    unicode-range: U+000-5FF; /* Latin glyphs */
+}
+/* latin */
+@font-face {
+    font-family: 'Khula';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: local('Khula Regular'), local('khula-regular'), url(/fonts/khula-regular.ttf) format('ttf');
+    unicode-range: U+000-5FF; /* Latin glyphs */
+}
 body {
     display: flex;
     margin: 0;
-    font-family: Roboto, sans-serif;
+}
+body,
+div,
+button {
+    font-family: Khula, sans-serif;
+}
+* {
+    color: #3d3935;
 }
 .floor-option,
 .furniture-option,
@@ -59,7 +84,7 @@ body {
 }
 #interface:checked ~ .right-menu .toolbar .hide-interface-button:before {
     content: url('../images/interface-on.svg');
-    filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
+    filter: invert(52%) sepia(52%) saturate(2002%) hue-rotate(348deg) brightness(98%) contrast(90%);
 }
 .reset-button:before {
     content: url('../images/reset.svg');
@@ -75,7 +100,7 @@ body {
 .hide-interface-button:active:before,
 .text-button:active:before,
 .reset-button:active:before {
-    filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
+    filter: invert(52%) sepia(52%) saturate(2002%) hue-rotate(348deg) brightness(98%) contrast(90%);
 }
 .furniture-control-x-button:focus,
 .text-control-x-button:focus,
@@ -151,18 +176,18 @@ body {
     filter: invert(56%) sepia(13%) saturate(221%) hue-rotate(180deg) brightness(90%) contrast(92%);
 }
 .selected:hover:after {
-    filter: invert(81%) sepia(54%) saturate(5710%) hue-rotate(165deg) brightness(94%) contrast(88%);
+    filter: invert(52%) sepia(52%) saturate(2002%) hue-rotate(348deg) brightness(98%) contrast(90%);
 }
 .expand .selected:after {
     transform: rotate(90deg);
 }
 .furniture-option:hover,
 .floor-option:hover {
-    color: #29abe2;
+    color: #ee7623;
 }
 .furniture-option:not(.selected):hover,
 .floor-option:not(.selected):hover {
-    background-color: #29abe2;
+    background-color: #ee7623;
     color: white;
 }
 .furniture-selector.expand,
@@ -218,7 +243,7 @@ body {
 .text-field {
     position: absolute;
     display: inline-block;
-    border: 2px solid #46bfda;
+    border: 2px solid #ee7623;
     padding: 17px 10px;
     margin: 0;
     text-align: center;
@@ -299,7 +324,7 @@ body {
     margin-top: 0;
 }
 .zoom-slider::-ms-fill-lower {
-    background: #29abe2;
+    background: #ee7623;
 }
 .zoom-slider::-ms-fill-upper {
     background: #a9a9a9;
@@ -374,6 +399,7 @@ body {
     margin-right: auto;
 }
 .plan-name:before {
+    width: 120px;
     content: url('../images/plan-logo.svg');
 }
 .print-button:before,
@@ -428,7 +454,7 @@ body {
 .text-control-reset-button:hover:before,
 .text-control-x-button:hover:before,
 .text-control-bin-button:hover:before {
-    filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
+    filter: invert(52%) sepia(52%) saturate(2002%) hue-rotate(348deg) brightness(98%) contrast(90%);
 }
 .right-menu {
     position: fixed;
@@ -575,8 +601,8 @@ body {
     transform: translate3d(20%,15%,0);
 }
 #text-control-highlight-toggle:checked ~ .text-control-toggle {
-    background-color: #29abe2;
-    border-color: #46bfda;
+    background-color: #ee7623;
+    border-color: #ee7623;
 }
 #text-control-highlight-toggle:checked ~ .text-control-toggle:before {
     background-color: #fff;
@@ -704,7 +730,7 @@ body {
 .furniture-control-flip-vertical-button:hover,
 .furniture-control-flip-horizontal-button:hover,
 .text-control-lock-button:hover {
-    color: #46bfda;
+    color: #ee7623;
     box-shadow: 0 0 3px 2px rgba(0, 0, 0, .3);
 }
 fieldset:disabled button {
@@ -886,7 +912,7 @@ fieldset:disabled button:hover:before {
 }
 .floor-reset-button:hover,
 .furniture-reset-button:hover {
-    color: #46bfda;
+    color: #ee7623;
 }
 #show-furniture:checked + .left-menu .furniture-control-show-button:before,
 .furniture-control-flip-horizontal-button:hover:before,
@@ -894,8 +920,8 @@ fieldset:disabled button:hover:before {
 .embed-resize-button:before,
 .floor-reset-button:hover:before,
 .furniture-reset-button:hover:before {
-    filter: invert(62%) sepia(14%) saturate(4999%) hue-rotate(165deg) brightness(95%) contrast(85%);
+    filter: invert(52%) sepia(52%) saturate(2002%) hue-rotate(348deg) brightness(98%) contrast(90%);
 }
 .embed-menu + svg [fill="#FFFFFF"] {
-    fill: #46bfda;
+    fill: #ee7623;
 }
