@@ -231,6 +231,9 @@
 .plan-name {
     font-size: 18px;
 }
+.plan-name:before {
+    margin-right: 10px;
+}
 .print-button {
     width: 50px;
 }

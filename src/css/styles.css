@@ -395,18 +395,19 @@ button {
 }
 .plan-name {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 32px;
     margin-right: auto;
-}
-.plan-name:before {
-    width: 120px;
-    content: url('../images/plan-logo.svg');
 }
 .print-button:before,
 .plan-name:before {
     margin-right: 10px;
     display: inline-block;
     vertical-align: middle;
+}
+.plan-name:before {
+    margin-right: 20px;
+    width: 120px;
+    content: url('../images/plan-logo.svg');
 }
 .furniture-control-x-button,
 .text-control-x-button,
