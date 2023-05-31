@@ -144,7 +144,7 @@ button {
     border-radius: 4px;
     left: 25px;
     top: 100px;
-    width: 120px;
+    width: 177px;
 }
 .furniture-selector {
     left: auto;
@@ -165,7 +165,7 @@ button {
     display: flex;
     justify-content: space-between;
     padding: 5px 13px 5px 15px;
-    width: 132px;
+    width: 150px;
     top: -40px;
     background-color: #f2f2f2;
     border-radius: 4px;

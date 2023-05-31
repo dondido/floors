@@ -10,7 +10,7 @@
             "options": [
                 {
                     "name": "Rec. Room or Opt. Study End Condition Typical",
-                    "id": "GFPWRROSEUT"
+                    "id": "GFPWRROSECT"
                 },
                 {
                     "name": "Powder Room & Closet",
@@ -45,6 +45,10 @@
                 {
                     "name": "End Condition",
                     "id": "SFPEU"
+                },
+                {
+                    "name": "Box Bay",
+                    "id": "SFPOB"
                 }
             ]
         },
@@ -61,7 +65,15 @@
                     "id": "TFPA1"
                 },
                 {
-                    "name": "End Condition",
+                    "name": "Large Primary Sute End Condition",
+                    "id": "TFPA1EC"
+                },
+                {
+                    "name": "Three Bedrooms * Box Bay",
+                    "id": "TFPA1OBB"
+                },
+                {
+                    "name": "Three Bedrooms *",
                     "id": "TFPA2WB"
                 }
             ]
