@@ -1,1 +1,21 @@
-.floor-selector,.left-menu,.print-button,.text-control,.toolbar,.zoom-control{display:none}.header{border-bottom:none}.text-field{border:none}.floor-option:not(.excluded){background:0 0;box-shadow:none}.floor-option:not(.excluded):after{content:''}
+.print-button,
+.toolbar,
+.text-control,
+.floor-selector,
+.left-menu,
+.zoom-control {
+    display: none;
+}
+.header {
+    border-bottom: none;
+}
+.text-field {
+    border: none;
+}
+.floor-option:not(.excluded) {
+    background: none;
+    box-shadow: none;
+}
+.floor-option:not(.excluded):after {
+    content: '';
+}

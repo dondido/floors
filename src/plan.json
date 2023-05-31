@@ -1,99 +1,96 @@
 {
     "name": "The Rockland",
-    "src": "floors/cameron-610.svg",
+    "src": "floors/rockland.svg",
     "footRatio": "9",
     "zoomRatio": "100",
     "floors": [
         {
-            "name": "Lower Level",
-            "id": "LLSFP",
+            "name": "GROUND FLOOR",
+            "id": "GFPWRROSE1",
             "options": [
                 {
-                    "name": "Finished spaces",
-                    "id": "LL_OPT_1",
-                    "disable": ["LL_OPT_2"]
+                    "name": "Rec. Room or Opt. Study End Condition Typical",
+                    "id": "GFPWRROSEUT"
                 },
                 {
-                    "name": "Finished basement and areaway",
-                    "id": "LL_OPT_2",
-                    "disable": ["LL_OPT_1"]
+                    "name": "Powder Room & Closet",
+                    "id": "GFPA1WOPR_x26_C"
                 },
                 {
-                    "name": "Finished basement and areaway",
-                    "id": "LL_OPT_3"
+                    "name": "Powder Room & Closet End Condition",
+                    "id": "GFPA1WOPR_x26_CEC"
+                },
+                {
+                    "name": "Bedroom & Full Bath",
+                    "id": "GFPA2WB_x26_FB"
+                },
+                {
+                    "name": "Bedroom & Full Bath End Condition",
+                    "id": "GFPA2WB_x26_FBEC"
                 }
             ]
         },
         {
-            "name": "Main Level",
-            "id": "MLSFP",
+            "name": "2ND FLOOR",
+            "id": "SFPE1",
             "options": [
                 {
-                    "name": "Sunroom",
-                    "id": "Sunroom"
+                    "name": "Elevation #2",
+                    "id": "SFPE2"
                 },
                 {
-                    "name": "Nook",
-                    "id": "Nook",
-                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
+                    "name": "Elevation #3",
+                    "id": "SFPE3"
                 },
                 {
-                    "name": "Fireplace",
-                    "id": "Fireplace",
-                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
-                },
-                {
-                    "name": "Morning Room",
-                    "id": "Morning_Room",
-                    "disable": ["Nook", "Fireplace", "Family_Room"]
-                },
-                {
-                    "name": "Side Load Garage",
-                    "id": "ML_OPT_x5F_2_x5F_side_load_garage",
-                    "disable": ["_x33_-Car_Garage"]
-                },
-                {
-                    "name": "2 Sided Fireplace",
-                    "id": "Sided_Fireplace",
-                    "disable": ["Nook", "Fireplace", "Family_Room"]
-                },
-                {
-                    "name": "Gourmet Kitchen",
-                    "id": "Gourmet_Kitchen"
-                },
-                {
-                    "name": "Family Room",
-                    "id": "Family_Room",
-                    "disable": ["Nook", "Fireplace", "Morning_Room", "Sided_Fireplace"]
-                },
-                {
-                    "name": "Study",
-                    "id": "Study"
-                },
-                {
-                    "name": "3 Car Garage",
-                    "id": "_x33_-Car_Garage",
-                    "disable": ["ML_OPT_x5F_2_x5F_side_load_garage"]
+                    "name": "End Condition",
+                    "id": "SFPEU"
                 }
             ]
         },
         {
-            "name": "Upper Level",
-            "id": "UL",
+            "name": "3RD FLOOR",
+            "id": "TFP",
             "options": [
                 {
-                    "name": "Master bath",
-                    "id": "Master_Bad"
+                    "name": "End Condition",
+                    "id": "TFPEC"
                 },
                 {
-                    "name": "Optional Plan",
-                    "id": "Optional_Plan"
+                    "name": "Large Primary Sute",
+                    "id": "TFPA1"
+                },
+                {
+                    "name": "End Condition",
+                    "id": "TFPA2WB"
                 }
             ]
         },
         {
-            "name": "Optional Attic",
-            "id": "OA"
+            "name": "LOFT",
+            "id": "LFP",
+            "options": [
+                {
+                    "name": "End Condition",
+                    "id": "LFPEC"
+                },
+                {
+                    "name": "Opt. Full Bath ilo Storage",
+                    "id": "LFPWOFB"
+                },
+                {
+                    "name": "Opt. See-Thru Fireplace",
+                    "id": "LFPOF"
+                },
+                {
+                    "name": "Suite",
+                    "id": "OLSFP"
+                },
+                {
+                    "name": "End Condition",
+                    "id": "OLSFPEC"
+                }
+            ]
         }
     ]
 }

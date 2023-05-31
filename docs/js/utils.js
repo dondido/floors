@@ -1,1 +1,4 @@
-export const setTransform=t=>{const{sx:s=1,sy:a=1,x:e=0,y:r=0,z:o=1,r:n=0}=t.dataset;t.style.transform=`translate(${e}px, ${r}px) scale(${s*o}, ${a*o}) rotate(${n}deg)`};
+export const setTransform = ($target) => {
+    const { sx = 1, sy = 1, x = 0, y = 0, z = 1, r = 0 } = $target.dataset;
+    $target.style.transform = `translate(${x}px, ${y}px) scale(${sx * z}, ${sy * z}) rotate(${r}deg)`;
+};

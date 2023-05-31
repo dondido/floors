@@ -1,1 +1,183 @@
-import inject from"./index.js";let currentFloorIndex=0;const floorMap={},infos=[],floorNodes=[],$floors=document.querySelector(".floor-option-template").content.firstElementChild,$floorOptionItem=document.querySelector(".floor-option-item-template").content.firstElementChild,$floorOptionInfo=document.querySelector(".floor-option-info-template").content.firstElementChild,$floorOptionsTab=document.querySelector(".floor-options-tab"),$floorList=document.querySelector(".floor-list"),$floorListContainer=$floorList.parentElement,$prev=document.querySelector(".floor-prev-button"),$next=document.querySelector(".floor-next-button"),setDisabled=(e,t)=>`${e}<li>${floorMap[t].name}</li>`,mapNameToId=function(e,t){return Object.assign(e,{[t.id]:{parentId:`floor-${this.id}`,...t}})},updateY=e=>{if(window.innerWidth>1024){const{top:t,bottom:o}=e.parentElement.getBoundingClientRect();e.style.top=`${(t+o)/2}px`}},deleteElement=e=>{const t=document.getElementById(e);t&&t.remove()},updateFloorOptionsCount=(e,t)=>{const o=t.querySelectorAll('.floor-option-button[aria-checked="true"]').length;return t.querySelector(".floor-item-summary").dataset.count=o,e+o},updateTotalOptionsCount=()=>$floorOptionsTab.dataset.count=floorNodes.reduce(updateFloorOptionsCount,0),enableOption=({target:e,checked:t="true"!==e.getAttribute("aria-checked")})=>{const o=t?1:-1,r=e.closest(".floor-item-body"),{id:n}=e.dataset,{disable:l=[],required:i=[],parentId:d}=floorMap[n],{$pristine:c,selectFloor:a,mirror:s}=inject();a({target:document.querySelector(`[data-ref="${d}"]`)},!0);const u=document.getElementById(d);t?(()=>{const e=c.querySelector(`#${n}`).cloneNode(!0),t=e.getAttribute("idx");Array.from(u.children).find(e=>t<e.getAttribute("idx")).insertAdjacentElement("beforebegin",e)})():deleteElement(n),l.forEach(e=>{const o=r.querySelector(`[data-id="${e}"]`);o&&(o.disabled=t,o.setAttribute("aria-checked",!1)),deleteElement(e)}),i.forEach(e=>{const t=r.querySelector(`[data-id="${e}"]`);"true"!==t.getAttribute("aria-checked")&&enableOption({target:t})}),0===u.querySelectorAll("g").length&&u.prepend(c.querySelector(`#${d.slice(6)}`).cloneNode(!0)),s();for(const e in floorMap){const{required:t}=floorMap[e];if(t&&t.includes(n)){const t=r.querySelector(`[data-id="${e}"]`);t.requiredCount=Math.max(t.requiredCount-o,0),t.disabled=t.requiredCount,t.disabled&&t.setAttribute("aria-checked",!1)}}e.setAttribute("aria-checked",t),e.disabled=!1,updateTotalOptionsCount(),setTimeout(()=>infos.forEach(updateY))},setButtonRequiredCount=(e,t)=>{e.disabled=t,e.requiredCount=t},setFloor=(e,t)=>{const{name:o,id:r,options:n}=e;if(void 0===n)return;const l=$floors.cloneNode(!0);floorNodes.push(l);const i=l.querySelector(".floor-item-body"),d=l.querySelector(".floor-item-summary");Object.assign(floorMap,n.reduce(mapNameToId.bind({id:r}),{[r]:e})),d.textContent=o,d.dataset.id=`floor-${r}`,0===t&&d.classList.add("highlight-summary"),n.forEach(({name:e,id:t,disable:o,required:r=[]})=>{const n=$floorOptionItem.cloneNode(!0),l=n.firstElementChild;if(l.textContent=e,l.dataset.id=t,l.onclick=enableOption,i.appendChild(n),o||r.length){const e=$floorOptionInfo.cloneNode(!0),r=e.querySelector(".floor-extra-option-button");infos.push(e.querySelector(".floor-option-info-desc")),o?e.querySelector(".floor-option-info-list").innerHTML=o.reduce(setDisabled,""):e.classList.add("hide-content"),r.dataset.id=t,r.onclick=()=>{enableOption({target:l,checked:!0}),e.firstElementChild.setAttribute("aria-checked",!1)},n.appendChild(e),e.querySelector(".submenu-button").onclick=({target:e})=>e.setAttribute("aria-checked","true"!==e.getAttribute("aria-checked"))}setButtonRequiredCount(l,r.length)}),$floorList.appendChild(l),$floorListContainer.onscroll=()=>infos.forEach(updateY),infos.forEach(updateY)},removeFloorOption=e=>e.remove(),uncheckButton=e=>{const{required:t=[]}=floorMap[e.dataset.id];e.setAttribute("aria-checked",!1),setButtonRequiredCount(e,t.length)},setFloorOptions=({floors:e})=>{const{$pristine:t,$dirty:o}=inject(),r=({id:e})=>{const r=`#floor-${e}`,n=document.querySelector(r)||o.querySelector(r);n&&(Array.from(n.querySelectorAll("g"),removeFloorOption),n.prepend(t.querySelector(`#${e}`).cloneNode(!0)))};e.forEach(setFloor),floorNodes[0].classList.add("current-floor"),document.querySelector(".floor-reset-button").onclick=()=>{e.forEach(r),Array.from($floorList.querySelectorAll(".floor-option-button"),uncheckButton),updateTotalOptionsCount(),setTimeout(()=>infos.forEach(updateY))}},updateSliderButtons=()=>{$prev.disabled=!1,$next.disabled=!1,0===currentFloorIndex&&($prev.disabled=!0),currentFloorIndex===floorNodes.length-1&&($next.disabled=!0)},updateSlide=({target:e})=>{floorNodes[currentFloorIndex].classList.remove("current-floor"),currentFloorIndex=+e.dataset.slide+currentFloorIndex,floorNodes[currentFloorIndex].classList.add("current-floor"),updateSliderButtons()};$prev.onclick=updateSlide,$next.onclick=updateSlide,updateSliderButtons(),inject().planPromise.then(setFloorOptions);
+import inject from './index.js';
+
+let currentFloorIndex = 0;
+const floorMap = {};
+const infos = [];
+const floorNodes = [];
+const $floors = document.querySelector('.floor-option-template').content.firstElementChild;
+const $floorOptionItem = document.querySelector('.floor-option-item-template').content.firstElementChild;
+const $floorOptionInfo = document.querySelector('.floor-option-info-template').content.firstElementChild;
+const $floorOptionsTab = document.querySelector('.floor-options-tab');
+const $floorList = document.querySelector('.floor-list');
+const $floorListContainer = $floorList.parentElement;
+const $prev = document.querySelector('.floor-prev-button');
+const $next = document.querySelector('.floor-next-button');
+const setDisabled = (acc, id) => `${acc}<li>${floorMap[id].name}</li>`;
+const mapNameToId = function(acc, i) {
+    return Object.assign(acc, { [i.id]: { parentId: `floor-${this.id}`, ...i } });
+};
+const updateY = ($target) => {
+    if (window.innerWidth > 1024) {
+        const { top, bottom } =  $target.parentElement.getBoundingClientRect();
+        $target.style.top = `${(top + bottom) / 2}px`;
+    }
+};
+const deleteElement = id => {
+    const $target = document.getElementById(id);
+    $target && $target.remove();
+};
+const updateFloorOptionsCount = (acc, $target) => {
+    const count = $target.querySelectorAll('.floor-option-button[aria-checked="true"]').length;
+    $target.querySelector('.floor-item-summary').dataset.count = count;
+    return acc + count;
+};
+const updateTotalOptionsCount = () =>
+    $floorOptionsTab.dataset.count = floorNodes.reduce(updateFloorOptionsCount, 0);
+const enableOption = ({ target, checked = target.getAttribute('aria-checked') !== 'true' }) => {
+    const count = checked ? 1 : -1;
+    const $floorBody = target.closest('.floor-item-body');
+    const { id } = target.dataset;
+    const { disable = [], required = [], parentId } = floorMap[id];
+    const { $pristine, selectFloor, mirror } = inject();
+    const toggleOthers = (ref) => {
+        const $target = $floorBody.querySelector(`[data-id="${ref}"]`);
+        if ($target) {
+            $target.disabled = checked;
+            $target.setAttribute('aria-checked', false);
+        }
+        deleteElement(ref);
+    };
+    const enableRequired = id => {
+        const $ref = $floorBody.querySelector(`[data-id="${id}"]`);
+        $ref.getAttribute('aria-checked') !== 'true' && enableOption({ target: $ref });
+    };
+    selectFloor({ target: document.querySelector(`[data-ref="${parentId}"]`) }, true);
+    const $parent = document.getElementById(parentId);
+    const insertAt = () => {
+        const $g = $pristine.querySelector(`#${id}`).cloneNode(true);
+        const idx = $g.getAttribute('idx');
+        const getNodeAfter = $n => idx < $n.getAttribute('idx');
+        Array.from($parent.children).find(getNodeAfter).insertAdjacentElement('beforebegin', $g);
+    };
+    checked ? insertAt() : deleteElement(id);
+    disable.forEach(toggleOthers);
+    required.forEach(enableRequired);
+    if($parent.querySelectorAll('g').length === 0) {
+        $parent.prepend($pristine.querySelector(`#${parentId.slice(6)}`).cloneNode(true));
+    }
+    mirror();
+    for (const i in floorMap) {
+        const { required } = floorMap[i];
+        if (required && required.includes(id)) {
+            const $ref = $floorBody.querySelector(`[data-id="${i}"]`);
+            $ref.requiredCount = Math.max($ref.requiredCount - count, 0);
+            $ref.disabled = $ref.requiredCount;
+            if ($ref.disabled) {
+                $ref.setAttribute('aria-checked', false);
+            }
+        }
+    }
+    target.setAttribute('aria-checked', checked);
+    target.disabled = false;
+    updateTotalOptionsCount();
+    setTimeout(() => infos.forEach(updateY));
+};
+const setButtonRequiredCount = ($button, count) => {
+    $button.disabled = count;
+    $button.requiredCount = count;
+};
+const setFloor = (floor, idx) => {
+    const {name, id, options} = floor;
+    if (options === undefined) {
+        return;
+    }
+    const $floor = $floors.cloneNode(true);
+    floorNodes.push($floor);
+    const $floorBody = $floor.querySelector('.floor-item-body');
+    const $summary = $floor.querySelector('.floor-item-summary');
+    const setOption = ({ name, id, disable, required = [] }) => {
+        const $floorOption = $floorOptionItem.cloneNode(true);
+        const $button = $floorOption.firstElementChild;
+        $button.textContent = name;
+        $button.dataset.id = id;
+        $button.onclick = enableOption;
+        $floorBody.appendChild($floorOption);
+        if (disable || required.length) {
+            const $floorInfo = $floorOptionInfo.cloneNode(true);
+            const $subButton = $floorInfo.querySelector('.floor-extra-option-button');
+            infos.push($floorInfo.querySelector('.floor-option-info-desc'));
+            if (disable) {
+                $floorInfo.querySelector('.floor-option-info-list').innerHTML = disable.reduce(setDisabled, '');
+            }
+            else {
+                $floorInfo.classList.add('hide-content');
+            }
+            $subButton.dataset.id = id;
+            $subButton.onclick = () => {
+                enableOption({ target: $button, checked: true });
+                $floorInfo.firstElementChild.setAttribute('aria-checked', false);
+            };
+            $floorOption.appendChild($floorInfo);
+            $floorInfo.querySelector('.submenu-button').onclick = ({ target }) =>
+                target.setAttribute('aria-checked', target.getAttribute('aria-checked') !== 'true')
+        }
+        setButtonRequiredCount($button, required.length);
+    };
+    Object.assign(floorMap, options.reduce(mapNameToId.bind({ id }), { [id]: floor }));
+    $summary.textContent = name;
+    $summary.dataset.id = `floor-${id}`;
+    idx === 0 &&$summary.classList.add('highlight-summary');
+    options.forEach(setOption);
+    $floorList.appendChild($floor);
+    $floorListContainer.onscroll = () => infos.forEach(updateY);
+    infos.forEach(updateY);
+};
+const removeFloorOption = $target => $target.remove();
+const uncheckButton = $button => {
+    const { required = [] } = floorMap[$button.dataset.id];
+    $button.setAttribute('aria-checked', false);
+    setButtonRequiredCount($button, required.length);
+};
+const setFloorOptions = ({ floors }) => {
+    const { $pristine, $dirty } = inject();
+    const mopFloor = ({ id }) => {
+        const floorId = `#floor-${id}`;
+        const $floor = document.querySelector(floorId) || $dirty.querySelector(floorId);
+        if ($floor) {
+            Array.from($floor.querySelectorAll('g'), removeFloorOption);
+            $floor.prepend($pristine.querySelector(`#${id}`).cloneNode(true));
+        }
+    }
+    floors.forEach(setFloor);
+    floorNodes[0].classList.add('current-floor');
+    document.querySelector('.floor-reset-button').onclick = () => {
+        floors.forEach(mopFloor);
+        Array.from($floorList.querySelectorAll('.floor-option-button'), uncheckButton);
+        updateTotalOptionsCount();
+        setTimeout(() => infos.forEach(updateY));
+    };
+};
+const updateSliderButtons = () => {
+    $prev.disabled = false;
+    $next.disabled = false;
+    if(currentFloorIndex === 0) {
+        $prev.disabled = true;
+    }
+    if(currentFloorIndex === floorNodes.length - 1) {
+        $next.disabled = true;
+    }
+};
+const updateSlide = ({ target }) => {
+    floorNodes[currentFloorIndex].classList.remove('current-floor');
+    currentFloorIndex = + target.dataset.slide + currentFloorIndex;
+    floorNodes[currentFloorIndex].classList.add('current-floor');
+    updateSliderButtons();
+};
+
+$prev.onclick = updateSlide;
+$next.onclick = updateSlide;
+updateSliderButtons();
+
+inject()
+    .planPromise
+    .then(setFloorOptions);

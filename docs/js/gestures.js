@@ -1,1 +1,188 @@
-import{setTransform}from"./utils.js";class Gesture{constructor(t){Object.assign(this,t)}attach(){document.body.onpointerdown=this.pointerdown,document.body.onpointerup=this.pointerup,document.body.onpointercancel=this.pointerup}}export class Measure extends Gesture{constructor(t){super(t)}pointerdown=t=>{t.target.closest(".port")&&(!1===Number.isInteger(this.x1)?(this.x1=t.clientX,this.y1=t.clientY,document.body.onpointermove=this.pointermove):(this.pointermove(t),this.pointerup()))};toFt(t){const{$scene:e,$view:s,plan:i}=this,{sy:n,z:o=1}=s.dataset,a=e.clientWidth/e.width.baseVal.value,[r,h="0"]=String(t/(a*i.footRatio*n*o)).split(".");return`${r}' ${Math.round(1.2*h[0])}''`}pointermove=({clientX:t,clientY:e})=>{const{$ruler:s,$foots:i}=this,n=Math.abs(this.x1-t),o=Math.abs(this.y1-e);s.classList.remove("width","height"),n>o?(s.style.top=`${this.y1}px`,s.style.left=`${Math.min(this.x1,t)}px`,s.style.width=`${n}px`,s.classList.add("width","apply"),i.textContent=this.toFt(n)):(s.style.top=`${Math.min(this.y1,e)}px`,s.style.left=`${this.x1}px`,s.style.height=`${o}px`,s.classList.add("height","apply"),i.textContent=this.toFt(o))};pointerup=()=>{this.x1=null,this.y1=null,document.body.onpointermove=null}}export class Drag extends Gesture{constructor(t){super(t)}pointers=[];initialZoom=0;pointerup=()=>{this.pointers=[],this.hypo=0,document.body.onpointermove=null};getPointerXY({clientX:t,clientY:e}){if(this.$target.classList.contains("view"))return[t,e];const{dataset:{sy:s=1,z:i=1},offsetWidth:n,firstElementChild:o}=this.$area,a=s*i*Math.min(1,n/o.width.baseVal.value);return[t/a,e/a]}interpolate(){return this.$target.classList.contains("text-field")&&this.$target.dataset.sx<0||this.$target.classList.contains("furniture-embed")&&this.$view.dataset.sx<0}setActiveText(t){const e=t.classList.contains("text-field")&&t;document.body.dispatchEvent(new CustomEvent("focus-text",{detail:{$text:e}}))}focusEmbed(t){const e=t.target.closest(".furniture-embed"),s=e&&e.firstElementChild;document.body.dispatchEvent(new CustomEvent("focus-embed",{detail:{$embed:s}}))}initResize({clientX:t,clientY:e,target:s}){this.x1=t,this.y1=e,this.$target=s.closest(".furniture-embed").querySelector("svg"),this.width=parseInt(this.$target.getAttribute("width")),this.height=parseInt(this.$target.getAttribute("height")),document.body.onpointermove=this.resizeEmbed}resizeEmbed=({clientX:t,clientY:e})=>{const s=Math.max(this.width+(t-this.x1)*Math.sign(this.$view.dataset.sx),0),i=Math.max(this.height+this.y1-e,0);document.body.dispatchEvent(new CustomEvent("resize-embed",{detail:{width:s,height:i}}))};initRotate({target:t}){const{left:e,right:s,top:i,bottom:n}=this.$view.getBoundingClientRect();this.x1=(e+s)/2,this.y1=(i+n)/2,this.$target=t.closest(".furniture-embed").querySelector("svg"),document.body.onpointermove=this.rotateEmbed}rotateEmbed=({clientX:t,clientY:e})=>{const s=180*Math.atan2(e-this.y1,t-this.x1)/Math.PI*Math.sign(this.$view.dataset.sx);document.body.dispatchEvent(new CustomEvent("rotate-embed",{detail:{deg:s}}))};focusTarget(t){const e=t.closest(".furniture-embed");e?this.focusEmbed({target:e}):this.setActiveText(t)}pointerdown=t=>{const e=t.target.closest(".disabled");if(e)return this.focusTarget(e);if(t.target.classList.contains("embed-bin-button")||t.target.classList.contains("embed-duplicate-button"))return;const s=t.target.closest("[data-drag-area]");if(0===this.pointers.length&&s){if(this.focusEmbed(t),t.target.classList.contains("embed-resize-button"))return this.initResize(t);if(t.target.classList.contains("embed-rotate-button"))return this.initRotate(t);this.$area=s.dataset.dragArea?t.target.closest(s.dataset.dragArea):{dataset:{}};const{$scene:e}=this,i=t.target.closest(".draggable");this.$target=i;const{x:n=0,y:o=0}=i.dataset,[a,r]=this.getPointerXY(t);this.setActiveText(i),this.x1=this.interpolate()?-(e.width.baseVal.value-a-n):a-n,this.y1=r-o,this.initialZoom=+this.$zoomSlider.value,document.body.onpointermove=this.pointermove}this.pointers.push(t)};pointermove=t=>{const[e,s,i]=this.pointers,{$target:n,$scene:o}=this;if(i)return;if(s&&n.classList.contains("pinchable")){let i;t.pointerId===e.pointerId?(i=s,this.pointers[0]=t):(i=e,this.pointers[1]=t);const n=Math.hypot(i.clientX-t.clientX,i.clientY-t.clientY);return this.hypo=this.hypo||n,this.$zoomSlider.value=this.initialZoom+100*Math.min(1,n/this.hypo-1),this.zoom()}const[a,r]=this.getPointerXY(t);this.x2=this.x1-a,this.y2=this.y1-r,n.dataset.x=this.interpolate()?o.width.baseVal.value+this.x2:-this.x2,n.dataset.y=-this.y2,setTransform(n)}}
+import { setTransform } from './utils.js';
+
+class Gesture {
+    constructor(props) {
+        Object.assign(this, props);
+    }
+    attach() {
+        document.body.onpointerdown = this.pointerdown;
+        document.body.onpointerup = this.pointerup;
+        document.body.onpointercancel =this.pointerup;
+        /* document.body.onpointerout = this.pointerup; */
+    }
+}
+export class Measure extends Gesture {
+    constructor(props) {
+        super(props);
+    }
+    pointerdown = (e) => {
+        if(e.target.closest('.port')) {
+            if(Number.isInteger(this.x1) === false) {
+                this.x1 = e.clientX;
+                this.y1 = e.clientY;
+                document.body.onpointermove = this.pointermove;
+            }
+            else {
+                this.pointermove(e);
+                this.pointerup();
+            }
+        }
+    }
+    toFt(value) {
+        const { $scene, $view, plan } = this;
+        const { sy, z = 1 } = $view.dataset;
+        const ratio = $scene.clientWidth / $scene.width.baseVal.value;
+        const [feet, inches = '0'] = String(value / (ratio * plan.footRatio * sy * z)).split('.');
+        return `${feet}' ${Math.round(inches[0] * 1.2)}''`;
+    }
+    pointermove = ({ clientX, clientY }) => {
+        const { $ruler, $foots } = this;
+        const width = Math.abs(this.x1 - clientX);
+        const height = Math.abs(this.y1 - clientY);
+        $ruler.classList.remove('width', 'height');
+        if(width > height) {
+            $ruler.style.top = `${this.y1}px`;
+            $ruler.style.left = `${Math.min(this.x1, clientX)}px`;
+            $ruler.style.width = `${width}px`;
+            $ruler.classList.add('width', 'apply');
+            $foots.textContent = this.toFt(width);
+        }
+        else {
+            $ruler.style.top = `${Math.min(this.y1, clientY)}px`;
+            $ruler.style.left = `${this.x1}px`;
+            $ruler.style.height = `${height}px`;
+            $ruler.classList.add('height', 'apply');
+            $foots.textContent = this.toFt (height);
+        }
+    }
+    pointerup = () => {
+        this.x1 = null;
+        this.y1 = null;
+        document.body.onpointermove = null;
+    }
+}
+export class Drag extends Gesture {
+    constructor(props) {
+        super(props);
+    }
+    pointers = []
+    initialZoom = 0
+    pointerup = () => {
+        this.pointers = [];
+        this.hypo = 0;
+        document.body.onpointermove = null;
+    }
+    getPointerXY({ clientX, clientY }) {
+        if(this.$target.classList.contains('view')) {
+            return [clientX, clientY];
+        }
+        const { dataset: { sy = 1, z = 1 }, offsetWidth, firstElementChild } = this.$area;
+        const ratio = sy * z * Math.min(1, offsetWidth / firstElementChild.width.baseVal.value); 
+        return [ clientX / ratio, clientY / ratio ];
+    }
+    interpolate() {
+        return this.$target.classList.contains('text-field') && this.$target.dataset.sx < 0
+            || this.$target.classList.contains('furniture-embed') && this.$view.dataset.sx < 0;
+    }
+    setActiveText($target) {
+        const $text = $target.classList.contains('text-field') && $target;
+        document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
+    }
+    focusEmbed(e) {
+        const $furnitureEmbed = e.target.closest('.furniture-embed');
+        const $embed = $furnitureEmbed && $furnitureEmbed.firstElementChild;
+        document.body.dispatchEvent(new CustomEvent('focus-embed', { detail: { $embed } }));
+    }
+    initResize({ clientX, clientY, target }) {
+        this.x1 = clientX;
+        this.y1 = clientY;
+        this.$target = target.closest('.furniture-embed').querySelector('svg');
+        this.width = parseInt(this.$target.getAttribute('width'));
+        this.height = parseInt(this.$target.getAttribute('height'))
+        document.body.onpointermove = this.resizeEmbed;
+    }
+    resizeEmbed = ({ clientX, clientY }) => {
+        const width = Math.max(this.width + (clientX - this.x1) * Math.sign(this.$view.dataset.sx), 0);
+        const height = Math.max(this.height + this.y1 - clientY, 0);
+        document.body.dispatchEvent(new CustomEvent('resize-embed', { detail: { width, height } }));
+    }
+    initRotate({ target }) {
+        const { left, right, top, bottom } = this.$view.getBoundingClientRect();
+        this.x1 = (left + right) / 2;
+        this.y1 = (top + bottom) / 2;
+        this.$target = target.closest('.furniture-embed').querySelector('svg');
+        document.body.onpointermove = this.rotateEmbed;
+    }
+    rotateEmbed = ({ clientX, clientY }) => {
+        const deg = Math.atan2(clientY - this.y1, clientX - this.x1) * 180 / Math.PI * Math.sign(this.$view.dataset.sx);
+        document.body.dispatchEvent(new CustomEvent('rotate-embed', { detail: { deg } }));
+    }
+    focusTarget($disabled) {
+        const $target = $disabled.closest('.furniture-embed');
+        $target ? this.focusEmbed({ target: $target }) : this.setActiveText($disabled);
+    }
+    pointerdown = (e) => {
+        const $disabled = e.target.closest('.disabled');
+        if($disabled) {
+            return this.focusTarget($disabled);
+        }
+        if(
+            e.target.classList.contains('embed-bin-button')
+            || e.target.classList.contains('embed-duplicate-button')
+        ) {
+            return;
+        }
+        const $area = e.target.closest('[data-drag-area]');
+        if(this.pointers.length === 0 && $area) {
+            this.focusEmbed(e);
+            if(e.target.classList.contains('embed-resize-button')) {
+                return this.initResize(e);
+            }
+            if(e.target.classList.contains('embed-rotate-button')) {
+                return this.initRotate(e);
+            }
+            this.$area = $area.dataset.dragArea
+                ? e.target.closest($area.dataset.dragArea)
+                : { dataset: {} };
+            const { $scene } = this;
+            const $target = e.target.closest('.draggable');
+            this.$target = $target;
+            const { x = 0, y = 0 } = $target.dataset;
+            const [ cx, cy ] = this.getPointerXY(e);
+            this.setActiveText($target);
+            this.x1 = this.interpolate() ? - ($scene.width.baseVal.value - cx - x) : cx - x;
+            this.y1 = cy - y;
+            this.initialZoom = + this.$zoomSlider.value;
+            document.body.onpointermove = this.pointermove;
+        }
+        this.pointers.push(e);
+    }
+    pointermove = (e) => {
+        const [ e1, e2, e3 ] = this.pointers;
+        const { $target, $scene } = this;
+        if(e3) {
+            return;
+        }
+        if(e2 && $target.classList.contains('pinchable')) {
+            let e4;
+            if (e.pointerId === e1.pointerId) {
+                e4 = e2;
+                this.pointers[0] = e;
+            }
+            else {
+                e4 = e1;
+                this.pointers[1] = e;
+            }
+            const hypo1 = Math.hypot(e4.clientX - e.clientX, e4.clientY - e.clientY);
+            this.hypo = this.hypo || hypo1;
+            this.$zoomSlider.value = this.initialZoom + Math.min(1, hypo1 / this.hypo - 1) * 100;
+            return this.zoom();
+        }
+        const [ cx, cy ] = this.getPointerXY(e);
+        this.x2 = this.x1 - cx;
+        this.y2 = this.y1 - cy;
+        $target.dataset.x = this.interpolate() ? $scene.width.baseVal.value + this.x2 : - this.x2;
+        $target.dataset.y = -this.y2;
+        setTransform($target);
+    }
+}

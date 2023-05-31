@@ -1,1 +1,59 @@
-import{setTransform}from"./utils.js";let $activeText;const $textControl=document.querySelector(".text-control"),$fontSlider=$textControl.querySelector(".font-slider"),$textControlBody=$textControl.querySelector(".text-control-body"),$textControlTextarea=$textControlBody.querySelector(".text-control-textarea"),$textControlRotateInput=$textControlBody.querySelector(".text-control-rotate-input"),rotateText=({target:t})=>{t.value<0?t.value=359:t.value>359&&(t.value=0),$activeText.dataset.r=t.value,setTransform($activeText)},rotateByDegree=({target:t})=>{"+"===t.textContent?$textControlRotateInput.value++:$textControlRotateInput.value--,rotateText({target:$textControlRotateInput})},focusText=({detail:{$text:t}})=>{!1!==t?($textControl.hidden=!1,t.isSameNode($activeText)||($activeText=t,$textControlBody.disabled=$activeText.classList.contains("disabled"),$textControlTextarea.value=$activeText.textContent,$fontSlider.value=parseInt($activeText.style.fontSize)||13,$textControlRotateInput.value=$activeText.dataset.r||0)):$textControl.hidden=!0},attachRotateControl=t=>t.onclick=rotateByDegree;$textControlBody.querySelector(".text-control-lock-button").onclick=()=>{$textControlBody.disabled=!$textControlBody.disabled,$activeText.classList.toggle("disabled")},$textControlBody.querySelector(".text-control-reset-button").onclick=()=>{$activeText.dataset.r=0,$textControlRotateInput.value=0,$activeText.style.fontSize="13px",$fontSlider.value=13,setTransform($activeText)},$textControlTextarea.oninput=({target:t})=>$activeText.textContent=t.value,$textControlRotateInput.oninput=rotateText,$textControl.querySelector(".text-control-bin-button").onclick=()=>{$activeText.remove(),$textControl.hidden=!0},$textControl.querySelector(".text-control-x-button").onclick=()=>$textControl.hidden=!0,$fontSlider.oninput=({target:t})=>$activeText.style.fontSize=`${t.value}px`,Array.from($textControlBody.querySelectorAll(".text-control-rotate-button")).forEach(attachRotateControl),document.body.addEventListener("focus-text",focusText);
+import { setTransform } from './utils.js';
+
+let $activeText;
+const $textControl = document.querySelector('.text-control');
+const $fontSlider = $textControl.querySelector('.font-slider');
+const $textControlBody = $textControl.querySelector('.text-control-body');
+const $textControlTextarea = $textControlBody.querySelector('.text-control-textarea');
+const $textControlRotateInput = $textControlBody.querySelector('.text-control-rotate-input');
+const rotateText = ({ target }) => {
+    if (target.value < 0) {
+        target.value = 359;
+    }
+    else if (target.value > 359) {
+        target.value = 0;
+    }
+    $activeText.dataset.r = target.value;
+    setTransform($activeText);
+};
+const rotateByDegree = ({ target }) => {
+    target.textContent === '+' ? $textControlRotateInput.value ++ : $textControlRotateInput.value --;
+    rotateText({ target: $textControlRotateInput });
+};
+const focusText = ({ detail: { $text } }) => {
+    if($text === false) {
+        $textControl.hidden = true;
+        return;
+    }
+    $textControl.hidden = false;
+    if($text.isSameNode($activeText)) {
+        return;
+    }
+    $activeText = $text;
+    $textControlBody.disabled = $activeText.classList.contains('disabled');
+    $textControlTextarea.value = $activeText.textContent;
+    $fontSlider.value = parseInt($activeText.style.fontSize) || 13;
+    $textControlRotateInput.value = $activeText.dataset.r || 0;
+};
+const attachRotateControl = $button => $button.onclick = rotateByDegree;
+$textControlBody.querySelector('.text-control-lock-button').onclick = () => {
+    $textControlBody.disabled = !$textControlBody.disabled;
+    $activeText.classList.toggle('disabled');
+};
+$textControlBody.querySelector('.text-control-reset-button').onclick = () => {
+    $activeText.dataset.r = 0;
+    $textControlRotateInput.value = 0;
+    $activeText.style.fontSize = '13px';
+    $fontSlider.value = 13;
+    setTransform($activeText);
+};
+$textControlTextarea.oninput = ({ target }) => $activeText.textContent = target.value;
+$textControlRotateInput.oninput = rotateText;
+$textControl.querySelector('.text-control-bin-button').onclick = () => {
+    $activeText.remove();
+    $textControl.hidden = true;
+};
+$textControl.querySelector('.text-control-x-button').onclick = () => $textControl.hidden = true;
+$fontSlider.oninput = ({ target }) => $activeText.style.fontSize = `${target.value}px`;
+Array.from($textControlBody.querySelectorAll('.text-control-rotate-button')).forEach(attachRotateControl);
+document.body.addEventListener('focus-text', focusText);

@@ -1,0 +1,99 @@
+{
+    "name": "The Rockland",
+    "src": "floors/cameron-610.svg",
+    "footRatio": "9",
+    "zoomRatio": "100",
+    "floors": [
+        {
+            "name": "Lower Level",
+            "id": "LLSFP",
+            "options": [
+                {
+                    "name": "Finished spaces",
+                    "id": "LL_OPT_1",
+                    "disable": ["LL_OPT_2"]
+                },
+                {
+                    "name": "Finished basement and areaway",
+                    "id": "LL_OPT_2",
+                    "disable": ["LL_OPT_1"]
+                },
+                {
+                    "name": "Finished basement and areaway",
+                    "id": "LL_OPT_3"
+                }
+            ]
+        },
+        {
+            "name": "Main Level",
+            "id": "MLSFP",
+            "options": [
+                {
+                    "name": "Sunroom",
+                    "id": "Sunroom"
+                },
+                {
+                    "name": "Nook",
+                    "id": "Nook",
+                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
+                },
+                {
+                    "name": "Fireplace",
+                    "id": "Fireplace",
+                    "disable": ["Morning_Room", "Sided_Fireplace", "Family_Room"]
+                },
+                {
+                    "name": "Morning Room",
+                    "id": "Morning_Room",
+                    "disable": ["Nook", "Fireplace", "Family_Room"]
+                },
+                {
+                    "name": "Side Load Garage",
+                    "id": "ML_OPT_x5F_2_x5F_side_load_garage",
+                    "disable": ["_x33_-Car_Garage"]
+                },
+                {
+                    "name": "2 Sided Fireplace",
+                    "id": "Sided_Fireplace",
+                    "disable": ["Nook", "Fireplace", "Family_Room"]
+                },
+                {
+                    "name": "Gourmet Kitchen",
+                    "id": "Gourmet_Kitchen"
+                },
+                {
+                    "name": "Family Room",
+                    "id": "Family_Room",
+                    "disable": ["Nook", "Fireplace", "Morning_Room", "Sided_Fireplace"]
+                },
+                {
+                    "name": "Study",
+                    "id": "Study"
+                },
+                {
+                    "name": "3 Car Garage",
+                    "id": "_x33_-Car_Garage",
+                    "disable": ["ML_OPT_x5F_2_x5F_side_load_garage"]
+                }
+            ]
+        },
+        {
+            "name": "Upper Level",
+            "id": "UL",
+            "options": [
+                {
+                    "name": "Master bath",
+                    "id": "Master_Bad"
+                },
+                {
+                    "name": "Optional Plan",
+                    "id": "Optional_Plan"
+                }
+            ]
+        },
+        {
+            "name": "Optional Attic",
+            "id": "OA"
+        }
+    ]
+}

@@ -1,1 +1,204 @@
-import{Drag,Measure}from"./gestures.js";import{setTransform}from"./utils.js";let plan,$scene,$floor,$pristine,$selectedFloorOption,drag,measure;const handleJson=e=>e.json(),handleText=e=>e.text(),$mirror=document.querySelector(".mirror"),$dirty=document.createDocumentFragment(),$port=document.querySelector(".port"),$view=document.querySelector(".view"),$floorSelector=document.querySelector(".floor-selector"),$zoomSlider=document.querySelector(".zoom-slider"),$ruler=document.querySelector(".ruler"),$foots=document.querySelector(".foots"),$zoomControl=document.querySelector(".zoom-control"),$reverse=document.getElementById("reverse"),$measure=document.getElementById("measure"),floorOptions=[],resize=()=>{setDragGesture()},selectFloor=({target:e},t)=>{if(t||$floorSelector.classList.toggle("expand"),!1===e.classList.contains("selected")&&!1===e.isSameNode($floorSelector)){const t=`#${e.dataset.ref}`,r=document.querySelector(`[data-id=${e.dataset.ref}]`),o=document.querySelector(".highlight-summary");$selectedFloorOption.classList.remove("selected"),$selectedFloorOption=e,e.classList.add("selected"),$dirty.appendChild($floor),$floor=$dirty.querySelector(t)||$pristine.querySelector(t).cloneNode(!0),$scene.appendChild($floor),o&&o.classList.remove("highlight-summary"),r&&r.classList.add("highlight-summary"),restore()}},setDragGesture=()=>{$measure.checked=!1,drag.attach(),$ruler.classList.remove("apply")},toggleMeasure=()=>{$measure.checked?measure.attach():setDragGesture()},zoom=()=>{$view.dataset.z=1+$zoomSlider.value/plan.zoomRatio,$zoomControl.dataset.z=+$zoomSlider.value+100,$view.style.setProperty("--rz",$view.dataset.sx/$view.dataset.z),setTransform($view),$measure.checked&&setDragGesture()},wheel=({deltaY:e})=>{$zoomSlider.value=+$zoomSlider.value+(e>0?-4:4),zoom()},revertView=()=>{$view.dataset.sx*=-1,setTransform($view)},flipA=e=>{if("g"===e.nodeName&&"true"!==e.dataset.reversed){const t=e.querySelectorAll("text"),r=(e,r)=>{const o=t[r];if(void 0===o.dataset.flip){const t=e.getAttribute("transform"),r=/\(([^)]+)\)/.exec(t)[1].split(" ");o.dataset.transform=t,r[0]=-1,r[4]=e.getBoundingClientRect().right,o.dataset.flip=`matrix(${r.join()})`}o.setAttribute("transform",o.dataset.flip)};e.dataset.reversed=!0,$mirror.appendChild($pristine),$pristine.querySelectorAll(`#${e.id} text`).forEach(r),$pristine.remove()}},flipB=e=>{if("g"===e.nodeName&&"true"===e.dataset.reversed){const t=e=>e.setAttribute("transform",e.dataset.transform);e.dataset.reversed=!1,e.querySelectorAll("text").forEach(t)}},mirror=e=>{const t=$reverse.checked?-1:1;Array.from($floor.children,$reverse.checked?flipA:flipB),$floor.querySelectorAll(".text-field").forEach(e=>{const{sx:r=1,r:o=0}=e.dataset;e.dataset.sx=Math.abs(r)*t,e.dataset.r=Math.abs(o)*t,setTransform(e)}),e&&($view.dataset.sx*=-1,setTransform($view))},init=()=>{setScale(),drag.attach()},restore=()=>{$zoomSlider.value=0,setDragGesture(),mirror(),zoom(),init()},reset=()=>{$reverse.checked=!1,$floor.querySelector("foreignObject").innerHTML="",restore()},setScale=()=>{if(void 0===$view.dataset.sx){const{width:e,height:t}=$scene.getBoundingClientRect(),r=Math.min(window.innerWidth/e,window.innerHeight/t);$view.dataset.sy=r,$view.dataset.sx=r,setTransform($view)}},setFloor=({name:e,id:t,options:r},o)=>{const s=document.createElement("li"),a=document.createElementNS("http://www.w3.org/2000/svg","g"),n=`floor-${t}`,l=document.getElementById(t);a.setAttribute("id",n),l.setAttribute("idx",o),a.appendChild(l),r&&r.forEach(({id:e},t)=>{const r=document.getElementById(e);$pristine.appendChild(r),r.setAttribute("idx",o+(t+1)/1e3)}),a.insertAdjacentHTML("beforeend",'<foreignObject idx="99" data-drag-area=".view"></foreignObject>'),s.textContent=e,s.className="floor-option",floorOptions.push(s),$pristine.appendChild(a),0===o&&($floor=a.cloneNode(!0),s.classList.add("selected"),$scene.appendChild($floor)),s.dataset.ref=n,$floorSelector.appendChild(s)},insertView=e=>{$view.innerHTML=e,$scene=$view.firstElementChild,$pristine=$scene.cloneNode(),plan.floors.forEach(setFloor),drag=new Drag({$scene:$scene,$view:$view,$zoomSlider:$zoomSlider,zoom:zoom}),measure=new Measure({$scene:$scene,$view:$view,$zoomSlider:$zoomSlider,$ruler:$ruler,$foots:$foots,plan:plan}),init(),$selectedFloorOption=floorOptions[0],$floorSelector.onclick=selectFloor,$zoomSlider.oninput=zoom,$port.onwheel=wheel},handlePlan=e=>(plan=e,document.querySelector(".plan-name").textContent=plan.name,fetch(plan.src).then(handleText).then(insertView),e),addText=()=>{const e=document.createElement("pre");e.textContent="Add Text",e.className="draggable text-field",e.dataset.x=$scene.width.baseVal.value/2,e.dataset.y=$scene.height.baseVal.value/2,e.dataset.sx=Math.sign($view.dataset.sx),$floor.querySelector("foreignObject").appendChild(e),document.body.dispatchEvent(new CustomEvent("focus-text",{detail:{$text:e}})),setTransform(e)},planPromise=fetch("plan.json").then(handleJson).then(handlePlan);document.querySelector(".print-button").onclick=()=>window.print(),document.querySelector(".reset-button").onclick=reset,document.querySelector(".text-button").onclick=addText,$reverse.onchange=mirror,$measure.onchange=toggleMeasure,window.onresize=resize;export default()=>({planPromise:planPromise,$floor:$floor,$pristine:$pristine,$dirty:$dirty,selectFloor:selectFloor,mirror:mirror});
+import { Drag, Measure } from './gestures.js';
+import { setTransform } from './utils.js';
+
+let plan, $scene, $floor, $pristine, $selectedFloorOption, drag, measure;
+const handleJson = response => response.json();
+const handleText = response => response.text();
+const $mirror = document.querySelector('.mirror');
+const $dirty = document.createDocumentFragment();
+const $port = document.querySelector('.port');
+const $view = document.querySelector('.view');
+const $floorSelector = document.querySelector('.floor-selector');
+const $zoomSlider = document.querySelector('.zoom-slider');
+const $ruler = document.querySelector('.ruler');
+const $foots = document.querySelector('.foots');
+const $zoomControl = document.querySelector('.zoom-control');
+const $reverse = document.getElementById('reverse');
+const $measure = document.getElementById('measure');
+
+const floorOptions = [];
+const resize = () => {
+    setDragGesture();
+};
+const selectFloor = ({ target }, collapse) => {
+    collapse || $floorSelector.classList.toggle('expand');
+    if (target.classList.contains('selected') === false && target.isSameNode($floorSelector) === false) {
+        const id = `#${target.dataset.ref}`;
+        const $summary = document.querySelector(`[data-id=${target.dataset.ref}]`);
+        const $highlightSummary = document.querySelector('.highlight-summary');
+        $selectedFloorOption.classList.remove('selected');
+        $selectedFloorOption = target;
+        target.classList.add('selected');
+        $dirty.appendChild($floor);
+        $floor = $dirty.querySelector(id) || $pristine.querySelector(id).cloneNode(true);
+        $scene.appendChild($floor);
+        $highlightSummary && $highlightSummary.classList.remove('highlight-summary');
+        $summary && $summary.classList.add('highlight-summary');
+        restore();
+    }
+};
+const setDragGesture = () => {
+    $measure.checked = false;
+    drag.attach();
+    $ruler.classList.remove('apply');
+};
+const toggleMeasure = () => {
+    if($measure.checked) {
+        measure.attach();
+    }
+    else {
+        setDragGesture();
+    }
+};
+const zoom = () => {
+    $view.dataset.z = 1 + $zoomSlider.value / plan.zoomRatio;
+    $zoomControl.dataset.z = + $zoomSlider.value + 100;
+    $view.style.setProperty('--rz', $view.dataset.sx / $view.dataset.z);
+    setTransform($view);
+    $measure.checked && setDragGesture();
+};
+const wheel = ({deltaY}) => {
+    $zoomSlider.value = + $zoomSlider.value + (deltaY > 0 ? -4 : 4);
+    zoom();
+};
+const revertView = () => {
+    $view.dataset.sx *= -1;
+    setTransform($view);
+};
+const flipA = $mod => {
+    if($mod.nodeName === 'g' && $mod.dataset.reversed !== 'true') {
+        const $texts = $mod.querySelectorAll('text');
+        const interpolate = ($text, idx) => {
+            const $target = $texts[idx];
+            if($target.dataset.flip === undefined) {
+                const transform = $text.getAttribute('transform');
+                const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
+                $target.dataset.transform = transform;
+                matrix[0] = -1;
+                matrix[4] = $text.getBoundingClientRect().right;
+                $target.dataset.flip = `matrix(${matrix.join()})`;
+            }
+            $target.setAttribute('transform', $target.dataset.flip);
+        };
+        $mod.dataset.reversed = true;
+        $mirror.appendChild($pristine);
+        $pristine.querySelectorAll(`#${$mod.id} text`).forEach(interpolate);
+        $pristine.remove();
+    }
+};
+const flipB = $mod => {
+    if($mod.nodeName === 'g' && $mod.dataset.reversed === 'true') {
+        const interpolate = $text => $text.setAttribute('transform', $text.dataset.transform);
+        $mod.dataset.reversed = false;
+        $mod.querySelectorAll('text').forEach(interpolate);
+    }
+};
+const mirror = (e) => {
+    const dir = $reverse.checked ? -1 : 1;
+    const interpolateForeign = ($text) => {
+        const { sx = 1, r = 0 } = $text.dataset;
+        $text.dataset.sx = Math.abs(sx) * dir;
+        $text.dataset.r = Math.abs(r) * dir;
+        setTransform($text);
+    };
+    Array.from($floor.children, $reverse.checked ? flipA : flipB);
+    $floor.querySelectorAll('.text-field').forEach(interpolateForeign);
+    e && revertView();
+};
+const init = () => {
+    setScale();
+    drag.attach();
+};
+const restore = () => {
+    $zoomSlider.value = 0;
+    setDragGesture();
+    mirror();
+    zoom();
+    init();
+};
+const reset = () => {
+    $reverse.checked = false;
+    $floor.querySelector('foreignObject').innerHTML = '';
+    restore();
+};
+const setScale = () => {
+    if($view.dataset.sx === undefined) {
+        const { width, height } = $scene.getBoundingClientRect();
+        const s = Math.min(window.innerWidth / width, window.innerHeight / height);
+        $view.dataset.sy = s;
+        $view.dataset.sx = s;
+        setTransform($view);
+    }
+};
+const setFloor = ({name, id, options}, i) => {
+    const $floorOption = document.createElement('li');
+    const $g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const ref = `floor-${id}`;
+    const hideViewOptions = ({ id }, ii) => {
+        console.log(111, id);
+        const $o = document.getElementById(id);
+        $pristine.appendChild($o);
+        $o.setAttribute('idx', i + (ii + 1) / 1000);
+    };
+    const $c = document.getElementById(id);
+    $g.setAttribute('id', ref);
+    $c.setAttribute('idx', i);
+    $g.appendChild($c);
+    options && options.forEach(hideViewOptions);
+    $g.insertAdjacentHTML('beforeend', '<foreignObject idx="99" data-drag-area=".view"></foreignObject>');
+    $floorOption.textContent = name;
+    $floorOption.className = 'floor-option';
+    floorOptions.push($floorOption);
+    $pristine.appendChild($g);
+    if(i === 0) {
+        $floor = $g.cloneNode(true);
+        $floorOption.classList.add('selected');
+        $scene.appendChild($floor)
+    }
+    $floorOption.dataset.ref = ref;
+    $floorSelector.appendChild($floorOption);
+};
+const insertView = (text) => {
+    $view.innerHTML = text;
+    $scene = $view.firstElementChild;
+    $pristine = $scene.cloneNode();
+    plan.floors.forEach(setFloor);
+    drag = new Drag({ $scene, $view, $zoomSlider, zoom });
+    measure = new Measure({ $scene, $view, $zoomSlider, $ruler, $foots, plan });
+    init();
+    $selectedFloorOption = floorOptions[0];
+    $floorSelector.onclick = selectFloor;
+    $zoomSlider.oninput = zoom;
+    $port.onwheel = wheel;
+};
+const handlePlan = (raw) => {
+    plan = raw;
+    document.querySelector('.plan-name').textContent = plan.name;
+    fetch(plan.src)
+        .then(handleText)
+        .then(insertView);
+    return raw;
+};
+const addText = () => {
+    const $text = document.createElement('pre');
+    $text.textContent = 'Add Text';
+    $text.className = 'draggable text-field';
+    $text.dataset.x = $scene.width.baseVal.value / 2;
+    $text.dataset.y = $scene.height.baseVal.value / 2;
+    $text.dataset.sx = Math.sign($view.dataset.sx);
+    $floor.querySelector('foreignObject').appendChild($text);
+    document.body.dispatchEvent(new CustomEvent('focus-text', { detail: { $text } }));
+    setTransform($text);
+};
+const planPromise = fetch('plan.json')
+    .then(handleJson)
+    .then(handlePlan);
+document.querySelector('.print-button').onclick = () => window.print();
+document.querySelector('.reset-button').onclick = reset;
+document.querySelector('.text-button').onclick = addText;
+
+$reverse.onchange = mirror;
+$measure.onchange = toggleMeasure;
+window.onresize = resize;
+
+export default () => ({ planPromise, $floor, $pristine, $dirty, selectFloor, mirror });
