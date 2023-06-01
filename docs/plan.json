@@ -14,11 +14,13 @@
                 },
                 {
                     "name": "Powder Room & Closet",
-                    "id": "GFPA1WOPR_x26_C"
+                    "id": "GFPA1WOPR_x26_C",
+                    "disable": ["GFPWRROSECT", "GFPA1WOPR_x26_CEC"]
                 },
                 {
                     "name": "Powder Room & Closet End Condition",
-                    "id": "GFPA1WOPR_x26_CEC"
+                    "id": "GFPA1WOPR_x26_CEC",
+                    "disable": ["GFPWRROSECT", "GFPA1WOPR_x26_C"]
                 },
                 {
                     "name": "Bedroom & Full Bath",
