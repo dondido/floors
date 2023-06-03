@@ -63,6 +63,10 @@
                     "id": "TFPEC"
                 },
                 {
+                    "name": "Box Bay",
+                    "id": "TFPOBB"
+                },
+                {
                     "name": "Large Primary Sute",
                     "id": "TFPA1"
                 },
@@ -71,11 +75,11 @@
                     "id": "TFPA1EC"
                 },
                 {
-                    "name": "Three Bedrooms * Box Bay",
+                    "name": "Large Primary Sute Box Bay",
                     "id": "TFPA1OBB"
                 },
                 {
-                    "name": "Three Bedrooms *",
+                    "name": "Three Bedrooms",
                     "id": "TFPA2WB"
                 }
             ]
