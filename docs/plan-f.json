@@ -10,28 +10,25 @@
             "options": [
                 {
                     "name": "Rec. Room or Opt. Study End Condition Typical",
-                    "id": "GFPWRROSECT",
-                    "disable": ["GFPA1WOPR_x26_C", "GFPA1WOPR_x26_CEC", "GFPA2WB_x26_FB", "GFPA2WB_x26_FBEC"]
+                    "id": "GFPWRROSECT"
                 },
                 {
                     "name": "Powder Room & Closet",
                     "id": "GFPA1WOPR_x26_C",
-                    "disable": ["GFPWRROSECT", "GFPA2WB_x26_FB", "GFPA2WB_x26_FBEC"]
+                    "disable": ["GFPWRROSECT", "GFPA1WOPR_x26_CEC"]
                 },
                 {
                     "name": "Powder Room & Closet End Condition",
                     "id": "GFPA1WOPR_x26_CEC",
-                    "disable": ["GFPWRROSECT", "GFPA2WB_x26_FB"]
+                    "disable": ["GFPWRROSECT", "GFPA1WOPR_x26_C"]
                 },
                 {
                     "name": "Bedroom & Full Bath",
-                    "id": "GFPA2WB_x26_FB",
-                    "disable": ["GFPWRROSECT", "GFPA1WOPR_x26_C", "GFPA1WOPR_x26_CEC"]
+                    "id": "GFPA2WB_x26_FB"
                 },
                 {
                     "name": "Bedroom & Full Bath End Condition",
-                    "id": "GFPA2WB_x26_FBEC",
-                    "disable": ["GFPWRROSECT", "GFPA1WOPR_x26_C"]
+                    "id": "GFPA2WB_x26_FBEC"
                 }
             ]
         },
@@ -41,14 +38,11 @@
             "options": [
                 {
                     "name": "Elevation #2",
-                    "id": "SFPE2",
-                    "disable": ["SFPE3"]
+                    "id": "SFPE2"
                 },
                 {
                     "name": "Elevation #3",
-                    "id": "SFPE3",
-                    "disable": ["SFPE2"]
-
+                    "id": "SFPE3"
                 },
                 {
                     "name": "End Condition",
@@ -66,34 +60,27 @@
             "options": [
                 {
                     "name": "End Condition",
-                    "id": "TFPEC",
-                    "disable": ["TFPA1", "TFPA1EC", "TFPA1OBB", "TFPA2WB"]
+                    "id": "TFPEC"
                 },
                 {
                     "name": "Box Bay",
-                    "id": "TFPOBB",
-                    "disable": ["TFPA1", "TFPA1EC", "TFPA1OBB", "TFPA2WB"]
+                    "id": "TFPOBB"
                 },
                 {
                     "name": "Large Primary Sute",
-                    "id": "TFPA1",
-                    "disable": ["TFPEC", "TFPOBB", "TFPA2WB"]
+                    "id": "TFPA1"
                 },
                 {
                     "name": "Large Primary Sute End Condition",
-                    "id": "TFPA1EC",
-                    "disable": ["TFPEC", "TFPOBB", "TFPA2WB"]
+                    "id": "TFPA1EC"
                 },
                 {
                     "name": "Large Primary Sute Box Bay",
-                    "id": "TFPA1OBB",
-                    "disable": ["TFPEC", "TFPOBB", "TFPA2WB"]
+                    "id": "TFPA1OBB"
                 },
                 {
                     "name": "Three Bedrooms",
-                    "id": "TFPA2WB",
-                    "disable": ["TFPEC", "TFPOBB", "TFPA1", "TFPA1EC", "TFPA1OBB"]
-
+                    "id": "TFPA2WB"
                 }
             ]
         },
@@ -103,29 +90,23 @@
             "options": [
                 {
                     "name": "End Condition",
-                    "id": "LFPEC",
-                    "disable": ["OLSFP", "OLSFPEC"]
+                    "id": "LFPEC"
                 },
                 {
                     "name": "Opt. Full Bath ilo Storage",
-                    "id": "LFPWOFB",
-                    "disable": ["OLSFP", "OLSFPEC"]
+                    "id": "LFPWOFB"
                 },
                 {
                     "name": "Opt. See-Thru Fireplace",
-                    "id": "LFPOF",
-                    "disable": ["OLSFP", "OLSFPEC"]
+                    "id": "LFPOF"
                 },
                 {
                     "name": "Suite",
-                    "id": "OLSFP",
-                    "disable": ["LFPEC", "LFPWOFB", "LFPOF"]
+                    "id": "OLSFP"
                 },
                 {
                     "name": "End Condition",
-                    "id": "OLSFPEC",
-                    "disable": ["LFPEC", "LFPWOFB", "LFPOF"]
-
+                    "id": "OLSFPEC"
                 }
             ]
         }

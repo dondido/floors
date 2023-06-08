@@ -40,11 +40,7 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
     const { disable = [], required = [], parentId } = floorMap[id];
     const { $pristine, selectFloor, mirror } = inject();
     const toggleOthers = (ref) => {
-        const $target = $floorBody.querySelector(`[data-id="${ref}"]`);
-        if ($target) {
-            $target.disabled = checked;
-            $target.setAttribute('aria-checked', false);
-        }
+        $floorBody.querySelector(`[data-id="${ref}"]`)?.setAttribute('aria-checked', false);
         deleteElement(ref);
     };
     const enableRequired = id => {
@@ -60,7 +56,12 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
         Array.from($parent.children).find(getNodeAfter).insertAdjacentElement('beforebegin', $g);
     };
     checked ? insertAt() : deleteElement(id);
+    target.setAttribute('aria-checked', checked);
     disable.forEach(toggleOthers);
+    const extractDisabled =  ({ dataset }) => floorMap[dataset.id].disable;
+    const disabled = [...new Set(Array.from($floorBody.querySelectorAll('[aria-checked=true]'), extractDisabled).flat())];
+    const setCheck = (id) => $floorBody.querySelector(`[data-id="${id}"]`).disabled = disabled.includes(id);
+    Array.from(new Set(Array.from($floorBody.querySelectorAll('[data-id]'), ({ dataset }) => dataset.id))).forEach(setCheck);
     required.forEach(enableRequired);
     if($parent.querySelectorAll('g').length === 0) {
         $parent.prepend($pristine.querySelector(`#${parentId.slice(6)}`).cloneNode(true));
@@ -126,7 +127,7 @@ const setFloor = (floor, idx) => {
     Object.assign(floorMap, options.reduce(mapNameToId.bind({ id }), { [id]: floor }));
     $summary.textContent = name;
     $summary.dataset.id = `floor-${id}`;
-    idx === 0 &&$summary.classList.add('highlight-summary');
+    idx === 0 && $summary.classList.add('highlight-summary');
     options.forEach(setOption);
     $floorList.appendChild($floor);
     $floorListContainer.onscroll = () => infos.forEach(updateY);

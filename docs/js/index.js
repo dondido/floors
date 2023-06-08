@@ -135,7 +135,6 @@ const setFloor = ({name, id, options}, i) => {
     const $g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     const ref = `floor-${id}`;
     const hideViewOptions = ({ id }, ii) => {
-        console.log(111, id);
         const $o = document.getElementById(id);
         $pristine.appendChild($o);
         $o.setAttribute('idx', i + (ii + 1) / 1000);
