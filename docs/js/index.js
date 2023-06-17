@@ -73,9 +73,18 @@ const flipA = $mod => {
             if($target.dataset.flip === undefined) {
                 const transform = $text.getAttribute('transform');
                 const matrix = /\(([^)]+)\)/.exec(transform)[1].split(' ');
+                const { right, left } = $text.getBoundingClientRect();
                 $target.dataset.transform = transform;
-                matrix[0] = -1;
-                matrix[4] = $text.getBoundingClientRect().right;
+                console.log(1111, matrix[0] === '0', matrix);
+                if (matrix[1] === '0') {
+                    matrix[0] = -1;
+                    matrix[4] = right;
+                }
+                else {
+                    matrix[1] = -1;
+                    matrix[2] = -1;
+                    matrix[4] = right;
+                }
                 $target.dataset.flip = `matrix(${matrix.join()})`;
             }
             $target.setAttribute('transform', $target.dataset.flip);

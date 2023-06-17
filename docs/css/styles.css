@@ -1,6 +1,6 @@
 /* latin */
 @font-face {
-    font-family: 'Khula';
+    font-family: 'Khula-Light';
     font-style: normal;
     font-display: swap;
     font-weight: 300;
@@ -9,7 +9,7 @@
 }
 /* latin */
 @font-face {
-    font-family: 'Khula';
+    font-family: 'Khula-Regular';
     font-style: normal;
     font-display: swap;
     font-weight: 400;
@@ -23,7 +23,7 @@ body {
 body,
 div,
 button {
-    font-family: Khula, sans-serif;
+    font-family: Khula-Regular, sans-serif;
 }
 * {
     color: #3d3935;
@@ -836,15 +836,13 @@ fieldset:disabled button:hover:before {
 }
 .floor-extra-option-button {
     border: 0;
+    border-top: 1px solid;
+    padding-top: 6px;
+    margin-top: 10px;
     width: 100%;
     text-align: left;
     cursor: pointer;
     background-color: transparent;
-}
-.floor-option-info-list {
-    border-bottom: 1px solid;
-    padding-bottom: 4px;
-    margin-bottom: 10px;
 }
 
 

@@ -12,7 +12,7 @@ const $floorList = document.querySelector('.floor-list');
 const $floorListContainer = $floorList.parentElement;
 const $prev = document.querySelector('.floor-prev-button');
 const $next = document.querySelector('.floor-next-button');
-const setDisabled = (acc, id) => `${acc}<li>${floorMap[id].name}</li>`;
+const listOtions = (acc, id) => `${acc}<li>${floorMap[id].name}</li>`;
 const mapNameToId = function(acc, i) {
     return Object.assign(acc, { [i.id]: { parentId: `floor-${this.id}`, ...i } });
 };
@@ -55,14 +55,24 @@ const enableOption = ({ target, checked = target.getAttribute('aria-checked') !=
         const getNodeAfter = $n => idx < $n.getAttribute('idx');
         Array.from($parent.children).find(getNodeAfter).insertAdjacentElement('beforebegin', $g);
     };
+    const uncheckRequired = ($checkedOption) => {
+        if (floorMap[$checkedOption.dataset.id].required?.includes(target.dataset.id)) {
+            $checkedOption.setAttribute('aria-checked', false);
+        }
+    };
     checked ? insertAt() : deleteElement(id);
     target.setAttribute('aria-checked', checked);
     disable.forEach(toggleOthers);
-    const extractDisabled =  ({ dataset }) => floorMap[dataset.id].disable;
-    const disabled = [...new Set(Array.from($floorBody.querySelectorAll('[aria-checked=true]'), extractDisabled).flat())];
-    const setCheck = (id) => $floorBody.querySelector(`[data-id="${id}"]`).disabled = disabled.includes(id);
-    Array.from(new Set(Array.from($floorBody.querySelectorAll('[data-id]'), ({ dataset }) => dataset.id))).forEach(setCheck);
     required.forEach(enableRequired);
+    $floorBody.querySelectorAll('.floor-option-button[aria-checked=true]').forEach(uncheckRequired);
+    const extractDisabled =  ({ dataset }) => floorMap[dataset.id].disable;
+    const disabled = [...new Set(Array.from($floorBody.querySelectorAll('.floor-option-button[aria-checked=true]'), extractDisabled).flat())];
+    const setCheck = (id) => {
+        if (floorMap[id].required === undefined) {
+            $floorBody.querySelector(`[data-id="${id}"]`).disabled = disabled.includes(id);
+        }
+    };
+    Array.from(new Set(Array.from($floorBody.querySelectorAll('[data-id]'), ({ dataset }) => dataset.id))).forEach(setCheck);
     if($parent.querySelectorAll('g').length === 0) {
         $parent.prepend($pristine.querySelector(`#${parentId.slice(6)}`).cloneNode(true));
     }
@@ -96,7 +106,7 @@ const setFloor = (floor, idx) => {
     floorNodes.push($floor);
     const $floorBody = $floor.querySelector('.floor-item-body');
     const $summary = $floor.querySelector('.floor-item-summary');
-    const setOption = ({ name, id, disable, required = [] }) => {
+    const setOption = ({ name, id, disable = [], required = [] }) => {
         const $floorOption = $floorOptionItem.cloneNode(true);
         const $button = $floorOption.firstElementChild;
         $button.textContent = name;
@@ -107,11 +117,17 @@ const setFloor = (floor, idx) => {
             const $floorInfo = $floorOptionInfo.cloneNode(true);
             const $subButton = $floorInfo.querySelector('.floor-extra-option-button');
             infos.push($floorInfo.querySelector('.floor-option-info-desc'));
-            if (disable) {
-                $floorInfo.querySelector('.floor-option-info-list').innerHTML = disable.reduce(setDisabled, '');
+            if (disable.length) {
+                $floorInfo.querySelector('.floor-option-info-list').innerHTML = disable.reduce(listOtions, '');
             }
             else {
-                $floorInfo.classList.add('hide-content');
+                $floorInfo.querySelector('.floor-option-info-disable').remove();
+            }
+            if (required.length) {
+                $floorInfo.querySelector('.floor-option-info-required .floor-option-info-list').innerHTML = required.reduce(listOtions, '');
+            }
+            else {
+                $floorInfo.querySelector('.floor-option-info-required').remove();
             }
             $subButton.dataset.id = id;
             $subButton.onclick = () => {
