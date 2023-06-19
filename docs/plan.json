@@ -115,19 +115,17 @@
                 },
                 {
                     "name": "Opt. See-Thru Fireplace",
-                    "id": "LFPOF",
-                    "disable": ["OLSFP", "OLSFPEC"],
-                    "required": ["OLSFPEC"]
+                    "id": "LFPOF"
                 },
                 {
                     "name": "Suite",
                     "id": "OLSFP",
-                    "disable": ["LFPEC", "LFPWOFB", "LFPOF"]
+                    "disable": ["LFPEC", "LFPWOFB"]
                 },
                 {
                     "name": "End Condition",
                     "id": "OLSFPEC",
-                    "disable": ["LFPEC", "LFPWOFB", "LFPOF"]
+                    "disable": ["LFPEC", "LFPWOFB"]
 
                 }
             ]
