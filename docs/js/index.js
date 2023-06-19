@@ -158,7 +158,7 @@ const setFloor = ({name, id, options}, i) => {
     if(i === 0) {
         $floor = $g.cloneNode(true);
         $floorOption.classList.add('selected');
-        $scene.appendChild($floor)
+        $scene.appendChild($floor);
     }
     $floorOption.dataset.ref = ref;
     $floorSelector.appendChild($floorOption);
