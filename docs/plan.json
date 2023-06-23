@@ -77,19 +77,21 @@
                     "disable": ["TFPA1", "TFPA1EC", "TFPA1OBB", "TFPA2WB"]
                 },
                 {
-                    "name": "Large Primary Sute",
+                    "name": "Large Primary Suite",
                     "id": "TFPA1",
                     "disable": ["TFPEC", "TFPOBB", "TFPA2WB"]
                 },
                 {
-                    "name": "Large Primary Sute End Condition",
+                    "name": "Large Primary Suite End Condition",
                     "id": "TFPA1EC",
-                    "disable": ["TFPEC", "TFPOBB", "TFPA2WB"]
+                    "disable": ["TFPEC", "TFPOBB", "TFPA2WB"],
+                    "required": ["TFPA1"]
                 },
                 {
-                    "name": "Large Primary Sute Box Bay",
+                    "name": "Large Primary Suite Box Bay",
                     "id": "TFPA1OBB",
-                    "disable": ["TFPEC", "TFPOBB", "TFPA2WB"]
+                    "disable": ["TFPEC", "TFPOBB", "TFPA2WB"],
+                    "required": ["TFPA1"]
                 },
                 {
                     "name": "Three Bedrooms",
